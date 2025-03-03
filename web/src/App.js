@@ -32,6 +32,7 @@ const Home = lazy(() => import('./pages/Home'));
 const Detail = lazy(() => import('./pages/Detail'));
 const About = lazy(() => import('./pages/About'));
 
+
 function App() {
   const [userState, userDispatch] = useContext(UserContext);
   // const [statusState, statusDispatch] = useContext(StatusContext);
@@ -102,22 +103,22 @@ function App() {
             </PrivateRoute>
           }
         />
-        <Route
+        {/* <Route
           path='/playground'
           element={
             <PrivateRoute>
               <Playground />
             </PrivateRoute>
           }
-        />
-        <Route
+        /> */}
+        {/* <Route
           path='/redemption'
           element={
             <PrivateRoute>
               <Redemption />
             </PrivateRoute>
           }
-        />
+        /> */}
         <Route
           path='/user'
           element={
@@ -228,7 +229,7 @@ function App() {
             </PrivateRoute>
           }
         />
-        <Route
+        {/* <Route
           path='/midjourney'
           element={
             <PrivateRoute>
@@ -237,7 +238,7 @@ function App() {
               </Suspense>
             </PrivateRoute>
           }
-        />
+        /> */}
         <Route
           path='/task'
           element={
@@ -264,16 +265,16 @@ function App() {
             </Suspense>
           }
         />
-        <Route
+        {/* <Route
           path='/chat/:id?'
           element={
             <Suspense fallback={<Loading></Loading>}>
               <Chat />
             </Suspense>
           }
-        />
+        /> */}
         {/* 方便使用chat2link直接跳转聊天... */}
-        <Route
+        {/* <Route
           path='/chat2link'
           element={
             <PrivateRoute>
@@ -282,7 +283,7 @@ function App() {
               </Suspense>
             </PrivateRoute>
           }
-        />
+        /> */}
         <Route path='*' element={<NotFound />} />
       </Routes>
     </>

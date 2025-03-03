@@ -162,7 +162,7 @@ const PersonalSetting = () => {
 
   const deleteAccount = async () => {
     if (inputs.self_account_deletion_confirmation !== userState.user.username) {
-      showError('请输入你的账户名以确认删除！');
+      showError('请Enter your account name以Confirm Delete！');
       return;
     }
 
@@ -719,7 +719,7 @@ const PersonalSetting = () => {
               </div>
               <div style={{ marginTop: 20 }}>
                 <Input
-                  placeholder={`输入你的账户名 ${userState?.user?.username} 以确认删除`}
+                  placeholder={`Enter your account name ${userState?.user?.username} 以Confirm Delete`}
                   name='self_account_deletion_confirmation'
                   value={inputs.self_account_deletion_confirmation}
                   onChange={(value) =>

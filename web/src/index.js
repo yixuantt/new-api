@@ -20,38 +20,38 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 const { Sider, Content, Header, Footer } = Layout;
 root.render(
   <React.StrictMode>
-    <StatusProvider>
-      <UserProvider>
-        <BrowserRouter>
-          <ThemeProvider>
-            <Layout
-              style={{
-                height: '100vh',
-                display: 'flex',
-                flexDirection: 'column',
-              }}
-            >
-              <Header>
-                <HeaderBar />
-              </Header>
-              <Layout style={{ flex: 1, overflow: 'hidden' }}>
-                <Sider>
-                  <SiderBar />
-                </Sider>
-                <Layout>
-                  <Content style={{ overflowY: 'auto', padding: '24px' }}>
-                    <App />
-                  </Content>
-                  <Layout.Footer>
-                    <FooterBar></FooterBar>
-                  </Layout.Footer>
+        <StatusProvider>
+          <UserProvider>
+            <BrowserRouter>
+              <ThemeProvider>
+                <Layout
+                  style={{
+                    height: '100vh',
+                    display: 'flex',
+                    flexDirection: 'column',
+                  }}
+                >
+                  <Header>
+                    <HeaderBar />
+                  </Header>
+                  <Layout style={{ flex: 1, overflow: 'hidden' }}>
+                    <Sider>
+                      <SiderBar />
+                    </Sider>
+                    <Layout>
+                      <Content style={{ overflowY: 'auto', padding: '24px' }}>
+                        <App />
+                      </Content>
+                      <Layout.Footer>
+                        <FooterBar />
+                      </Layout.Footer>
+                    </Layout>
+                  </Layout>
+                  <ToastContainer />
                 </Layout>
-              </Layout>
-              <ToastContainer />
-            </Layout>
-          </ThemeProvider>
-        </BrowserRouter>
-      </UserProvider>
-    </StatusProvider>
-  </React.StrictMode>,
+              </ThemeProvider>
+            </BrowserRouter>
+          </UserProvider>
+        </StatusProvider>
+  </React.StrictMode>
 );

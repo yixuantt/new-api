@@ -24,7 +24,7 @@ import Text from '@douyinfe/semi-ui/lib/es/typography/text';
 // HeaderBar Buttons
 let headerButtons = [
   {
-    text: '关于',
+    text: 'About',
     itemKey: 'about',
     to: '/about',
     icon: <IconHelpCircle />,
@@ -33,7 +33,7 @@ let headerButtons = [
 
 let buttons = [
   {
-    text: '首页',
+    text: 'Home',
     itemKey: 'home',
     to: '/',
     // icon: <IconHomeStroked />,
@@ -182,7 +182,7 @@ const HeaderBar = () => {
                       position='bottomRight'
                       render={
                         <Dropdown.Menu>
-                          <Dropdown.Item onClick={logout}>退出</Dropdown.Item>
+                          <Dropdown.Item onClick={logout}>Log Out</Dropdown.Item>
                         </Dropdown.Menu>
                       }
                     >
@@ -200,12 +200,12 @@ const HeaderBar = () => {
                   <>
                     <Nav.Item
                       itemKey={'login'}
-                      text={'登录'}
+                      text={'Login'}
                       // icon={<IconKey />}
                     />
                     <Nav.Item
                       itemKey={'register'}
-                      text={'注册'}
+                      text={'Register'}
                       icon={<IconUser />}
                     />
                   </>

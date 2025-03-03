@@ -69,20 +69,20 @@ const SiderBar = () => {
 
   const headerButtons = useMemo(
     () => [
+      // {
+      //   text: 'Playground',
+      //   itemKey: 'playground',
+      //   to: '/playground',
+      //   icon: <IconCommentStroked />,
+      // },
       {
-        text: 'Playground',
-        itemKey: 'playground',
-        to: '/playground',
-        icon: <IconCommentStroked />,
-      },
-      {
-        text: '模型价格',
+        text: 'Princing',
         itemKey: 'pricing',
         to: '/pricing',
         icon: <IconPriceTag />,
       },
       {
-        text: '渠道',
+        text: 'Channel',
         itemKey: 'channel',
         to: '/channel',
         icon: <IconLayers />,
@@ -99,39 +99,39 @@ const SiderBar = () => {
       //   //   : 'tableHiddle',
       // },
       {
-        text: '令牌',
+        text: 'Tokens',
         itemKey: 'token',
         to: '/token',
         icon: <IconKey />,
       },
+      // {
+      //   text: '兑换码',
+      //   itemKey: 'redemption',
+      //   to: '/redemption',
+      //   icon: <IconGift />,
+      //   className: isAdmin() ? 'semi-navigation-item-normal' : 'tableHiddle',
+      // },
       {
-        text: '兑换码',
-        itemKey: 'redemption',
-        to: '/redemption',
-        icon: <IconGift />,
-        className: isAdmin() ? 'semi-navigation-item-normal' : 'tableHiddle',
-      },
-      {
-        text: '钱包',
+        text: 'Wallet',
         itemKey: 'topup',
         to: '/topup',
         icon: <IconCreditCard />,
       },
       {
-        text: '用户管理',
+        text: 'User System',
         itemKey: 'user',
         to: '/user',
         icon: <IconUser />,
         className: isAdmin() ? 'semi-navigation-item-normal' : 'tableHiddle',
       },
       {
-        text: '日志',
+        text: 'Logging',
         itemKey: 'log',
         to: '/log',
         icon: <IconHistogram />,
       },
       {
-        text: '数据看板',
+        text: 'Dashboard',
         itemKey: 'detail',
         to: '/detail',
         icon: <IconCalendarClock />,
@@ -140,28 +140,28 @@ const SiderBar = () => {
             ? 'semi-navigation-item-normal'
             : 'tableHiddle',
       },
+      // {
+      //   text: '绘图',
+      //   itemKey: 'midjourney',
+      //   to: '/midjourney',
+      //   icon: <IconImage />,
+      //   className:
+      //     localStorage.getItem('enable_drawing') === 'true'
+      //       ? 'semi-navigation-item-normal'
+      //       : 'tableHiddle',
+      // },
+      // {
+      //   text: '异步任务',
+      //   itemKey: 'task',
+      //   to: '/task',
+      //   icon: <IconChecklistStroked />,
+      //   className:
+      //     localStorage.getItem('enable_task') === 'true'
+      //       ? 'semi-navigation-item-normal'
+      //       : 'tableHiddle',
+      // },
       {
-        text: '绘图',
-        itemKey: 'midjourney',
-        to: '/midjourney',
-        icon: <IconImage />,
-        className:
-          localStorage.getItem('enable_drawing') === 'true'
-            ? 'semi-navigation-item-normal'
-            : 'tableHiddle',
-      },
-      {
-        text: '异步任务',
-        itemKey: 'task',
-        to: '/task',
-        icon: <IconChecklistStroked />,
-        className:
-          localStorage.getItem('enable_task') === 'true'
-            ? 'semi-navigation-item-normal'
-            : 'tableHiddle',
-      },
-      {
-        text: '设置',
+        text: 'Setting',
         itemKey: 'setting',
         to: '/setting',
         icon: <IconSetting />,

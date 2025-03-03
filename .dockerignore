@@ -13,3 +13,5 @@ Midjourney.md
 one-api.service
 README.md
 update.sh
+data/
+data/*
