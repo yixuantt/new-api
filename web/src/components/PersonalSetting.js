@@ -110,7 +110,7 @@ const PersonalSetting = () => {
     if (success) {
       setSystemToken(data);
       await copy(data);
-      showSuccess(`TToken has been reset and Copied to clipboard`);
+      showSuccess(`Token has been reset and Copied to clipboard`);
     } else {
       showError(message);
     }
