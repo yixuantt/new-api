@@ -51,7 +51,7 @@ func Playground(c *gin.Context) {
 
 	useAccessToken := c.GetBool("use_access_token")
 	if useAccessToken {
-		openaiErr = service.OpenAIErrorWrapperLocal(errors.New("暂不支持使用 access token"), "access_token_not_supported", http.StatusBadRequest)
+		openaiErr = service.OpenAIErrorWrapperLocal(errors.New("暂Not supported使用 access token"), "access_token_not_supported", http.StatusBadRequest)
 		return
 	}
 
@@ -63,7 +63,7 @@ func Playground(c *gin.Context) {
 	}
 
 	if playgroundRequest.Model == "" {
-		openaiErr = service.OpenAIErrorWrapperLocal(errors.New("请选择模型"), "model_required", http.StatusBadRequest)
+		openaiErr = service.OpenAIErrorWrapperLocal(errors.New("请选择Model"), "model_required", http.StatusBadRequest)
 		return
 	}
 	c.Set("original_model", playgroundRequest.Model)
@@ -74,7 +74,7 @@ func Playground(c *gin.Context) {
 		group = userGroup
 	} else {
 		if !common.GroupInUserUsableGroups(group) && group != userGroup {
-			openaiErr = service.OpenAIErrorWrapperLocal(errors.New("无权访问该分组"), "group_not_allowed", http.StatusForbidden)
+			openaiErr = service.OpenAIErrorWrapperLocal(errors.New("None权访问该Group"), "group_not_allowed", http.StatusForbidden)
 			return
 		}
 		c.Set("group", group)
@@ -82,7 +82,7 @@ func Playground(c *gin.Context) {
 	c.Set("token_name", "playground-"+group)
 	channel, err := model.CacheGetRandomSatisfiedChannel(group, playgroundRequest.Model, 0)
 	if err != nil {
-		message := fmt.Sprintf("当前分组 %s 下对于模型 %s 无可用渠道", group, playgroundRequest.Model)
+		message := fmt.Sprintf("当前Group %s 下对于Model %s No available channels", group, playgroundRequest.Model)
 		openaiErr = service.OpenAIErrorWrapperLocal(errors.New(message), "get_playground_channel_failed", http.StatusInternalServerError)
 		return
 	}
@@ -125,7 +125,7 @@ func Relay(c *gin.Context) {
 
 	if openaiErr != nil {
 		if openaiErr.StatusCode == http.StatusTooManyRequests {
-			openaiErr.Error.Message = "当前分组上游负载已饱和，请稍后再试"
+			openaiErr.Error.Message = "The current group load is saturated, please try again later"
 		}
 		openaiErr.Error.Message = common.MessageWithRequestId(openaiErr.Error.Message, requestId)
 		c.JSON(openaiErr.StatusCode, gin.H{
@@ -163,7 +163,7 @@ func getChannel(c *gin.Context, group, originalModel string, retryCount int) (*m
 	}
 	channel, err := model.CacheGetRandomSatisfiedChannel(group, originalModel, retryCount)
 	if err != nil {
-		return nil, errors.New(fmt.Sprintf("获取重试渠道失败: %s", err.Error()))
+		return nil, errors.New(fmt.Sprintf("获取重试Channel失败: %s", err.Error()))
 	}
 	middleware.SetupContextForSelectedChannel(c, channel, originalModel)
 	return channel, nil
@@ -213,7 +213,7 @@ func shouldRetry(c *gin.Context, openaiErr *dto.OpenAIErrorWithStatusCode, retry
 }
 
 func processChannelError(c *gin.Context, channelId int, channelType int, channelName string, autoBan bool, err *dto.OpenAIErrorWithStatusCode) {
-	// 不要使用context获取渠道信息，异步处理时可能会出现渠道信息不一致的情况
+	// 不要使用context获取Channel信息，异步处理时可能会出现Channel信息不一致的情况
 	// do not use context to get channel info, there may be inconsistent channel info when processing asynchronously
 	common.LogError(c, fmt.Sprintf("relay error (channel #%d, status code: %d): %s", channelId, err.StatusCode, err.Error.Message))
 	if service.ShouldDisableChannel(channelType, err) && autoBan {
@@ -241,7 +241,7 @@ func RelayMidjourney(c *gin.Context) {
 	if err != nil {
 		statusCode := http.StatusBadRequest
 		if err.Code == 30 {
-			err.Result = "当前分组负载已饱和，请稍后再试，或升级账户以提升服务质量。"
+			err.Result = "当前Group负载已饱和，请稍后再试，或升级账户以Promote服务质量。"
 			statusCode = http.StatusTooManyRequests
 		}
 		c.JSON(statusCode, gin.H{
@@ -313,7 +313,7 @@ func RelayTask(c *gin.Context) {
 	}
 	if taskErr != nil {
 		if taskErr.StatusCode == http.StatusTooManyRequests {
-			taskErr.Message = "当前分组上游负载已饱和，请稍后再试"
+			taskErr.Message = "The current group load is saturated, please try again later"
 		}
 		c.JSON(taskErr.StatusCode, taskErr)
 	}

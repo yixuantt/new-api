@@ -27,7 +27,7 @@ type AmountRequest struct {
 
 func genStripeLink(referenceId string, customerId string, email string, amount int64) (string, error) {
 	if !strings.HasPrefix(common.StripeApiSecret, "sk_") {
-		return "", fmt.Errorf("无效的Stripe API密钥")
+		return "", fmt.Errorf("None效的Stripe APIKey")
 	}
 
 	stripe.Key = common.StripeApiSecret
@@ -84,19 +84,19 @@ func RequestPayLink(c *gin.Context) {
 		return
 	}
 	if !common.PaymentEnabled {
-		c.JSON(200, gin.H{"message": "error", "data": "管理员未开启在线支付"})
+		c.JSON(200, gin.H{"message": "error", "data": "Admin未开启在线支付"})
 		return
 	}
 	if req.PaymentMethod != "stripe" {
-		c.JSON(200, gin.H{"message": "error", "data": "不支持的支付渠道"})
+		c.JSON(200, gin.H{"message": "error", "data": "Not supported的支付Channel"})
 		return
 	}
 	if req.Amount < common.MinTopUp {
-		c.JSON(200, gin.H{"message": fmt.Sprintf("充值数量不能小于 %d", common.MinTopUp), "data": 10})
+		c.JSON(200, gin.H{"message": fmt.Sprintf("Recharge数量不能小于 %d", common.MinTopUp), "data": 10})
 		return
 	}
 	if req.Amount > 10000 {
-		c.JSON(200, gin.H{"message": "充值数量不能大于 10000", "data": 10})
+		c.JSON(200, gin.H{"message": "Recharge数量不能大于 10000", "data": 10})
 		return
 	}
 
@@ -143,11 +143,11 @@ func RequestAmount(c *gin.Context) {
 		return
 	}
 	if !common.PaymentEnabled {
-		c.JSON(200, gin.H{"message": "error", "data": "管理员未开启在线支付"})
+		c.JSON(200, gin.H{"message": "error", "data": "Admin未开启在线支付"})
 		return
 	}
 	if req.Amount < common.MinTopUp {
-		c.JSON(200, gin.H{"message": "error", "data": fmt.Sprintf("充值数量不能小于 %d", common.MinTopUp)})
+		c.JSON(200, gin.H{"message": "error", "data": fmt.Sprintf("Recharge数量不能小于 %d", common.MinTopUp)})
 		return
 	}
 	id := c.GetInt("id")

@@ -75,12 +75,12 @@ export default function SettingsDrawing(props) {
           getFormApi={(formAPI) => (refForm.current = formAPI)}
           style={{ marginBottom: 15 }}
         >
-          <Form.Section text={'绘图设置'}>
+          <Form.Section text={'绘图Settings'}>
             <Row gutter={16}>
               <Col span={8}>
                 <Form.Switch
                   field={'DrawingEnabled'}
-                  label={'启用绘图功能'}
+                  label={'Enable绘图功能'}
                   size='large'
                   checkedText='｜'
                   uncheckedText='〇'
@@ -125,7 +125,7 @@ export default function SettingsDrawing(props) {
               <Col span={8}>
                 <Form.Switch
                   field={'MjForwardUrlEnabled'}
-                  label={'开启之后将上游地址替换为服务器地址'}
+                  label={'开启之后将上游地址替换为Server Address'}
                   size='large'
                   checkedText='｜'
                   uncheckedText='〇'
@@ -142,7 +142,7 @@ export default function SettingsDrawing(props) {
                   field={'MjModeClearEnabled'}
                   label={
                     <>
-                      开启之后会清除用户提示词中的 <Tag>--fast</Tag> 、
+                      开启之后会清除UserPrompt词中的 <Tag>--fast</Tag> 、
                       <Tag>--relax</Tag> 以及 <Tag>--turbo</Tag> 参数
                     </>
                   }
@@ -160,7 +160,7 @@ export default function SettingsDrawing(props) {
               <Col span={8}>
                 <Form.Switch
                   field={'MjActionCheckSuccessEnabled'}
-                  label={<>检测必须等待绘图成功才能进行放大等操作</>}
+                  label={<>检测必须等待绘图成功才能进行放大等Operation</>}
                   size='large'
                   checkedText='｜'
                   uncheckedText='〇'
@@ -175,7 +175,7 @@ export default function SettingsDrawing(props) {
             </Row>
             <Row>
               <Button size='large' onClick={onSubmit}>
-                保存绘图设置
+                保存绘图Settings
               </Button>
             </Row>
           </Form.Section>

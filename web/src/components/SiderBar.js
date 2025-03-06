@@ -89,7 +89,7 @@ const SiderBar = () => {
         className: isAdmin() ? 'semi-navigation-item-normal' : 'tableHiddle',
       },
       // {
-      //   text: '聊天',
+      //   text: 'Chat',
       //   itemKey: 'chat',
       //   // to: '/chat',
       //   items: chatItems,
@@ -105,7 +105,7 @@ const SiderBar = () => {
         icon: <IconKey />,
       },
       // {
-      //   text: '兑换码',
+      //   text: 'Redeem码',
       //   itemKey: 'redemption',
       //   to: '/redemption',
       //   icon: <IconGift />,
@@ -167,7 +167,7 @@ const SiderBar = () => {
         icon: <IconSetting />,
       },
       // {
-      //     text: '关于',
+      //     text: 'About',
       //     itemKey: 'about',
       //     to: '/about',
       //     icon: <IconAt/>
@@ -193,7 +193,7 @@ const SiderBar = () => {
       statusDispatch({ type: 'set', payload: data });
       setStatusData(data);
     } else {
-      showError('无法正常连接至服务器！');
+      showError('None法正常连接至服务器！');
     }
   };
 
@@ -232,7 +232,7 @@ const SiderBar = () => {
           }
         } catch (e) {
           console.error(e);
-          showError('聊天数据解析失败');
+          showError('Chat数据解析失败');
         }
       }
     }

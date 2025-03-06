@@ -46,11 +46,11 @@ export $(cat .env | sed 's/#.*//g' | xargs)
 
 echo "build version: $VERSION"
 
-# 使用环境变量中的用户名和密码尝试登录Docker Hub
+# 使用环境变量中的Username和Password尝试LoginDocker Hub
 docker login -u="${HUB_USER}" -p="${HUB_PASS}"
 status=$?
 
-# 检查登录命令的退出状态
+# 检查Login命令的退出状态
 if [ $status -ne 0 ]; then
     echo "Docker login failed, exiting..."
     exit $status

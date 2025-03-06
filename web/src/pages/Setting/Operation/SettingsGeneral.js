@@ -76,21 +76,21 @@ export default function GeneralSettings(props) {
       <Spin spinning={loading}>
         <Banner
           type='warning'
-          description={'聊天链接功能已经弃用，请使用下方聊天设置功能'}
+          description={'Chat链接功能已经弃用，请使用下方ChatSettings功能'}
         />
         <Form
           values={inputs}
           getFormApi={(formAPI) => (refForm.current = formAPI)}
           style={{ marginBottom: 15 }}
         >
-          <Form.Section text={'通用设置'}>
+          <Form.Section text={'通用Settings'}>
             <Row gutter={16}>
               <Col span={8}>
                 <Form.Input
                   field={'TopUpLink'}
-                  label={'充值链接'}
+                  label={'Recharge链接'}
                   initValue={''}
-                  placeholder={'例如发卡网站的购买链接'}
+                  placeholder={'For example, the purchase link of the card issuing website'}
                   onChange={onChange}
                   showClear
                 />
@@ -98,9 +98,9 @@ export default function GeneralSettings(props) {
               <Col span={8}>
                 <Form.Input
                   field={'ChatLink'}
-                  label={'默认聊天页面链接'}
+                  label={'DefaultChat页面链接'}
                   initValue={''}
-                  placeholder='例如 ChatGPT Next Web 的部署地址'
+                  placeholder='For example, the deployment address of ChatGPT Next Web'
                   onChange={onChange}
                   showClear
                 />
@@ -108,9 +108,9 @@ export default function GeneralSettings(props) {
               <Col span={8}>
                 <Form.Input
                   field={'ChatLink2'}
-                  label={'聊天页面 2 链接'}
+                  label={'Chat页面 2 链接'}
                   initValue={''}
-                  placeholder='例如 ChatGPT Next Web 的部署地址'
+                  placeholder='For example, the deployment address of ChatGPT Next Web'
                   onChange={onChange}
                   showClear
                 />
@@ -118,9 +118,9 @@ export default function GeneralSettings(props) {
               <Col span={8}>
                 <Form.Input
                   field={'QuotaPerUnit'}
-                  label={'单位美元额度'}
+                  label={'Unit Dollar Quota'}
                   initValue={''}
-                  placeholder='一单位货币能兑换的额度'
+                  placeholder='一单位货币能Redeem的Quota'
                   onChange={onChange}
                   showClear
                 />
@@ -140,7 +140,7 @@ export default function GeneralSettings(props) {
               <Col span={8}>
                 <Form.Switch
                   field={'DisplayInCurrencyEnabled'}
-                  label={'以货币形式显示额度'}
+                  label={'Display quota in the form of currency'}
                   size='large'
                   checkedText='｜'
                   uncheckedText='〇'
@@ -155,7 +155,7 @@ export default function GeneralSettings(props) {
               <Col span={8}>
                 <Form.Switch
                   field={'DisplayTokenStatEnabled'}
-                  label={'Billing 相关 API 显示令牌额度而非用户额度'}
+                  label={'Billing 相关 API 显示TokenQuota而非UserQuota'}
                   size='large'
                   checkedText='｜'
                   uncheckedText='〇'
@@ -170,7 +170,7 @@ export default function GeneralSettings(props) {
               <Col span={8}>
                 <Form.Switch
                   field={'DefaultCollapseSidebar'}
-                  label={'默认折叠侧边栏'}
+                  label={'Default折叠侧边栏'}
                   size='large'
                   checkedText='｜'
                   uncheckedText='〇'
@@ -185,7 +185,7 @@ export default function GeneralSettings(props) {
             </Row>
             <Row>
               <Button size='large' onClick={onSubmit}>
-                保存通用设置
+                保存通用Settings
               </Button>
             </Row>
           </Form.Section>

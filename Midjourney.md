@@ -70,13 +70,13 @@
 
 部署Midjourney-Proxy，并配置好midjourney账号等（强烈建议设置密钥），[项目地址](https://github.com/novicezk/midjourney-proxy)
 
-2. 在渠道管理中添加渠道，渠道类型选择**Midjourney Proxy**，如果是plus版本选择**Midjourney Proxy Plus**
+2. 在渠道Mange中添加渠道，渠道类型选择**Midjourney Proxy**，如果是plus版本选择**Midjourney Proxy Plus**
    ，模型请参考上方模型列表
 3. **代理**填写midjourney-proxy部署的地址，例如：http://localhost:8080
 4. 密钥填写midjourney-proxy的密钥，如果没有设置密钥，可以随便填
 
 ### 对接上游new api
 
-1. 在渠道管理中添加渠道，渠道类型选择**Midjourney Proxy Plus**，模型请参考上方模型列表
+1. 在渠道Mange中添加渠道，渠道类型选择**Midjourney Proxy Plus**，模型请参考上方模型列表
 2. **代理**填写上游new api的地址，例如：http://localhost:3000
 3. 密钥填写上游new api的密钥

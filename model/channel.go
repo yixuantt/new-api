@@ -109,7 +109,7 @@ func SearchChannels(keyword string, group string, model string) ([]*Channel, err
 		modelsCol = `"models"`
 	}
 
-	// 构造基础查询
+	// 构造基础Query
 	baseQuery := DB.Model(&Channel{}).Omit(keyCol, openaiRefreshTokenCol, openAIAccessTokenExpiresTimeCol)
 
 	// 构造WHERE子句
@@ -130,7 +130,7 @@ func SearchChannels(keyword string, group string, model string) ([]*Channel, err
 		args = append(args, common.String2Int(keyword), "%"+keyword+"%", keyword, "%"+model+"%")
 	}
 
-	// 执行查询
+	// 执行Query
 	err := baseQuery.Where(whereClause, args...).Order("priority desc").Find(&channels).Error
 	if err != nil {
 		return nil, err
@@ -165,7 +165,7 @@ func BatchInsertChannels(channels []Channel) error {
 }
 
 func BatchDeleteChannels(ids []int) error {
-	// 使用事务 删除channel表和channel_ability表
+	// 使用事务 Deletechannel表和channel_ability表
 	tx := DB.Begin()
 	err := tx.Where("id in (?)", ids).Delete(&Channel{}).Error
 	if err != nil {
@@ -179,7 +179,7 @@ func BatchDeleteChannels(ids []int) error {
 		tx.Rollback()
 		return err
 	}
-	// 提交事务
+	// Submit事务
 	tx.Commit()
 	return err
 }
@@ -338,9 +338,9 @@ func DeleteDisabledChannel() (int64, error) {
 
 func GetOpenAIAccessTokenWillExpireChannel() ([]*Channel, error) {
 	var channels []*Channel
-	// 计算24小时后的时间戳
+	// 计算24小时后的Time戳
 	expired := time.Now().Add(24 * time.Hour).Unix()
-	// 查询所有在24小时内将会过期,且有的Channel
+	// Query所有在24小时内将会过期,且有的Channel
 	err := DB.Where("type = 1 AND open_ai_refresh_token IS NOT NULL AND open_ai_refresh_token != '' AND open_ai_access_token_expires_time > 0 AND open_ai_access_token_expires_time <= ?", expired).Find(&channels).Error
 	return channels, err
 }

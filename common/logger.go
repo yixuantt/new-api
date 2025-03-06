@@ -93,7 +93,7 @@ func FatalLog(v ...any) {
 
 func LogQuota(quota int) string {
 	if DisplayInCurrencyEnabled {
-		return fmt.Sprintf("＄%.6f 额度", float64(quota)/QuotaPerUnit)
+		return fmt.Sprintf("＄%.6f quota", float64(quota)/QuotaPerUnit)
 	} else {
 		return fmt.Sprintf("%d point quota", quota)
 	}
@@ -101,7 +101,7 @@ func LogQuota(quota int) string {
 
 func LogQuotaF(quota float64) string {
 	if DisplayInCurrencyEnabled {
-		return fmt.Sprintf("＄%.6f 额度", quota/QuotaPerUnit)
+		return fmt.Sprintf("＄%.6f quota", quota/QuotaPerUnit)
 	} else {
 		return fmt.Sprintf("%d point quota", int64(quota))
 	}

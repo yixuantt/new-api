@@ -57,7 +57,7 @@ const Playground = () => {
 
   useEffect(() => {
     if (searchParams.get('expired')) {
-      showError('未登录或登录已过期，请重新登录！');
+      showError('Not logged in or login has expired, please log in again!');
     }
     let status = localStorage.getItem('status');
     if (status) {
@@ -98,7 +98,7 @@ const Playground = () => {
       } else {
         localGroupOptions = [
           {
-            label: '用户分组',
+            label: 'UserGroup',
             value: '',
           },
         ];
@@ -207,7 +207,7 @@ const Playground = () => {
           };
         };
 
-        // 使用更新后的消息状态调用 handleSSE
+        // 使用更新后的消息Status调用 handleSSE
         handleSSE(getPayload());
         newMessage.push({
           role: 'assistant',
@@ -258,10 +258,10 @@ const Playground = () => {
       <Layout.Sider>
         <Card style={commonOuterStyle}>
           <div style={{ marginTop: 10 }}>
-            <Typography.Text strong>分组：</Typography.Text>
+            <Typography.Text strong>Group：</Typography.Text>
           </div>
           <Select
-            placeholder={'请选择分组'}
+            placeholder={'请选择Group'}
             name='group'
             required
             selection
@@ -273,10 +273,10 @@ const Playground = () => {
             optionList={groups}
           />
           <div style={{ marginTop: 10 }}>
-            <Typography.Text strong>模型：</Typography.Text>
+            <Typography.Text strong>Model：</Typography.Text>
           </div>
           <Select
-            placeholder={'请选择模型'}
+            placeholder={'请选择Model'}
             name='model'
             required
             selection

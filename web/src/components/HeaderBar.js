@@ -48,7 +48,7 @@ let buttons = [
 
 // if (localStorage.getItem('chat_link')) {
 //   headerButtons.splice(1, 0, {
-//     name: '聊天',
+//     name: 'Chat',
 //     to: '/chat',
 //     icon: 'comments',
 //   });
@@ -72,7 +72,7 @@ const HeaderBar = () => {
   async function logout() {
     setShowSidebar(false);
     await API.get('/api/user/logout');
-    showSuccess('注销成功!');
+    showSuccess('Logout succeeded!');
     userDispatch({ type: 'logout' });
     localStorage.removeItem('user');
     navigate('/login');

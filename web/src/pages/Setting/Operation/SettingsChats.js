@@ -69,10 +69,10 @@ export default function SettingsChats(props) {
         })
         .catch((error) => {
           console.error('Validation failed:', error);
-          showError('请检查输入');
+          showError('请检查Enter');
         });
     } catch (error) {
-      showError('请检查输入');
+      showError('请检查Enter');
       console.error(error);
     }
   }
@@ -116,23 +116,23 @@ export default function SettingsChats(props) {
         getFormApi={(formAPI) => (refForm.current = formAPI)}
         style={{ marginBottom: 15 }}
       >
-        <Form.Section text={'令牌聊天设置'}>
+        <Form.Section text={'TokenChatSettings'}>
           <Banner
             type='warning'
             description={
-              '必须将上方聊天链接全部设置为空，才能使用下方聊天设置功能'
+              '必须将上方Chat链接全部Settings为空，才能使用下方ChatSettings功能'
             }
           />
           <Banner
             type='info'
             description={
-              '链接中的{key}将自动替换为sk-xxxx，{address}将自动替换为系统设置的服务器地址，末尾不带/和/v1'
+              '链接中的{key}将自动替换为sk-xxxx，{address}将自动替换为系统Settings的Server Address，末尾不带/和/v1'
             }
           />
           <Form.TextArea
-            label={'聊天配置'}
+            label={'Chat配置'}
             extraText={''}
-            placeholder={'为一个 JSON 文本'}
+            placeholder={'Is a JSON text'}
             field={'Chats'}
             autosize={{ minRows: 6, maxRows: 12 }}
             trigger='blur'
@@ -155,7 +155,7 @@ export default function SettingsChats(props) {
         </Form.Section>
       </Form>
       <Space>
-        <Button onClick={onSubmit}>保存聊天设置</Button>
+        <Button onClick={onSubmit}>保存ChatSettings</Button>
       </Space>
     </Spin>
   );

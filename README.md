@@ -14,11 +14,11 @@
 > [!IMPORTANT]
 > 使用者必须在遵循 OpenAI 的[使用条款](https://openai.com/policies/terms-of-use)以及**法律法规**的情况下使用，不得用于非法用途。
 > 本项目仅供个人学习使用，不保证稳定性，且不提供任何技术支持。
-> 根据[《生成式人工智能服务管理暂行办法》](http://www.cac.gov.cn/2023-07/13/c_1690898327029107.htm)的要求，请勿对中国地区公众提供一切未经备案的生成式人工智能服务。
+> 根据[《生成式人工智能服务Mange暂行办法》](http://www.cac.gov.cn/2023-07/13/c_1690898327029107.htm)的要求，请勿对中国地区公众提供一切未经备案的生成式人工智能服务。
 
 > [!TIP]
 > 最新版Docker镜像：`calciumion/new-api:latest`  
-> 默认账号root 密码123456  
+> 默认账号root Password123456  
 > 更新指令：
 > ```
 > docker run --rm -v /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower -cR
@@ -41,8 +41,8 @@
 9. 支持渠道**加权随机**
 10. 数据看板
 11. 可设置令牌能调用的模型
-12. 支持Telegram授权登录。
-    1. 系统设置-配置登录注册-允许通过Telegram登录
+12. 支持Telegram授权Login。
+    1. 系统设置-配置Login注册-允许通过TelegramLogin
     2. 对[@Botfather](https://t.me/botfather)输入指令/setdomain
     3. 选择你的bot，然后输入http(s)://你的网站地址/login
     4. Telegram Bot 名称是bot username 去掉@后的字符串

@@ -10,28 +10,28 @@ import (
 func RefreshAccessToken() {
 	channels, err := model.GetOpenAIAccessTokenWillExpireChannel()
 	if err != nil {
-		// 查询数据失败
-		common.SysError(fmt.Sprintf("查询待更新的渠道数据失败"))
+		// Query数据失败
+		common.SysError(fmt.Sprintf("Querying the Channel data to be updated failed"))
 		return
 	}
 	if len(channels) == 0 {
-		common.SysError(fmt.Sprintf("待更新的渠道数据为空"))
+		common.SysError(fmt.Sprintf("The Channel data to be updated is empty"))
 		return
 	}
 	for _, channel := range channels {
-		common.SysLog(fmt.Sprintf("开始自动刷新OPENAI AK, channelId: %d, RT: %s", channel.Id, channel.OpenAIRefreshToken))
+		common.SysLog(fmt.Sprintf("Start to automatically RefreshOPENAI AK, channelId: %d, RT: %s", channel.Id, channel.OpenAIRefreshToken))
 		res, err := openai.RefreshAccessToken(channel.OpenAIRefreshToken)
 		if err != nil {
-			common.SysError(fmt.Sprintf("自动刷新OPENAI AK失败, channelId: %d, error: %s", channel.Id, err.Error()))
+			common.SysError(fmt.Sprintf("Automatic RefreshOPENAI AK failed, channelId: %d, error: %s", channel.Id, err.Error()))
 			continue
 		}
 		channel.Key = res.AccessToken
 		channel.OpenAIAccessTokenExpiresTime = common.GetTimestamp() + res.ExpiresIn
 		err = channel.Update()
 		if err != nil {
-			common.SysError(fmt.Sprintf("自动刷新OPENAI AK,更新数据库失败, channelId: %d, error: %s", channel.Id, err.Error()))
+			common.SysError(fmt.Sprintf("Automatic RefreshOPENAI AK, failed to update the database, channelId: %d, error: %s", channel.Id, err.Error()))
 			continue
 		}
-		common.SysLog(fmt.Sprintf("自动刷新OPENAI AK 成功, channelId: %d", channel.Id))
+		common.SysLog(fmt.Sprintf("Automatic RefreshOPENAI AK succeeded, channelId: %d", channel.Id))
 	}
 }

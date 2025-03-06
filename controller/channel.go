@@ -86,7 +86,7 @@ func FetchUpstreamModels(c *gin.Context) {
 	if channel.Type != common.ChannelTypeOpenAI {
 		c.JSON(http.StatusOK, gin.H{
 			"success": false,
-			"message": "仅支持 OpenAI 类型渠道",
+			"message": "仅支持 OpenAI TypeChannel",
 		})
 		return
 	}
@@ -388,7 +388,7 @@ func handleOpenAIChannelRefreshToken(channel model.Channel) (model.Channel, erro
 		channel.OpenAIAccessTokenExpiresTime = common.GetTimestamp() + accessToken.ExpiresIn
 		// 未传递端点地址
 		if len(channel.GetBaseURL()) == 0 {
-			// 未填写端点地址，默认为始皇的oaifree
+			// 未填写端点地址，Default为始皇的oaifree
 			baseUrl := "https://api.oaifree.com"
 			channel.BaseURL = &baseUrl
 		}

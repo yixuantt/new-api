@@ -58,13 +58,13 @@ const Home = () => {
           <Card
             bordered={false}
             headerLine={false}
-            title='系统状况'
+            title='System Status'
             bodyStyle={{ padding: '10px 20px' }}
           >
             <Row gutter={16}>
               <Col span={12}>
                 <Card
-                  title='系统信息'
+                  title='System Information'
                   headerExtraContent={
                     <span
                       style={{
@@ -72,13 +72,13 @@ const Home = () => {
                         color: 'var(--semi-color-text-1)',
                       }}
                     >
-                      系统信息总览
+                      System Information总览
                     </span>
                   }
                 >
-                  <p>名称：{statusState?.status?.system_name}</p>
+                  <p>Name：{statusState?.status?.system_name}</p>
                   <p>
-                    版本：
+                    Version：
                     {statusState?.status?.version
                       ? statusState?.status?.version
                       : 'unknown'}
@@ -113,12 +113,12 @@ const Home = () => {
                       Apache-2.0 License
                     </a>
                   </p>
-                  <p>启动时间：{getStartTimeString()}</p>
+                  <p>启动Time：{getStartTimeString()}</p>
                 </Card>
               </Col>
               <Col span={12}>
                 <Card
-                  title='系统配置'
+                  title='System Configuration'
                   headerExtraContent={
                     <span
                       style={{
@@ -126,45 +126,45 @@ const Home = () => {
                         color: 'var(--semi-color-text-1)',
                       }}
                     >
-                      系统配置总览
+                      System Configuration总览
                     </span>
                   }
                 >
                   <p>
-                    邮箱验证：
+                    Email Verification：
                     {statusState?.status?.email_verification === true
-                      ? '已启用'
-                      : '未启用'}
+                      ? 'Enabled'
+                      : '未Enable'}
                   </p>
                   <p>
-                    GitHub 身份验证：
+                    GitHub Authentication：
                     {statusState?.status?.github_oauth === true
-                      ? '已启用'
-                      : '未启用'}
+                      ? 'Enabled'
+                      : '未Enable'}
                   </p>
                   <p>
                     LINUX DO 身份验证：
                     {statusState?.status?.linuxdo_oauth === true
-                      ? '已启用'
-                      : '未启用'}
+                      ? 'Enabled'
+                      : '未Enable'}
                   </p>
                   <p>
-                    微信身份验证：
+                    WeChat Authentication：
                     {statusState?.status?.wechat_login === true
-                      ? '已启用'
-                      : '未启用'}
+                      ? 'Enabled'
+                      : '未Enable'}
                   </p>
                   <p>
-                    Turnstile 用户校验：
+                    Turnstile User校验：
                     {statusState?.status?.turnstile_check === true
-                      ? '已启用'
-                      : '未启用'}
+                      ? 'Enabled'
+                      : '未Enable'}
                   </p>
                   <p>
                     Telegram 身份验证：
                     {statusState?.status?.telegram_oauth === true
-                      ? '已启用'
-                      : '未启用'}
+                      ? 'Enabled'
+                      : '未Enable'}
                   </p>
                 </Card>
               </Col>

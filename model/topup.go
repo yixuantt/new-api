@@ -66,11 +66,11 @@ func Recharge(referenceId string, customerId string) (err error) {
 	err = DB.Transaction(func(tx *gorm.DB) error {
 		err := tx.Set("gorm:query_option", "FOR UPDATE").Where(refCol+" = ?", referenceId).First(topUp).Error
 		if err != nil {
-			return errors.New("充值订单不存在")
+			return errors.New("Recharge order does not exist")
 		}
 
 		if topUp.Status != common.TopUpStatusPending {
-			return errors.New("充值订单状态错误")
+			return errors.New("Recharge order Status error")
 		}
 
 		topUp.CompleteTime = common.GetTimestamp()
@@ -90,10 +90,10 @@ func Recharge(referenceId string, customerId string) (err error) {
 	})
 
 	if err != nil {
-		return errors.New("充值失败，" + err.Error())
+		return errors.New("Recharge失败，" + err.Error())
 	}
 
-	RecordLog(topUp.UserId, LogTypeTopup, fmt.Sprintf("使用在线充值成功，充值金额: %v，支付金额：%d", common.LogQuotaF(quota), topUp.Amount))
+	RecordLog(topUp.UserId, LogTypeTopup, fmt.Sprintf("使用在线Recharge成功，Recharge金额: %v，支付金额：%d", common.LogQuotaF(quota), topUp.Amount))
 
 	return nil
 }

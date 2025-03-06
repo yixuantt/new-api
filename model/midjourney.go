@@ -35,14 +35,14 @@ func GetAllUserTask(userId int, startIdx int, num int, queryParams TaskQueryPara
 	var tasks []*Midjourney
 	var err error
 
-	// 初始化查询构建器
+	// 初始化Query构建器
 	query := DB.Where("user_id = ?", userId)
 
 	if queryParams.MjID != "" {
 		query = query.Where("mj_id = ?", queryParams.MjID)
 	}
 	if queryParams.StartTimestamp != "" {
-		// 假设您已将前端传来的时间戳转换为数据库所需的时间格式，并处理了时间戳的验证和解析
+		// 假设您已将前端传来的Time戳转换为数据库所需的Time格式，并处理了Time戳的验证和解析
 		query = query.Where("submit_time >= ?", queryParams.StartTimestamp)
 	}
 	if queryParams.EndTimestamp != "" {
@@ -62,7 +62,7 @@ func GetAllTasks(startIdx int, num int, queryParams TaskQueryParams) []*Midjourn
 	var tasks []*Midjourney
 	var err error
 
-	// 初始化查询构建器
+	// 初始化Query构建器
 	query := DB
 
 	// 添加过滤条件

@@ -83,14 +83,14 @@ func UpdateSunoTaskAll(ctx context.Context, taskChannelM map[int][]string, taskM
 	for channelId, taskIds := range taskChannelM {
 		err := updateSunoTaskAll(ctx, channelId, taskIds, taskM)
 		if err != nil {
-			common.LogError(ctx, fmt.Sprintf("渠道 #%d 更新异步任务失败: %d", channelId, err.Error()))
+			common.LogError(ctx, fmt.Sprintf("Channel #%d 更新异步任务失败: %d", channelId, err.Error()))
 		}
 	}
 	return nil
 }
 
 func updateSunoTaskAll(ctx context.Context, channelId int, taskIds []string, taskM map[string]*model.Task) error {
-	common.LogInfo(ctx, fmt.Sprintf("渠道 #%d 未完成的任务有: %d", channelId, len(taskIds)))
+	common.LogInfo(ctx, fmt.Sprintf("Channel #%d 未完成的任务有: %d", channelId, len(taskIds)))
 	if len(taskIds) == 0 {
 		return nil
 	}
@@ -98,7 +98,7 @@ func updateSunoTaskAll(ctx context.Context, channelId int, taskIds []string, tas
 	if err != nil {
 		common.SysLog(fmt.Sprintf("CacheGetChannel: %v", err))
 		err = model.TaskBulkUpdate(taskIds, map[string]any{
-			"fail_reason": fmt.Sprintf("获取渠道信息失败，请联系管理员，渠道ID：%d", channelId),
+			"fail_reason": fmt.Sprintf("获取Channel信息失败，请联系Admin，ChannelID：%d", channelId),
 			"status":      "FAILURE",
 			"progress":    "100%",
 		})
@@ -135,7 +135,7 @@ func updateSunoTaskAll(ctx context.Context, channelId int, taskIds []string, tas
 		return err
 	}
 	if !responseItems.IsSuccess() {
-		common.SysLog(fmt.Sprintf("渠道 #%d 未完成的任务有: %d, 成功获取到任务数: %d", channelId, len(taskIds), string(responseBody)))
+		common.SysLog(fmt.Sprintf("Channel #%d 未完成的任务有: %d, 成功获取到任务数: %d", channelId, len(taskIds), string(responseBody)))
 		return err
 	}
 
@@ -229,7 +229,7 @@ func GetAllTask(c *gin.Context) {
 	}
 	startTimestamp, _ := strconv.ParseInt(c.Query("start_timestamp"), 10, 64)
 	endTimestamp, _ := strconv.ParseInt(c.Query("end_timestamp"), 10, 64)
-	// 解析其他查询参数
+	// 解析其他Query参数
 	queryParams := model.SyncTaskQueryParams{
 		Platform:       constant.TaskPlatform(c.Query("platform")),
 		TaskID:         c.Query("task_id"),

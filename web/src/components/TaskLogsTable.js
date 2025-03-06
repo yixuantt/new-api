@@ -54,26 +54,26 @@ const renderTimestamp = (timestampInSeconds) => {
 };
 
 function renderDuration(submit_time, finishTime) {
-  // 确保startTime和finishTime都是有效的时间戳
+  // 确保startTime和finishTime都是有效的Time戳
   if (!submit_time || !finishTime) return 'N/A';
 
-  // 将时间戳转换为Date对象
+  // 将Time戳转换为Date对象
   const start = new Date(submit_time);
   const finish = new Date(finishTime);
 
-  // 计算时间差（毫秒）
+  // 计算Time差（毫秒）
   const durationMs = finish - start;
 
-  // 将时间差转换为秒，并保留一位小数
+  // 将Time差转换为秒，并保留一位小数
   const durationSec = (durationMs / 1000).toFixed(1);
 
-  // 设置颜色：大于60秒则为红色，小于等于60秒则为绿色
+  // Settings颜色：大于60秒则为红色，小于等于60秒则为绿色
   const color = durationSec > 60 ? 'red' : 'green';
 
   // 返回带有样式的颜色标签
   return (
     <Tag color={color} size='large'>
-      {durationSec} 秒
+      {durationSec}s
     </Tag>
   );
 }
@@ -84,14 +84,14 @@ const LogsTable = () => {
   const isAdminUser = isAdmin();
   const columns = [
     {
-      title: '提交时间',
+      title: 'SubmitTime',
       dataIndex: 'submit_time',
       render: (text, record, index) => {
         return <div>{text ? renderTimestamp(text) : '-'}</div>;
       },
     },
     {
-      title: '结束时间',
+      title: '结束Time',
       dataIndex: 'finish_time',
       render: (text, record, index) => {
         return <div>{text ? renderTimestamp(text) : '-'}</div>;
@@ -105,7 +105,7 @@ const LogsTable = () => {
         return (
           <div>
             {
-              // 转换例如100%为数字100，如果text未定义，返回0
+              // 转换For example100%为数字100，如果text未定义，返回0
               isNaN(text.replace('%', '')) ? (
                 text
               ) : (
@@ -123,16 +123,16 @@ const LogsTable = () => {
       },
     },
     {
-      title: '花费时间',
+      title: '花费Time',
       dataIndex: 'finish_time', // 以finish_time作为dataIndex
       key: 'finish_time',
       render: (finish, record) => {
-        // 假设record.start_time是存在的，并且finish是完成时间的时间戳
+        // 假设record.start_time是存在的，并且finish是完成Time的Time戳
         return <>{finish ? renderDuration(record.submit_time, finish) : '-'}</>;
       },
     },
     {
-      title: '渠道',
+      title: 'Channel',
       dataIndex: 'channel_id',
       className: isAdminUser ? 'tableShow' : 'tableHiddle',
       render: (text, record, index) => {
@@ -142,7 +142,7 @@ const LogsTable = () => {
               color={colors[parseInt(text) % colors.length]}
               size='large'
               onClick={() => {
-                copyText(text); // 假设copyText是用于文本复制的函数
+                copyText(text); // 假设copyText是用于文本Copy的函数
               }}
             >
               {' '}
@@ -160,14 +160,14 @@ const LogsTable = () => {
       },
     },
     {
-      title: '类型',
+      title: 'Type',
       dataIndex: 'action',
       render: (text, record, index) => {
         return <div>{renderType(text)}</div>;
       },
     },
     {
-      title: '任务ID（点击查看详情）',
+      title: '任务ID（click to viewDetails）',
       dataIndex: 'task_id',
       render: (text, record, index) => {
         return (
@@ -185,7 +185,7 @@ const LogsTable = () => {
       },
     },
     {
-      title: '任务状态',
+      title: '任务Status',
       dataIndex: 'status',
       render: (text, record, index) => {
         return <div>{renderStatus(text)}</div>;
@@ -196,9 +196,9 @@ const LogsTable = () => {
       title: '失败原因',
       dataIndex: 'fail_reason',
       render: (text, record, index) => {
-        // 如果text未定义，返回替代文本，例如空字符串''或其他
+        // 如果text未定义，返回替代文本，For example空字符串''或其他
         if (!text) {
-          return '无';
+          return 'None';
         }
 
         return (
@@ -297,10 +297,10 @@ const LogsTable = () => {
 
   const copyText = async (text) => {
     if (await copy(text)) {
-      showSuccess('已复制：' + text);
+      showSuccess('已Copy：' + text);
     } else {
       // setSearchKeyword(text);
-      Modal.error({ title: '无法复制到剪贴板，请手动复制', content: text });
+      Modal.error({ title: 'Unable to copy to clipboard，Please copy manually', content: text });
     }
   };
 
@@ -409,7 +409,7 @@ const LogsTable = () => {
         return (
           <Label basic color='black'>
             {' '}
-            正在提交{' '}
+            正在Submit{' '}
           </Label>
         );
       default:
@@ -430,10 +430,10 @@ const LogsTable = () => {
             {isAdminUser && (
               <Form.Input
                 field='channel_id'
-                label='渠道 ID'
+                label='Channel ID'
                 style={{ width: '236px', marginBottom: '10px' }}
                 value={channel_id}
-                placeholder={'可选值'}
+                placeholder={'Optional Values'}
                 name='channel_id'
                 onChange={(value) => handleInputChange(value, 'channel_id')}
               />
@@ -443,14 +443,14 @@ const LogsTable = () => {
               label={'任务 ID'}
               style={{ width: '236px', marginBottom: '10px' }}
               value={task_id}
-              placeholder={'可选值'}
+              placeholder={'Optional Values'}
               name='task_id'
               onChange={(value) => handleInputChange(value, 'task_id')}
             />
 
             <Form.DatePicker
               field='start_timestamp'
-              label={'起始时间'}
+              label={'起始Time'}
               style={{ width: '236px', marginBottom: '10px' }}
               initValue={start_timestamp}
               value={start_timestamp}
@@ -461,7 +461,7 @@ const LogsTable = () => {
             <Form.DatePicker
               field='end_timestamp'
               fluid
-              label={'结束时间'}
+              label={'结束Time'}
               style={{ width: '236px', marginBottom: '10px' }}
               initValue={end_timestamp}
               value={end_timestamp}
@@ -470,13 +470,13 @@ const LogsTable = () => {
               onChange={(value) => handleInputChange(value, 'end_timestamp')}
             />
             <Button
-              label={'查询'}
+              label={'Query'}
               type='primary'
               htmlType='submit'
               className='btn-margin-right'
               onClick={refresh}
             >
-              查询
+              Query
             </Button>
           </>
         </Form>
@@ -499,8 +499,8 @@ const LogsTable = () => {
           onOk={() => setIsModalOpen(false)}
           onCancel={() => setIsModalOpen(false)}
           closable={null}
-          bodyStyle={{ height: '400px', overflow: 'auto' }} // 设置模态框内容区域样式
-          width={800} // 设置模态框宽度
+          bodyStyle={{ height: '400px', overflow: 'auto' }} // Settings模态框内容区域样式
+          width={800} // Settings模态框宽度
         >
           <p style={{ whiteSpace: 'pre-line' }}>{modalContent}</p>
         </Modal>

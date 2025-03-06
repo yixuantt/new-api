@@ -48,10 +48,10 @@ export function useTokenKeys(id) {
     const loadAllData = async () => {
       const fetchedKeys = await fetchTokenKeys();
       if (fetchedKeys.length === 0) {
-        showError('当前没有可用的启用令牌，请确认是否有令牌处于启用状态！');
+        showError('当前没有可用的EnableToken，请确认是否有Token处于EnableStatus！');
         setTimeout(() => {
           window.location.href = '/token';
-        }, 1500); // 延迟 1.5 秒后跳转
+        }, 1500); // 延迟 1.5s后跳转
       }
       setKeys(fetchedKeys);
       setIsLoading(false);

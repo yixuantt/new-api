@@ -20,7 +20,7 @@ const About = () => {
       localStorage.setItem('about', aboutContent);
     } else {
       showError(message);
-      setAbout('加载关于内容失败...');
+      setAbout('加载About内容失败...');
     }
     setAboutLoaded(true);
   };
@@ -35,11 +35,11 @@ const About = () => {
         <>
           <Layout>
             <Layout.Header>
-              <h3>关于</h3>
+              <h3>About</h3>
             </Layout.Header>
             <Layout.Content>
-              <p>可在设置页面设置关于内容，支持 HTML & Markdown</p>
-              New-API项目仓库地址：
+              <p>可在Settings页面SettingsAbout内容，支持 HTML & Markdown</p>
+              New-APIProject Repository Address：
               <a href='https://github.com/Calcium-Ion/new-api'>
                 https://github.com/Calcium-Ion/new-api
               </a>

@@ -35,7 +35,7 @@ const TopUp = () => {
 
   const topUp = async () => {
     if (redemptionCode === '') {
-      showError('请输入兑换码！');
+      showError('请EnterRedeem码！');
       return;
     }
     setIsSubmitting(true);
@@ -45,10 +45,10 @@ const TopUp = () => {
       });
       const { success, message, data } = res.data;
       if (success) {
-        showSuccess('兑换成功！');
+        showSuccess('Redeem成功！');
         Modal.success({
-          title: '兑换成功！',
-          content: '成功兑换额度：' + renderQuota(data),
+          title: 'Redeem成功！',
+          content: '成功RedeemQuota：' + renderQuota(data),
           centered: true,
         });
         setUserQuota((quota) => {
@@ -67,7 +67,7 @@ const TopUp = () => {
 
   const openTopUpLink = () => {
     if (!topUpLink) {
-      showError('超级管理员未设置充值链接！');
+      showError('超级Admin未SettingsRecharge链接！');
       return;
     }
     window.open(topUpLink, '_blank');
@@ -75,18 +75,18 @@ const TopUp = () => {
 
   const preTopUp = async (payment) => {
     if (!paymentEnabled) {
-      showError('管理员未开启在线充值！');
+      showError('Admin未开启在线Recharge！');
       return;
     }
     if (!Number.isInteger(Number(topUpCount))) {
-      showError('充值数量必须是整数！');
+      showError('Recharge数量必须是整数！');
       return;
     }
     if (payAmount === 0) {
       await getAmount();
     }
     if (topUpCount < minTopUp) {
-      showError('充值数量不能小于' + minTopUp);
+      showError('Recharge数量不能小于' + minTopUp);
       return;
     }
     setPayWay(payment);
@@ -98,7 +98,7 @@ const TopUp = () => {
       await getAmount();
     }
     if (topUpCount < minTopUp) {
-      showError('充值数量不能小于' + minTopUp);
+      showError('Recharge数量不能小于' + minTopUp);
       return;
     }
     setOpen(false);
@@ -201,7 +201,7 @@ const TopUp = () => {
         </Layout.Header>
         <Layout.Content>
           <Modal
-            title='确定要充值吗'
+            title='确定要Recharge吗'
             visible={open}
             onOk={onlineTopUp}
             onCancel={handleCancel}
@@ -210,25 +210,25 @@ const TopUp = () => {
             centered={true}
           >
             <p>
-              充值数量：{topUpCount}$（实到：{chargedAmount}$）
+              Recharge数量：{topUpCount}$（实到：{chargedAmount}$）
             </p>
             <p>实付金额：{renderAmount()}</p>
-            <p>是否确认充值？</p>
+            <p>是否确认Recharge？</p>
           </Modal>
           <div
             style={{ marginTop: 20, display: 'flex', justifyContent: 'center' }}
           >
             <Card style={{ width: '500px', padding: '20px' }}>
               <Title level={3} style={{ textAlign: 'center' }}>
-                余额 {renderQuota(userQuota)}
+                Balance {renderQuota(userQuota)}
               </Title>
               <div style={{ marginTop: 20 }}>
-                <Divider>兑换余额</Divider>
+                <Divider>RedeemBalance</Divider>
                 <Form>
                   <Form.Input
                     field={'redemptionCode'}
-                    label={'兑换码'}
-                    placeholder='兑换码'
+                    label={'Redeem码'}
+                    placeholder='Redeem码'
                     name='redemptionCode'
                     value={redemptionCode}
                     onChange={(value) => {
@@ -242,7 +242,7 @@ const TopUp = () => {
                         theme={'solid'}
                         onClick={openTopUpLink}
                       >
-                        获取兑换码
+                        获取Redeem码
                       </Button>
                     ) : null}
                     <Button
@@ -251,20 +251,20 @@ const TopUp = () => {
                       onClick={topUp}
                       disabled={isSubmitting}
                     >
-                      {isSubmitting ? '兑换中...' : '兑换'}
+                      {isSubmitting ? 'Redeem中...' : 'Redeem'}
                     </Button>
                   </Space>
                 </Form>
               </div>
               {paymentEnabled ? (
                 <div style={{ marginTop: 20 }}>
-                  <Divider>在线充值</Divider>
+                  <Divider>在线Recharge</Divider>
                   <Form>
                     <Form.Input
                       disabled={!paymentEnabled}
                       field={'redemptionCount'}
                       label={'实付金额：' + renderAmount()}
-                      placeholder={'充值数量，必须整数，最低' + minTopUp + '$'}
+                      placeholder={'Recharge数量，必须整数，最低' + minTopUp + '$'}
                       name='redemptionCount'
                       type={'number'}
                       value={topUpCount}
@@ -307,7 +307,7 @@ const TopUp = () => {
               {/*            async () => {*/}
               {/*                window.location.href = '/topup/history'*/}
               {/*            }*/}
-              {/*        }>充值记录</Link>*/}
+              {/*        }>Recharge记录</Link>*/}
               {/*    </Text>*/}
               {/*</div>*/}
             </Card>

@@ -37,7 +37,7 @@ services:
       - ./data/mysql:/var/lib/mysql  # 挂载目录，持久化存储
     environment:
       TZ: Asia/Shanghai   # 设置时区
-      MYSQL_ROOT_PASSWORD: 'OneAPI@justsong' # 设置 root 用户的密码
+      MYSQL_ROOT_PASSWORD: 'OneAPI@justsong' # 设置 root 用户的Password
       MYSQL_USER: newapi   # 创建专用用户
-      MYSQL_PASSWORD: '123456'    # 设置专用用户密码
+      MYSQL_PASSWORD: '123456'    # 设置专用用户Password
       MYSQL_DATABASE: new-api   # 自动创建数据库

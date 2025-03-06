@@ -6,7 +6,7 @@ const Redemption = () => (
   <>
     <Layout>
       <Layout.Header>
-        <h3>管理兑换码</h3>
+        <h3>MangeRedeem码</h3>
       </Layout.Header>
       <Layout.Content>
         <RedemptionsTable />

@@ -81,12 +81,12 @@ export default function DataDashboard(props) {
           getFormApi={(formAPI) => (refForm.current = formAPI)}
           style={{ marginBottom: 15 }}
         >
-          <Form.Section text={'数据看板设置'}>
+          <Form.Section text={'数据看板Settings'}>
             <Row gutter={16}>
               <Col span={8}>
                 <Form.Switch
                   field={'DataExportEnabled'}
-                  label={'启用数据看板（实验性）'}
+                  label={'Enable数据看板（实验性）'}
                   size='large'
                   checkedText='｜'
                   uncheckedText='〇'
@@ -106,7 +106,7 @@ export default function DataDashboard(props) {
                   step={1}
                   min={1}
                   suffix={'分钟'}
-                  extraText={'设置过短会影响数据库性能'}
+                  extraText={'Settings过短会影响数据库性能'}
                   placeholder={'数据看板更新间隔'}
                   field={'DataExportInterval'}
                   onChange={(value) =>
@@ -119,11 +119,11 @@ export default function DataDashboard(props) {
               </Col>
               <Col span={8}>
                 <Form.Select
-                  label='数据看板默认时间粒度'
+                  label='数据看板DefaultTime粒度'
                   optionList={optionsDataExportDefaultTime}
                   field={'DataExportDefaultTime'}
                   extraText={'仅修改展示粒度，统计精确到小时'}
-                  placeholder={'数据看板默认时间粒度'}
+                  placeholder={'数据看板DefaultTime粒度'}
                   style={{ width: 180 }}
                   onChange={(value) =>
                     setInputs({
@@ -136,7 +136,7 @@ export default function DataDashboard(props) {
             </Row>
             <Row>
               <Button size='large' onClick={onSubmit}>
-                保存数据看板设置
+                保存数据看板Settings
               </Button>
             </Row>
           </Form.Section>

@@ -55,7 +55,7 @@ func getPriority(group string, model string, retry int) (int, error) {
 		Select("DISTINCT(priority)").
 		Where(groupCol+" = ? and model = ? and enabled = "+trueVal, group, model).
 		Order("priority DESC").              // 按优先级降序排序
-		Pluck("priority", &priorities).Error // Pluck用于将查询的结果直接扫描到一个切片中
+		Pluck("priority", &priorities).Error // Pluck用于将Query的结果直接扫描到一个切片中
 
 	if err != nil {
 		// 处理错误
@@ -63,7 +63,7 @@ func getPriority(group string, model string, retry int) (int, error) {
 	}
 
 	if len(priorities) == 0 {
-		// 如果没有查询到优先级，则返回错误
+		// 如果没有Query到优先级，则返回错误
 		return 0, errors.New("数据库一致性被破坏")
 	}
 

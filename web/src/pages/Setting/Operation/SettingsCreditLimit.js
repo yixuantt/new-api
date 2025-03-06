@@ -72,11 +72,11 @@ export default function SettingsCreditLimit(props) {
           getFormApi={(formAPI) => (refForm.current = formAPI)}
           style={{ marginBottom: 15 }}
         >
-          <Form.Section text={'额度设置'}>
+          <Form.Section text={'QuotaSettings'}>
             <Row gutter={16}>
               <Col span={6}>
                 <Form.InputNumber
-                  label={'新用户初始额度'}
+                  label={'新User初始Quota'}
                   field={'QuotaForNewUser'}
                   step={1}
                   min={0}
@@ -92,12 +92,12 @@ export default function SettingsCreditLimit(props) {
               </Col>
               <Col span={6}>
                 <Form.InputNumber
-                  label={'请求预扣费额度'}
+                  label={'Request for pre-deducted quota'}
                   field={'PreConsumedQuota'}
                   step={1}
                   min={0}
                   suffix={'Token'}
-                  extraText={'请求结束后多退少补'}
+                  extraText={'Refund more or less after the request ends'}
                   placeholder={''}
                   onChange={(value) =>
                     setInputs({
@@ -109,13 +109,13 @@ export default function SettingsCreditLimit(props) {
               </Col>
               <Col span={6}>
                 <Form.InputNumber
-                  label={'邀请新用户奖励额度'}
+                  label={'邀请新User奖励Quota'}
                   field={'QuotaForInviter'}
                   step={1}
                   min={0}
                   suffix={'Token'}
                   extraText={''}
-                  placeholder={'例如：2000'}
+                  placeholder={'For example：2000'}
                   onChange={(value) =>
                     setInputs({
                       ...inputs,
@@ -126,13 +126,13 @@ export default function SettingsCreditLimit(props) {
               </Col>
               <Col span={6}>
                 <Form.InputNumber
-                  label={'新用户使用邀请码奖励额度'}
+                  label={'新User使用邀请码奖励Quota'}
                   field={'QuotaForInvitee'}
                   step={1}
                   min={0}
                   suffix={'Token'}
                   extraText={''}
-                  placeholder={'例如：1000'}
+                  placeholder={'For example：1000'}
                   onChange={(value) =>
                     setInputs({
                       ...inputs,
@@ -145,7 +145,7 @@ export default function SettingsCreditLimit(props) {
 
             <Row>
               <Button size='large' onClick={onSubmit}>
-                保存额度设置
+                保存QuotaSettings
               </Button>
             </Row>
           </Form.Section>

@@ -39,7 +39,7 @@ func StripeWebhook(c *gin.Context) {
 	case stripe.EventTypeCheckoutSessionExpired:
 		sessionExpired(event)
 	default:
-		log.Printf("不支持的Stripe Webhook事件类型: %s\n", event.Type)
+		log.Printf("Not supported的Stripe Webhook事件Type: %s\n", event.Type)
 	}
 
 	c.Status(http.StatusOK)
@@ -50,7 +50,7 @@ func sessionCompleted(event stripe.Event) {
 	referenceId := event.GetObjectValue("client_reference_id")
 	status := event.GetObjectValue("status")
 	if "complete" != status {
-		log.Println("错误的Stripe Checkout完成状态:", status, ",", referenceId)
+		log.Println("错误的Stripe Checkout完成Status:", status, ",", referenceId)
 		return
 	}
 
@@ -69,7 +69,7 @@ func sessionExpired(event stripe.Event) {
 	referenceId := event.GetObjectValue("client_reference_id")
 	status := event.GetObjectValue("status")
 	if "expired" != status {
-		log.Println("错误的Stripe Checkout过期状态:", status, ",", referenceId)
+		log.Println("错误的Stripe Checkout过期Status:", status, ",", referenceId)
 		return
 	}
 
@@ -80,20 +80,20 @@ func sessionExpired(event stripe.Event) {
 
 	topUp := model.GetTopUpByTradeNo(referenceId)
 	if topUp == nil {
-		log.Println("充值订单不存在", referenceId)
+		log.Println("Recharge order does not exist", referenceId)
 		return
 	}
 
 	if topUp.Status != common.TopUpStatusPending {
-		log.Println("充值订单状态错误", referenceId)
+		log.Println("Recharge order Status error", referenceId)
 	}
 
 	topUp.Status = common.TopUpStatusExpired
 	err := topUp.Update()
 	if err != nil {
-		log.Println("过期充值订单失败", referenceId, ", err:", err.Error())
+		log.Println("过期Recharge订单失败", referenceId, ", err:", err.Error())
 		return
 	}
 
-	log.Println("充值订单已过期", referenceId)
+	log.Println("Recharge订单Expired", referenceId)
 }

@@ -16,7 +16,7 @@ export function renderGroup(group) {
   if (group === '') {
     return (
       <Tag size='large' key='default' color='orange'>
-        用户分组
+        UserGroup
       </Tag>
     );
   }
@@ -145,9 +145,9 @@ export function renderModelPrice(
   // 1 ratio = $0.002 / 1K tokens
   if (modelPrice !== -1) {
     return (
-      '模型价格：$' +
+      'Model价格：$' +
       modelPrice +
-      ' * 分组倍率：' +
+      ' * Group倍率：' +
       groupRatio +
       ' = $' +
       modelPrice * groupRatio
@@ -156,7 +156,7 @@ export function renderModelPrice(
     if (completionRatio === undefined) {
       completionRatio = 0;
     }
-    // 这里的 *2 是因为 1倍率=0.002刀，请勿删除
+    // 这里的 *2 是因为 1倍率=0.002刀，请勿Delete
     let inputRatioPrice = modelRatio * 2.0;
     let completionRatioPrice = modelRatio * 2.0 * completionRatio;
     let price =
@@ -166,18 +166,18 @@ export function renderModelPrice(
       <>
         <article>
           <p>
-            提示：${inputRatioPrice} * {groupRatio} = $
+            Prompt：${inputRatioPrice} * {groupRatio} = $
             {inputRatioPrice * groupRatio} / 1M tokens
           </p>
           <p>
-            补全：${completionRatioPrice} * {groupRatio} = $
+            Completion：${completionRatioPrice} * {groupRatio} = $
             {completionRatioPrice * groupRatio} / 1M tokens
           </p>
           <p></p>
           <p>
-            提示 {inputTokens} tokens / 1M tokens * ${inputRatioPrice} + 补全{' '}
+            Prompt {inputTokens} tokens / 1M tokens * ${inputRatioPrice} + Completion{' '}
             {completionTokens} tokens / 1M tokens * ${completionRatioPrice} *
-            分组 {groupRatio} = ${price.toFixed(6)}
+            Group {groupRatio} = ${price.toFixed(6)}
           </p>
           <p>仅供参考，以实际扣费为准</p>
         </article>
@@ -190,7 +190,7 @@ export function renderQuotaWithPrompt(quota, digits) {
   let displayInCurrency = localStorage.getItem('display_in_currency');
   displayInCurrency = displayInCurrency === 'true';
   if (displayInCurrency) {
-    return `（等价金额：${renderQuota(quota, digits)}）`;
+    return `（Equivalent Amount：${renderQuota(quota, digits)}）`;
   }
   return '';
 }
@@ -262,7 +262,7 @@ export const modelColorMap = {
 
 export function stringToColor(str) {
   let sum = 0;
-  // 对字符串中的每个字符进行操作
+  // 对字符串中的每个字符进行Operation
   for (let i = 0; i < str.length; i++) {
     // 将字符的ASCII值加到sum中
     sum += str.charCodeAt(i);

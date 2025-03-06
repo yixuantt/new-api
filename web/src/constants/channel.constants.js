@@ -121,7 +121,7 @@ export const CHANNEL_OPTIONS = [
     color: 'purple',
     label: 'SiliconCloud',
   },
-  { key: 8, text: '自定义渠道', value: 8, color: 'pink', label: '自定义渠道' },
+  { key: 8, text: 'CustomChannel', value: 8, color: 'pink', label: 'CustomChannel' },
   {
     key: 22,
     text: '知识库：FastGPT',

@@ -72,15 +72,15 @@ export default function SettingsMonitoring(props) {
           getFormApi={(formAPI) => (refForm.current = formAPI)}
           style={{ marginBottom: 15 }}
         >
-          <Form.Section text={'监控设置'}>
+          <Form.Section text={'监控Settings'}>
             <Row gutter={16}>
               <Col span={8}>
                 <Form.InputNumber
-                  label={'最长响应时间'}
+                  label={'最长Response time'}
                   step={1}
                   min={0}
                   suffix={'秒'}
-                  extraText={'当运行通道全部测试时，超过此时间将自动禁用通道'}
+                  extraText={'当运行通道全部Test时，超过此Time将自动Disable通道'}
                   placeholder={''}
                   field={'ChannelDisableThreshold'}
                   onChange={(value) =>
@@ -93,11 +93,11 @@ export default function SettingsMonitoring(props) {
               </Col>
               <Col span={8}>
                 <Form.InputNumber
-                  label={'额度提醒阈值'}
+                  label={'Quota reminder threshold'}
                   step={1}
                   min={0}
                   suffix={'Token'}
-                  extraText={'低于此额度时将发送邮件提醒用户'}
+                  extraText={'低于此Quota时将发送邮件提醒User'}
                   placeholder={''}
                   field={'QuotaRemindThreshold'}
                   onChange={(value) =>
@@ -113,7 +113,7 @@ export default function SettingsMonitoring(props) {
               <Col span={8}>
                 <Form.Switch
                   field={'AutomaticDisableChannelEnabled'}
-                  label={'失败时自动禁用通道'}
+                  label={'失败时自动Disable通道'}
                   size='large'
                   checkedText='｜'
                   uncheckedText='〇'
@@ -128,7 +128,7 @@ export default function SettingsMonitoring(props) {
               <Col span={8}>
                 <Form.Switch
                   field={'AutomaticEnableChannelEnabled'}
-                  label={'成功时自动启用通道'}
+                  label={'成功时自动Enable通道'}
                   size='large'
                   checkedText='｜'
                   uncheckedText='〇'
@@ -143,7 +143,7 @@ export default function SettingsMonitoring(props) {
             </Row>
             <Row>
               <Button size='large' onClick={onSubmit}>
-                保存监控设置
+                保存监控Settings
               </Button>
             </Row>
           </Form.Section>

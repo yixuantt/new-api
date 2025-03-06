@@ -74,7 +74,7 @@ func SaveQuotaDataCache() {
 	defer CacheQuotaDataLock.Unlock()
 	size := len(CacheQuotaData)
 	// 如果缓存中有数据，就保存到数据库中
-	// 1. 先查询数据库中是否有数据
+	// 1. 先Query数据库中是否有数据
 	// 2. 如果有数据，就更新数据
 	// 3. 如果没有数据，就插入数据
 	for _, quotaData := range CacheQuotaData {
@@ -107,14 +107,14 @@ func increaseQuotaData(userId int, username string, modelName string, count int,
 
 func GetQuotaDataByUsername(username string, startTime int64, endTime int64) (quotaData []*QuotaData, err error) {
 	var quotaDatas []*QuotaData
-	// 从quota_data表中查询数据
+	// 从quota_data表中Query数据
 	err = DB.Table("quota_data").Where("username = ? and created_at >= ? and created_at <= ?", username, startTime, endTime).Find(&quotaDatas).Error
 	return quotaDatas, err
 }
 
 func GetQuotaDataByUserId(userId int, startTime int64, endTime int64) (quotaData []*QuotaData, err error) {
 	var quotaDatas []*QuotaData
-	// 从quota_data表中查询数据
+	// 从quota_data表中Query数据
 	err = DB.Table("quota_data").Where("user_id = ? and created_at >= ? and created_at <= ?", userId, startTime, endTime).Find(&quotaDatas).Error
 	return quotaDatas, err
 }
@@ -124,7 +124,7 @@ func GetAllQuotaDates(startTime int64, endTime int64, username string) (quotaDat
 		return GetQuotaDataByUsername(username, startTime, endTime)
 	}
 	var quotaDatas []*QuotaData
-	// 从quota_data表中查询数据
+	// 从quota_data表中Query数据
 	// only select model_name, sum(count) as count, sum(quota) as quota, model_name, created_at from quota_data group by model_name, created_at;
 	//err = DB.Table("quota_data").Where("created_at >= ? and created_at <= ?", startTime, endTime).Find(&quotaDatas).Error
 	err = DB.Table("quota_data").Select("model_name, sum(count) as count, sum(quota) as quota, created_at").Where("created_at >= ? and created_at <= ?", startTime, endTime).Group("model_name, created_at").Find(&quotaDatas).Error

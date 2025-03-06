@@ -38,13 +38,13 @@ func GetImpatientHttpClient() *http.Client {
 }
 
 func GetProxyHttpClient(proxyURLStr string) (*http.Client, error) {
-	// 解析代理URL
+	// 解析ProxyURL
 	proxyURL, err := url.Parse(proxyURLStr)
 	if err != nil {
-		return nil, fmt.Errorf("解析代理URL失败: %v", err)
+		return nil, fmt.Errorf("解析ProxyURL失败: %v", err)
 	}
 
-	// 获取代理的认证信息（如果有）
+	// 获取Proxy的认证信息（如果有）
 	auth := &proxy.Auth{}
 	if proxyURL.User != nil {
 		auth.User = proxyURL.User.Username()
@@ -54,9 +54,9 @@ func GetProxyHttpClient(proxyURLStr string) (*http.Client, error) {
 		}
 	}
 
-	// 检查代理协议是否为socks5
+	// 检查Proxy协议是否为socks5
 	if strings.HasPrefix(proxyURL.Scheme, "socks5") {
-		// 使用认证信息创建SOCKS5代理
+		// 使用认证信息创建SOCKS5Proxy
 		dialer, err := proxy.SOCKS5("tcp", proxyURL.Host, auth, proxy.Direct)
 		if err != nil {
 			return nil, err
@@ -69,15 +69,15 @@ func GetProxyHttpClient(proxyURLStr string) (*http.Client, error) {
 			},
 		}
 
-		// 创建并返回配置了SOCKS5代理的http.Client
+		// 创建并返回配置了SOCKS5Proxy的http.Client
 		return &http.Client{Transport: transport}, nil
 	} else {
-		// 对于HTTP代理，需要设置代理的HTTP头
+		// 对于HTTPProxy，需要SettingsProxy的HTTP头
 		transport := &http.Transport{
 			Proxy: http.ProxyURL(proxyURL),
 		}
 
-		// 创建并返回配置了HTTP代理的http.Client
+		// 创建并返回配置了HTTPProxy的http.Client
 		return &http.Client{
 			Transport: transport,
 		}, nil

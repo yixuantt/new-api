@@ -8,7 +8,7 @@ const LinuxDoOAuth = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const [userState, userDispatch] = useContext(UserContext);
-  const [prompt, setPrompt] = useState('处理中...');
+  const [prompt, setPrompt] = useState('Processing...');
   const [processing, setProcessing] = useState(true);
 
   let navigate = useNavigate();
@@ -23,23 +23,23 @@ const LinuxDoOAuth = () => {
       localStorage.removeItem('aff');
 
       if (message === 'bind') {
-        showSuccess('绑定成功！');
+        showSuccess('Binding succeeded!');
         navigate('/setting');
       } else {
         userDispatch({ type: 'login', payload: data });
         localStorage.setItem('user', JSON.stringify(data));
-        showSuccess('登录成功！');
+        showSuccess('Login succeeded!');
         navigate('/');
       }
     } else {
       showError(message);
       if (count === 0) {
-        setPrompt(`操作失败，重定向至登录界面中...`);
+        setPrompt(`Operation失败，重定向至Login界面中...`);
         navigate('/setting'); // in case this is failed to bind GitHub
         return;
       }
       count++;
-      setPrompt(`出现错误，第 ${count} 次重试中...`);
+      setPrompt(`An error occurred, retrying for the ${count} time...`);
       await new Promise((resolve) => setTimeout(resolve, count * 2000));
       await sendCode(code, state, count);
     }
@@ -49,7 +49,7 @@ const LinuxDoOAuth = () => {
     let error = searchParams.get('error');
     if (error) {
       let errorDescription = searchParams.get('error_description');
-      showError(`授权错误：${error}: ${errorDescription}`);
+      showError(`授权Error: ${error}: ${errorDescription}`);
       navigate('/setting');
       return;
     }

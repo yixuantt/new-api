@@ -58,7 +58,7 @@ func UpdateMidjourneyTaskBulk() {
 		}
 
 		for channelId, taskIds := range taskChannelM {
-			common.LogInfo(ctx, fmt.Sprintf("渠道 #%d 未完成的任务有: %d", channelId, len(taskIds)))
+			common.LogInfo(ctx, fmt.Sprintf("Channel #%d 未完成的任务有: %d", channelId, len(taskIds)))
 			if len(taskIds) == 0 {
 				continue
 			}
@@ -66,7 +66,7 @@ func UpdateMidjourneyTaskBulk() {
 			if err != nil {
 				common.LogError(ctx, fmt.Sprintf("CacheGetChannel: %v", err))
 				err := model.MjBulkUpdate(taskIds, map[string]any{
-					"fail_reason": fmt.Sprintf("获取渠道信息失败，请联系管理员，渠道ID：%d", channelId),
+					"fail_reason": fmt.Sprintf("获取Channel信息失败，请联系Admin，ChannelID：%d", channelId),
 					"status":      "FAILURE",
 					"progress":    "100%",
 				})
@@ -85,7 +85,7 @@ func UpdateMidjourneyTaskBulk() {
 				common.LogError(ctx, fmt.Sprintf("Get Task error: %v", err))
 				continue
 			}
-			// 设置超时时间
+			// Settings超时Time
 			timeout := time.Second * 15
 			ctx, cancel := context.WithTimeout(context.Background(), timeout)
 			// 使用带有超时的 context 创建新的请求
@@ -120,7 +120,7 @@ func UpdateMidjourneyTaskBulk() {
 				task := taskM[responseItem.MjId]
 
 				useTime := (time.Now().UnixNano() / int64(time.Millisecond)) - task.SubmitTime
-				// 如果时间超过一小时，且进度不是100%，则认为任务失败
+				// 如果Time超过一小时，且进度不是100%，则认为任务失败
 				if useTime > 3600000 && task.Progress != "100%" {
 					responseItem.FailReason = "上游任务超时（超过1小时）"
 					responseItem.Status = "FAILURE"
@@ -219,7 +219,7 @@ func GetAllMidjourney(c *gin.Context) {
 		p = 0
 	}
 
-	// 解析其他查询参数
+	// 解析其他Query参数
 	queryParams := model.TaskQueryParams{
 		ChannelID:      c.Query("channel_id"),
 		MjID:           c.Query("mj_id"),

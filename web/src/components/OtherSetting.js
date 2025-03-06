@@ -47,24 +47,24 @@ const OtherSetting = () => {
     setInputs((inputs) => ({ ...inputs, [name]: value }));
   };
 
-  // 通用设置
+  // 通用Settings
   const formAPISettingGeneral = useRef();
-  // 通用设置 - Notice
+  // 通用Settings - Notice
   const submitNotice = async () => {
     try {
       setLoadingInput((loadingInput) => ({ ...loadingInput, Notice: true }));
       await updateOption('Notice', inputs.Notice);
-      showSuccess('公告已更新');
+      showSuccess('Announcement已更新');
     } catch (error) {
-      console.error('公告更新失败', error);
-      showError('公告更新失败');
+      console.error('Announcement更新失败', error);
+      showError('Announcement更新失败');
     } finally {
       setLoadingInput((loadingInput) => ({ ...loadingInput, Notice: false }));
     }
   };
-  // 个性化设置
+  // 个性化Settings
   const formAPIPersonalization = useRef();
-  //  个性化设置 - SystemName
+  //  个性化Settings - SystemName
   const submitSystemName = async () => {
     try {
       setLoadingInput((loadingInput) => ({
@@ -72,10 +72,10 @@ const OtherSetting = () => {
         SystemName: true,
       }));
       await updateOption('SystemName', inputs.SystemName);
-      showSuccess('系统名称已更新');
+      showSuccess('系统Name已更新');
     } catch (error) {
-      console.error('系统名称更新失败', error);
-      showError('系统名称更新失败');
+      console.error('系统Name更新失败', error);
+      showError('系统Name更新失败');
     } finally {
       setLoadingInput((loadingInput) => ({
         ...loadingInput,
@@ -84,7 +84,7 @@ const OtherSetting = () => {
     }
   };
 
-  // 个性化设置 - Logo
+  // 个性化Settings - Logo
   const submitLogo = async () => {
     try {
       setLoadingInput((loadingInput) => ({ ...loadingInput, Logo: true }));
@@ -97,7 +97,7 @@ const OtherSetting = () => {
       setLoadingInput((loadingInput) => ({ ...loadingInput, Logo: false }));
     }
   };
-  // 个性化设置 - 首页内容
+  // 个性化Settings - Home内容
   const submitOption = async (key) => {
     try {
       setLoadingInput((loadingInput) => ({
@@ -105,10 +105,10 @@ const OtherSetting = () => {
         HomePageContent: true,
       }));
       await updateOption(key, inputs[key]);
-      showSuccess('首页内容已更新');
+      showSuccess('Home内容已更新');
     } catch (error) {
-      console.error('首页内容更新失败', error);
-      showError('首页内容更新失败');
+      console.error('Home内容更新失败', error);
+      showError('Home内容更新失败');
     } finally {
       setLoadingInput((loadingInput) => ({
         ...loadingInput,
@@ -116,28 +116,28 @@ const OtherSetting = () => {
       }));
     }
   };
-  // 个性化设置 - 关于
+  // 个性化Settings - About
   const submitAbout = async () => {
     try {
       setLoadingInput((loadingInput) => ({ ...loadingInput, About: true }));
       await updateOption('About', inputs.About);
-      showSuccess('关于内容已更新');
+      showSuccess('About内容已更新');
     } catch (error) {
-      console.error('关于内容更新失败', error);
-      showError('关于内容更新失败');
+      console.error('About内容更新失败', error);
+      showError('About内容更新失败');
     } finally {
       setLoadingInput((loadingInput) => ({ ...loadingInput, About: false }));
     }
   };
-  // 个性化设置 - 页脚
+  // 个性化Settings - Footer
   const submitFooter = async () => {
     try {
       setLoadingInput((loadingInput) => ({ ...loadingInput, Footer: true }));
       await updateOption('Footer', inputs.Footer);
-      showSuccess('页脚内容已更新');
+      showSuccess('Footer内容已更新');
     } catch (error) {
-      console.error('页脚内容更新失败', error);
-      showError('页脚内容更新失败');
+      console.error('Footer内容更新失败', error);
+      showError('Footer内容更新失败');
     } finally {
       setLoadingInput((loadingInput) => ({ ...loadingInput, Footer: false }));
     }
@@ -153,7 +153,7 @@ const OtherSetting = () => {
     );
     const { tag_name, body } = res.data;
     if (tag_name === process.env.REACT_APP_VERSION) {
-      showSuccess(`已是最新版本：${tag_name}`);
+      showSuccess(`Is the latest version：${tag_name}`);
     } else {
       setUpdateData({
         tag_name: tag_name,
@@ -187,36 +187,36 @@ const OtherSetting = () => {
   return (
     <Row>
       <Col span={24}>
-        {/* 通用设置 */}
+        {/* 通用Settings */}
         <Form
           values={inputs}
           getFormApi={(formAPI) => (formAPISettingGeneral.current = formAPI)}
           style={{ marginBottom: 15 }}
         >
-          <Form.Section text={'通用设置'}>
+          <Form.Section text={'通用Settings'}>
             <Form.TextArea
-              label={'公告'}
-              placeholder={'在此输入新的公告内容，支持 Markdown & HTML 代码'}
+              label={'Announcement'}
+              placeholder={'在此Enter新的Announcement内容，支持 Markdown & HTML 代码'}
               field={'Notice'}
               onChange={handleInputChange}
               style={{ fontFamily: 'JetBrains Mono, Consolas' }}
               autosize={{ minRows: 6, maxRows: 12 }}
             />
             <Button onClick={submitNotice} loading={loadingInput['Notice']}>
-              设置公告
+              SettingsAnnouncement
             </Button>
           </Form.Section>
         </Form>
-        {/* 个性化设置 */}
+        {/* 个性化Settings */}
         <Form
           values={inputs}
           getFormApi={(formAPI) => (formAPIPersonalization.current = formAPI)}
           style={{ marginBottom: 15 }}
         >
-          <Form.Section text={'个性化设置'}>
+          <Form.Section text={'个性化Settings'}>
             <Form.Input
-              label={'系统名称'}
-              placeholder={'在此输入系统名称'}
+              label={'系统Name'}
+              placeholder={'在此Enter系统Name'}
               field={'SystemName'}
               onChange={handleInputChange}
             />
@@ -224,21 +224,21 @@ const OtherSetting = () => {
               onClick={submitSystemName}
               loading={loadingInput['SystemName']}
             >
-              设置系统名称
+              Settings系统Name
             </Button>
             <Form.Input
-              label={'Logo 图片地址'}
-              placeholder={'在此输入 Logo 图片地址'}
+              label={'Logo Image URL'}
+              placeholder={'在此Enter Logo Image URL'}
               field={'Logo'}
               onChange={handleInputChange}
             />
             <Button onClick={submitLogo} loading={loadingInput['Logo']}>
-              设置 Logo
+              Settings Logo
             </Button>
             <Form.TextArea
-              label={'首页内容'}
+              label={'Home内容'}
               placeholder={
-                '在此输入首页内容，支持 Markdown & HTML 代码，设置后首页的状态信息将不再显示。如果输入的是一个链接，则会使用该链接作为 iframe 的 src 属性，这允许你设置任意网页作为首页。'
+                '在此EnterHome内容，支持 Markdown & HTML 代码，Settings后Home的Status信息将不再显示。如果Enter的是一个链接，则会使用该链接作为 iframe 的 src 属性，这允许你Settings任意网页作为Home。'
               }
               field={'HomePageContent'}
               onChange={handleInputChange}
@@ -249,12 +249,12 @@ const OtherSetting = () => {
               onClick={() => submitOption('HomePageContent')}
               loading={loadingInput['HomePageContent']}
             >
-              设置首页内容
+              SettingsHome内容
             </Button>
             <Form.TextArea
-              label={'关于'}
+              label={'About'}
               placeholder={
-                '在此输入新的关于内容，支持 Markdown & HTML 代码。如果输入的是一个链接，则会使用该链接作为 iframe 的 src 属性，这允许你设置任意网页作为关于页面。'
+                '在此Enter新的About内容，支持 Markdown & HTML 代码。如果Enter的是一个链接，则会使用该链接作为 iframe 的 src 属性，这允许你Settings任意网页作为About页面。'
               }
               field={'About'}
               onChange={handleInputChange}
@@ -262,26 +262,26 @@ const OtherSetting = () => {
               autosize={{ minRows: 6, maxRows: 12 }}
             />
             <Button onClick={submitAbout} loading={loadingInput['About']}>
-              设置关于
+              SettingsAbout
             </Button>
             {/*  */}
             <Banner
               fullMode={false}
               type='info'
-              description='移除 One API 的版权标识必须首先获得授权，项目维护需要花费大量精力，如果本项目对你有意义，请主动支持本项目。'
+              description='Removal of One API copyright mark must first be authorized. Project maintenance requires a lot of effort. If this project is meaningful to you, please actively support it.。'
               closeIcon={null}
               style={{ marginTop: 15 }}
             />
             <Form.Input
-              label={'页脚'}
+              label={'Footer'}
               placeholder={
-                '在此输入新的页脚，留空则使用默认页脚，支持 HTML 代码'
+                '在此Enter新的Footer，留空则使用DefaultFooter，支持 HTML 代码'
               }
               field={'Footer'}
               onChange={handleInputChange}
             />
             <Button onClick={submitFooter} loading={loadingInput['Footer']}>
-              设置页脚
+              SettingsFooter
             </Button>
           </Form.Section>
         </Form>
@@ -291,16 +291,16 @@ const OtherSetting = () => {
       {/*  onOpen={() => setShowUpdateModal(true)}*/}
       {/*  open={showUpdateModal}*/}
       {/*>*/}
-      {/*  <Modal.Header>新版本：{updateData.tag_name}</Modal.Header>*/}
+      {/*  <Modal.Header>New Version：{updateData.tag_name}</Modal.Header>*/}
       {/*  <Modal.Content>*/}
       {/*    <Modal.Description>*/}
       {/*      <div dangerouslySetInnerHTML={{ __html: updateData.content }}></div>*/}
       {/*    </Modal.Description>*/}
       {/*  </Modal.Content>*/}
       {/*  <Modal.Actions>*/}
-      {/*    <Button onClick={() => setShowUpdateModal(false)}>关闭</Button>*/}
+      {/*    <Button onClick={() => setShowUpdateModal(false)}>Close</Button>*/}
       {/*    <Button*/}
-      {/*      content='详情'*/}
+      {/*      content='Details'*/}
       {/*      onClick={() => {*/}
       {/*        setShowUpdateModal(false);*/}
       {/*        openGitHubRelease();*/}

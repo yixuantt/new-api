@@ -14,8 +14,8 @@ func InitCron() {
 		RefreshAccessToken()
 	})
 	if err != nil {
-		common.SysError("定时任务初始化失败")
+		common.SysError("Scheduled task initialization failed")
 	}
 	c.Start()
-	common.SysLog(fmt.Sprintf("定时任务初始化完成"))
+	common.SysLog(fmt.Sprintf("Scheduled task initialization completed"))
 }
