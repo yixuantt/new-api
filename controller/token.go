@@ -127,7 +127,7 @@ func AddToken(c *gin.Context) {
 	if err != nil {
 		c.JSON(http.StatusOK, gin.H{
 			"success": false,
-			"message": "生成Token失败",
+			"message": "生成TokenFailed",
 		})
 		common.SysError("failed to generate token key: " + err.Error())
 		return
@@ -210,14 +210,14 @@ func UpdateToken(c *gin.Context) {
 		if cleanToken.Status == common.TokenStatusExpired && cleanToken.ExpiredTime <= common.GetTimestamp() && cleanToken.ExpiredTime != -1 {
 			c.JSON(http.StatusOK, gin.H{
 				"success": false,
-				"message": "The token has expired and cannot be enabled. Please modify the expiration time of the token, or set it to never expire.",
+				"message": "Token has expired and cannot be enabled. Please modify token expiration time or set to never expire",
 			})
 			return
 		}
 		if cleanToken.Status == common.TokenStatusExhausted && cleanToken.RemainQuota <= 0 && !cleanToken.UnlimitedQuota {
 			c.JSON(http.StatusOK, gin.H{
 				"success": false,
-				"message": "The available quota of the token has been used up and cannot be enabled. Please modify the remaining quota of the token, or set it to unlimited quota",
+				"message": "Token quota is depleted and cannot be enabled. Please modify remaining quota or set to unlimited",
 			})
 			return
 		}

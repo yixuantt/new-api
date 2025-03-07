@@ -28,7 +28,7 @@ const FooterBar = () => {
       <a href='https://github.com/Calcium-Ion' target='_blank' rel='noreferrer'>
         Calcium-Ion
       </a>{' '}
-      开发，基于{' '}
+      based on{' '}
       <a
         href='https://github.com/songquanpeng/one-api'
         target='_blank'

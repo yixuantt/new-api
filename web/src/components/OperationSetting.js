@@ -90,9 +90,9 @@ const OperationSetting = () => {
     try {
       setLoading(true);
       await getOptions();
-      showSuccess('Refresh成功');
+      showSuccess('RefreshSuccess');
     } catch (error) {
-      showError('Refresh失败');
+      showError('RefreshFailed');
     } finally {
       setLoading(false);
     }
@@ -109,7 +109,7 @@ const OperationSetting = () => {
         <Card style={{ marginTop: '10px' }}>
           <SettingsGeneral options={inputs} refresh={onRefresh} />
         </Card>
-        {/* 绘图Settings */}
+        {/* DrawingSettings */}
         <Card style={{ marginTop: '10px' }}>
           <SettingsDrawing options={inputs} refresh={onRefresh} />
         </Card>
@@ -121,7 +121,7 @@ const OperationSetting = () => {
         <Card style={{ marginTop: '10px' }}>
           <SettingsLog options={inputs} refresh={onRefresh} />
         </Card>
-        {/* 数据看板 */}
+        {/* Dashboard */}
         <Card style={{ marginTop: '10px' }}>
           <SettingsDataDashboard options={inputs} refresh={onRefresh} />
         </Card>
@@ -137,7 +137,7 @@ const OperationSetting = () => {
         <Card style={{ marginTop: '10px' }}>
           <SettingsChats options={inputs} refresh={onRefresh} />
         </Card>
-        {/* 倍率Settings */}
+        {/* RatioSettings */}
         <Card style={{ marginTop: '10px' }}>
           <SettingsMagnification options={inputs} refresh={onRefresh} />
         </Card>

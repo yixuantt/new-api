@@ -90,10 +90,10 @@ func Recharge(referenceId string, customerId string) (err error) {
 	})
 
 	if err != nil {
-		return errors.New("Recharge失败，" + err.Error())
+		return errors.New("RechargeFailed，" + err.Error())
 	}
 
-	RecordLog(topUp.UserId, LogTypeTopup, fmt.Sprintf("使用在线Recharge成功，Recharge金额: %v，支付金额：%d", common.LogQuotaF(quota), topUp.Amount))
+	RecordLog(topUp.UserId, LogTypeTopup, fmt.Sprintf("使用在线RechargeSuccess，RechargeAmount: %v，支付Amount：%d", common.LogQuotaF(quota), topUp.Amount))
 
 	return nil
 }

@@ -6,7 +6,7 @@ const User = () => (
   <>
     <Layout>
       <Layout.Header>
-        <h3>MangeUser</h3>
+        <h3>ManageUser</h3>
       </Layout.Header>
       <Layout.Content>
         <UsersTable />

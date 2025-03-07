@@ -29,17 +29,17 @@ function renderQuotaType(type) {
     case 1:
       return (
         <Tag color='teal' size='large'>
-          按次计费
+          Pay per view
         </Tag>
       );
     case 0:
       return (
         <Tag color='violet' size='large'>
-          按量计费
+          Pay as you go
         </Tag>
       );
     default:
-      return '未知';
+      return 'unknown';
   }
 }
 
@@ -114,7 +114,7 @@ const ModelPricing = () => {
 
   const columns = [
     {
-      title: '可用性',
+      title: 'Availability',
       dataIndex: 'available',
       render: (text, record, index) => {
         // if record.enable_groups contains selectedGroup, then available is true
@@ -127,7 +127,7 @@ const ModelPricing = () => {
         <Space>
           <span>ModelName</span>
           <Input
-            placeholder='模糊搜索'
+            placeholder='fuzzy search'
             style={{ width: 200 }}
             onCompositionStart={handleCompositionStart}
             onCompositionEnd={handleCompositionEnd}
@@ -157,7 +157,7 @@ const ModelPricing = () => {
       filteredValue,
     },
     {
-      title: '计费Type',
+      title: 'Billing type',
       dataIndex: 'quota_type',
       render: (text, record, index) => {
         return renderQuotaType(parseInt(text));
@@ -165,7 +165,7 @@ const ModelPricing = () => {
       sorter: (a, b) => a.quota_type - b.quota_type,
     },
     {
-      title: '可用Group',
+      title: 'Available Groups',
       dataIndex: 'enable_groups',
       render: (text, record, index) => {
         // enable_groups is a string array
@@ -186,9 +186,9 @@ const ModelPricing = () => {
                     onClick={() => {
                       setSelectedGroup(group);
                       showInfo(
-                        '当前查看的Group为：' +
+                        '当前Check的Group为：' +
                           group +
-                          '，倍率为：' +
+                          '，Ratio为：' +
                           groupRatio[group],
                       );
                     }}
@@ -205,13 +205,13 @@ const ModelPricing = () => {
     {
       title: () => (
         <span style={{ display: 'flex', alignItems: 'center' }}>
-          倍率
+          Ratio
           <Popover
             content={
               <div style={{ padding: 8 }}>
-                倍率是为了方便换算不同价格的Model
+                Ratio is used to convert different pricing models.
                 <br />
-                click to view倍率说明
+                click to view Ratio illustrate
               </div>
             }
             position='top'
@@ -251,12 +251,12 @@ const ModelPricing = () => {
       },
     },
     {
-      title: 'Model价格',
+      title: 'Model Pricing',
       dataIndex: 'model_price',
       render: (text, record, index) => {
         let content = text;
         if (record.quota_type === 0) {
-          // 这里的 *2 是因为 1倍率=0.002刀，请勿Delete
+          // 这里的 *2 是因为 1Ratio=0.002刀，请勿Delete
           let inputRatioPrice =
             record.model_ratio * 2 * groupRatio[selectedGroup];
           let completionRatioPrice =
@@ -273,7 +273,7 @@ const ModelPricing = () => {
           );
         } else {
           let price = parseFloat(text) * groupRatio[selectedGroup];
-          content = <>Model价格：${price}</>;
+          content = <>Model Pricing：${price}</>;
         }
         return <div>{content}</div>;
       },
@@ -335,7 +335,7 @@ const ModelPricing = () => {
 
   const copyText = async (text) => {
     if (await copy(text)) {
-      showSuccess('已Copy：' + text);
+      showSuccess('Copied:' + text);
     } else {
       // setSearchKeyword(text);
       Modal.error({ title: 'Unable to copy to clipboard，Please copy manually', content: text });
@@ -354,14 +354,14 @@ const ModelPricing = () => {
             type='success'
             fullMode={false}
             closeIcon='null'
-            description={`您的DefaultGroup为：${userState.user.group}，Group倍率为：${groupRatio[userState.user.group]}`}
+            // description={`Your DefaultGroup: ${userState.user.group}}`}
           />
         ) : (
           <Banner
             type='warning'
             fullMode={false}
             closeIcon='null'
-            description={`您还未登陆，显示的价格为DefaultGroup倍率: ${groupRatio['default']}`}
+            description={`You are not logged in`}
           />
         )}
         <br />
@@ -370,14 +370,13 @@ const ModelPricing = () => {
           fullMode={false}
           description={
             <div>
-              按量计费费用 = Group倍率 × Model rate × （Prompttoken数 + Completiontoken数 ×
-              Completion倍率）/ 500000 （单位：美元）
+              Pay as you go
             </div>
           }
           closeIcon='null'
         />
         <br />
-        <Button
+        {/* <Button
           theme='light'
           type='tertiary'
           style={{ width: 150 }}
@@ -386,8 +385,8 @@ const ModelPricing = () => {
           }}
           disabled={selectedRowKeys == ''}
         >
-          Copy选中Model
-        </Button>
+          Copy the selected Model
+        </Button> */}
         <Table
           style={{ marginTop: 5 }}
           columns={columns}

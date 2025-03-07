@@ -15,7 +15,7 @@ func SundaySearch(text string, pattern string) bool {
 		offset[c] = len(pattern) - i
 	}
 
-	// 文本串长度和模式串长度
+	// 文本串长度和Mode串长度
 	n, m := len(text), len(pattern)
 
 	// 主循环，i表示当前对齐的文本串位置
@@ -36,7 +36,7 @@ func SundaySearch(text string, pattern string) bool {
 			if val, ok := offset[next]; ok {
 				i += val // 存在于偏移表中，进行跳跃
 			} else {
-				i += len(pattern) + 1 // 不存在于偏移表中，跳过整个模式串长度
+				i += len(pattern) + 1 // 不存在于偏移表中，跳过整indivualMode串长度
 			}
 		} else {
 			break

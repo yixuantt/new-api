@@ -16,7 +16,7 @@ import (
 func StripeWebhook(c *gin.Context) {
 	payload, err := io.ReadAll(c.Request.Body)
 	if err != nil {
-		log.Printf("解析Stripe Webhook参数失败: %v\n", err)
+		log.Printf("解析Stripe WebhookparameterFailed: %v\n", err)
 		c.AbortWithStatus(http.StatusServiceUnavailable)
 		return
 	}
@@ -28,7 +28,7 @@ func StripeWebhook(c *gin.Context) {
 	})
 
 	if err != nil {
-		log.Printf("Stripe Webhook验签失败: %v\n", err)
+		log.Printf("Stripe Webhook验签Failed: %v\n", err)
 		c.AbortWithStatus(http.StatusBadRequest)
 		return
 	}
@@ -50,7 +50,7 @@ func sessionCompleted(event stripe.Event) {
 	referenceId := event.GetObjectValue("client_reference_id")
 	status := event.GetObjectValue("status")
 	if "complete" != status {
-		log.Println("错误的Stripe Checkout完成Status:", status, ",", referenceId)
+		log.Println("mistake的Stripe Checkout完成Status:", status, ",", referenceId)
 		return
 	}
 
@@ -69,7 +69,7 @@ func sessionExpired(event stripe.Event) {
 	referenceId := event.GetObjectValue("client_reference_id")
 	status := event.GetObjectValue("status")
 	if "expired" != status {
-		log.Println("错误的Stripe Checkout过期Status:", status, ",", referenceId)
+		log.Println("mistake的Stripe Checkout过期Status:", status, ",", referenceId)
 		return
 	}
 
@@ -91,7 +91,7 @@ func sessionExpired(event stripe.Event) {
 	topUp.Status = common.TopUpStatusExpired
 	err := topUp.Update()
 	if err != nil {
-		log.Println("过期Recharge订单失败", referenceId, ", err:", err.Error())
+		log.Println("过期Recharge订单Failed", referenceId, ", err:", err.Error())
 		return
 	}
 

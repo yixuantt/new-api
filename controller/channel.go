@@ -109,7 +109,7 @@ func FetchUpstreamModels(c *gin.Context) {
 	if !result.Success {
 		c.JSON(http.StatusOK, gin.H{
 			"success": false,
-			"message": "上游返回错误",
+			"message": "上游返回mistake",
 		})
 	}
 
@@ -203,7 +203,7 @@ func AddChannel(c *gin.Context) {
 		if channel.Other == "" {
 			c.JSON(http.StatusOK, gin.H{
 				"success": false,
-				"message": "部署地区不能为空",
+				"message": "Deployment Region不能为空",
 			})
 			return
 		} else {
@@ -213,7 +213,7 @@ func AddChannel(c *gin.Context) {
 				if regionMap["default"] == nil {
 					c.JSON(http.StatusOK, gin.H{
 						"success": false,
-						"message": "部署地区必须包含default字段",
+						"message": "Deployment Region必须包含default字段",
 					})
 					return
 				}
@@ -298,7 +298,7 @@ func DeleteChannelBatch(c *gin.Context) {
 	if err != nil || len(channelBatch.Ids) == 0 {
 		c.JSON(http.StatusOK, gin.H{
 			"success": false,
-			"message": "参数错误",
+			"message": "parametermistake",
 		})
 		return
 	}
@@ -332,7 +332,7 @@ func UpdateChannel(c *gin.Context) {
 		if channel.Other == "" {
 			c.JSON(http.StatusOK, gin.H{
 				"success": false,
-				"message": "部署地区不能为空",
+				"message": "Deployment Region不能为空",
 			})
 			return
 		} else {
@@ -342,7 +342,7 @@ func UpdateChannel(c *gin.Context) {
 				if regionMap["default"] == nil {
 					c.JSON(http.StatusOK, gin.H{
 						"success": false,
-						"message": "部署地区必须包含default字段",
+						"message": "Deployment Region必须包含default字段",
 					})
 					return
 				}
@@ -379,11 +379,11 @@ func handleOpenAIChannelRefreshToken(channel model.Channel) (model.Channel, erro
 		// 截取到RT
 		channel.OpenAIRefreshToken = strings.Replace(channel.Key, "rt-", "", 1)
 		accessToken, err := openai.RefreshAccessToken(channel.OpenAIRefreshToken)
-		// 提取失败
+		// 提取Failed
 		if err != nil {
 			return channel, err
 		}
-		// 处理成功
+		// 处理Success
 		channel.Key = accessToken.AccessToken
 		channel.OpenAIAccessTokenExpiresTime = common.GetTimestamp() + accessToken.ExpiresIn
 		// 未传递端点地址

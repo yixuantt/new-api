@@ -264,7 +264,7 @@ func testAllChannels(notify bool) error {
 		testAllChannelsRunning = false
 		testAllChannelsLock.Unlock()
 		if notify {
-			err := common.SendEmail("Channel test completed", common.RootUserEmail, "Channel test completed, if you have not received the disable notification, it means that all channels are normal")
+			err := common.SendEmail("Channel test completed", common.RootUserEmail, "Channel test completed. If no disable notification received, all channels are functioning normally")
 			if err != nil {
 				common.SysError(fmt.Sprintf("failed to send email: %s", err.Error()))
 			}

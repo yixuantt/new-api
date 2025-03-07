@@ -17,7 +17,7 @@ import (
 func TelegramBind(c *gin.Context) {
 	if !common.TelegramOAuthEnabled {
 		c.JSON(200, gin.H{
-			"message": "Admin未开启通过 Telegram Login以及Register",
+			"message": "Admin未open启通过 Telegram LoginandRegister",
 			"success": false,
 		})
 		return
@@ -33,7 +33,7 @@ func TelegramBind(c *gin.Context) {
 	telegramId := params["id"][0]
 	if model.IsTelegramIdAlreadyTaken(telegramId) {
 		c.JSON(200, gin.H{
-			"message": "该 Telegram 账户已被Bind",
+			"message": "该 Telegram Account已被Bind",
 			"success": false,
 		})
 		return
@@ -71,7 +71,7 @@ func TelegramBind(c *gin.Context) {
 func TelegramLogin(c *gin.Context) {
 	if !common.TelegramOAuthEnabled {
 		c.JSON(200, gin.H{
-			"message": "Admin未开启通过 Telegram Login以及Register",
+			"message": "Admin未open启通过 Telegram LoginandRegister",
 			"success": false,
 		})
 		return

@@ -191,7 +191,7 @@ const SafetySetting = () => {
     }
     if (originInputs['TopupGroupRatio'] !== inputs.TopupGroupRatio) {
       if (!verifyJSON(inputs.TopupGroupRatio)) {
-        showError('RechargeGroup倍率不是合法的 JSON 字符串');
+        showError('RechargeGroupRatioNot a valid JSON string');
         return;
       }
       await updateOption('TopupGroupRatio', inputs.TopupGroupRatio);
@@ -403,16 +403,16 @@ const SafetySetting = () => {
               onChange={handleInputChange}
             />
             <Form.Input
-              label='Recharge价格（x元/美金）'
-              placeholder='For example：7，就是7元/美金'
+              label='RechargePricing（xCNY/美金）'
+              placeholder='For example：7，就是7CNY/美金'
               value={inputs.Price}
               name='Price'
               min={0}
               onChange={handleInputChange}
             />
             <Form.Input
-              label='最低Recharge美元数量（以美金为单位，如果使用Quota请自行换算！）'
-              placeholder='For example：2，就是最低Recharge2$'
+              label='lowestRechargeDollarquantity（以美金为单位，如果使用Quota请自行换算！）'
+              placeholder='For example：2，就是lowestRecharge2$'
               value={inputs.MinTopUp}
               name='MinTopUp'
               min={1}
@@ -421,7 +421,7 @@ const SafetySetting = () => {
           </Form.Group>
           <Form.Group widths='equal'>
             <Form.TextArea
-              label='RechargeGroup倍率'
+              label='RechargeGroupRatio'
               name='TopupGroupRatio'
               onChange={handleInputChange}
               style={{ minHeight: 250, fontFamily: 'JetBrains Mono, Consolas' }}
@@ -466,7 +466,7 @@ const SafetySetting = () => {
                       await updateOption('PasswordLoginEnabled', 'false');
                     }}
                   >
-                    确定
+                    OK
                   </Button>
                 </Modal.Actions>
               </Modal>
@@ -485,13 +485,13 @@ const SafetySetting = () => {
             />
             <Form.Checkbox
               checked={inputs.GitHubOAuthEnabled === 'true'}
-              label='允许通过 GitHub 账户Login & Register'
+              label='允许通过 GitHub AccountLogin & Register'
               name='GitHubOAuthEnabled'
               onChange={handleInputChange}
             />
             <Form.Checkbox
               checked={inputs.WeChatAuthEnabled === 'true'}
-              label='允许通过微信Login & Register'
+              label='允许通过WeChatLogin & Register'
               name='WeChatAuthEnabled'
               onChange={handleInputChange}
             />
@@ -518,14 +518,14 @@ const SafetySetting = () => {
           </Form.Group>
           <Divider />
           <Header as='h3' inverted={isDark}>
-            配置邮箱域名白名单
+            配置Mail域名白名单
             <Header.Subheader>
-              用以防止恶意User利用临时邮箱批量Register
+              用以防止恶意User利用临时Mail批量Register
             </Header.Subheader>
           </Header>
           <Form.Group widths={3}>
             <Form.Checkbox
-              label='Enable邮箱域名白名单'
+              label='EnableMail域名白名单'
               name='EmailDomainRestrictionEnabled'
               onChange={handleInputChange}
               checked={inputs.EmailDomainRestrictionEnabled === 'true'}
@@ -533,7 +533,7 @@ const SafetySetting = () => {
           </Form.Group>
           <Form.Group widths={3}>
             <Form.Checkbox
-              label='Enable邮箱别名限制（For example：ab.cd@gmail.com）'
+              label='EnableMail别名限制（For example：ab.cd@gmail.com）'
               name='EmailAliasRestrictionEnabled'
               onChange={handleInputChange}
               checked={inputs.EmailAliasRestrictionEnabled === 'true'}
@@ -541,8 +541,8 @@ const SafetySetting = () => {
           </Form.Group>
           <Form.Group widths={2}>
             <Form.Dropdown
-              label='允许的邮箱域名'
-              placeholder='允许的邮箱域名'
+              label='允许的Mail域名'
+              placeholder='允许的Mail域名'
               name='EmailDomainWhitelist'
               required
               fluid
@@ -554,7 +554,7 @@ const SafetySetting = () => {
               options={EmailDomainWhitelist}
             />
             <Form.Input
-              label='添加新的允许的邮箱域名'
+              label='添加新的允许的Mail域名'
               action={
                 <Button
                   type='button'
@@ -562,7 +562,7 @@ const SafetySetting = () => {
                     submitNewRestrictedDomain();
                   }}
                 >
-                  填入
+                  Fill
                 </Button>
               }
               onKeyDown={(e) => {
@@ -571,7 +571,7 @@ const SafetySetting = () => {
                 }
               }}
               autoComplete='new-password'
-              placeholder='Enter新的允许的邮箱域名'
+              placeholder='Enter新的允许的Mail域名'
               value={restrictedDomainInput}
               onChange={(e, { value }) => {
                 setRestrictedDomainInput(value);
@@ -579,7 +579,7 @@ const SafetySetting = () => {
             />
           </Form.Group>
           <Form.Button onClick={submitEmailDomainWhitelist}>
-            保存邮箱域名白名单Settings
+            saveMail域名白名单Settings
           </Form.Button>
           <Divider />
           <Header as='h3' inverted={isDark}>
@@ -633,13 +633,13 @@ const SafetySetting = () => {
           </Form.Group>
           <Form.Group widths={3}>
             <Form.Checkbox
-              label='EnableSMTP SSL（465端口强制开启）'
+              label='EnableSMTP SSL（465端口强制open启）'
               name='SMTPSSLEnabled'
               onChange={handleInputChange}
               checked={inputs.SMTPSSLEnabled === 'true'}
             />
           </Form.Group>
-          <Form.Button onClick={submitSMTP}>保存 SMTP Settings</Form.Button>
+          <Form.Button onClick={submitSMTP}>save SMTP Settings</Form.Button>
           <Divider />
           <Header as='h3' inverted={isDark}>
             Configure GitHub OAuth App
@@ -680,13 +680,13 @@ const SafetySetting = () => {
             />
           </Form.Group>
           <Form.Button onClick={submitGitHubOAuth}>
-            保存 GitHub OAuth Settings
+            save GitHub OAuth Settings
           </Form.Button>
           <Divider />
           <Header as='h3' inverted={isDark}>
             Configure WeChat Server
             <Header.Subheader>
-              用以支持通过微信进行LoginRegister，
+              用以支持通过WeChat进行LoginRegister，
               <a
                 href='https://github.com/songquanpeng/wechat-server'
                 target='_blank'
@@ -721,11 +721,11 @@ const SafetySetting = () => {
               onChange={handleInputChange}
               autoComplete='new-password'
               value={inputs.WeChatAccountQRCodeImageURL}
-              placeholder='Enter一个图片链接'
+              placeholder='Enter一indivual图片链接'
             />
           </Form.Group>
           <Form.Button onClick={submitWeChat}>
-            保存 WeChat Server Settings
+            save WeChat Server Settings
           </Form.Button>
           <Divider />
           <Header as='h3' inverted={isDark}>
@@ -748,7 +748,7 @@ const SafetySetting = () => {
             />
           </Form.Group>
           <Form.Button onClick={submitTelegramSettings}>
-            保存 Telegram LoginSettings
+            save Telegram LoginSettings
           </Form.Button>
           <Divider />
           <Header as='h3' inverted={isDark}>
@@ -785,7 +785,7 @@ const SafetySetting = () => {
             />
           </Form.Group>
           <Form.Button onClick={submitTurnstile}>
-            保存 Turnstile Settings
+            save Turnstile Settings
           </Form.Button>
         </Form>
       </Grid.Column>

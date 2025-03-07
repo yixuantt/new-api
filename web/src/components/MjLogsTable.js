@@ -45,13 +45,13 @@ function renderType(type) {
     case 'IMAGINE':
       return (
         <Tag color='blue' size='large'>
-          绘图
+          Drawing
         </Tag>
       );
     case 'UPSCALE':
       return (
         <Tag color='orange' size='large'>
-          放大
+          Upscalers
         </Tag>
       );
     case 'VARIATION':
@@ -63,73 +63,73 @@ function renderType(type) {
     case 'HIGH_VARIATION':
       return (
         <Tag color='purple' size='large'>
-          强变换
+          Low Variation
         </Tag>
       );
     case 'LOW_VARIATION':
       return (
         <Tag color='purple' size='large'>
-          弱变换
+          High Variation
         </Tag>
       );
     case 'PAN':
       return (
         <Tag color='cyan' size='large'>
-          平移
+          Pan
         </Tag>
       );
     case 'DESCRIBE':
       return (
         <Tag color='yellow' size='large'>
-          图生文
+          Describe
         </Tag>
       );
     case 'BLEND':
       return (
         <Tag color='lime' size='large'>
-          图混合
+          Blend
         </Tag>
       );
     case 'UPLOAD':
       return (
         <Tag color='blue' size='large'>
-          上传文件
+          Upload
         </Tag>
       );
     case 'SHORTEN':
       return (
         <Tag color='pink' size='large'>
-          缩词
+          Shorten
         </Tag>
       );
     case 'REROLL':
       return (
         <Tag color='indigo' size='large'>
-          重绘
+          Vary
         </Tag>
       );
     case 'INPAINT':
       return (
         <Tag color='violet' size='large'>
-          局部重绘-Submit
+          局部Vary-Submit
         </Tag>
       );
     case 'ZOOM':
       return (
         <Tag color='teal' size='large'>
-          变焦
+          zoom
         </Tag>
       );
     case 'CUSTOM_ZOOM':
       return (
         <Tag color='teal' size='large'>
-          Custom变焦-Submit
+          Customzoom-Submit
         </Tag>
       );
     case 'MODAL':
       return (
         <Tag color='green' size='large'>
-          窗口处理
+          window handling
         </Tag>
       );
     case 'SWAP_FACE':
@@ -141,7 +141,7 @@ function renderType(type) {
     default:
       return (
         <Tag color='white' size='large'>
-          未知
+          unknown
         </Tag>
       );
   }
@@ -158,7 +158,7 @@ function renderCode(code) {
     case 21:
       return (
         <Tag color='lime' size='large'>
-          等待中
+          Waiting
         </Tag>
       );
     case 22:
@@ -176,7 +176,7 @@ function renderCode(code) {
     default:
       return (
         <Tag color='white' size='large'>
-          未知
+          unknown
         </Tag>
       );
   }
@@ -188,57 +188,57 @@ function renderStatus(type) {
     case 'SUCCESS':
       return (
         <Tag color='green' size='large'>
-          成功
+          Success
         </Tag>
       );
     case 'NOT_START':
       return (
         <Tag color='grey' size='large'>
-          未启动
+          No start
         </Tag>
       );
     case 'SUBMITTED':
       return (
         <Tag color='yellow' size='large'>
-          队列中
+          In queue
         </Tag>
       );
     case 'IN_PROGRESS':
       return (
         <Tag color='blue' size='large'>
-          执行中
+          processing
         </Tag>
       );
     case 'FAILURE':
       return (
         <Tag color='red' size='large'>
-          失败
+          Failed
         </Tag>
       );
     case 'MODAL':
       return (
         <Tag color='yellow' size='large'>
-          窗口等待
+          window wait
         </Tag>
       );
     default:
       return (
         <Tag color='white' size='large'>
-          未知
+          unknown
         </Tag>
       );
   }
 }
 
 const renderTimestamp = (timestampInSeconds) => {
-  const date = new Date(timestampInSeconds * 1000); // 从秒转换为毫秒
+  const date = new Date(timestampInSeconds * 1000); // 从Second转换为毫Second
 
   const year = date.getFullYear(); // 获取年份
-  const month = ('0' + (date.getMonth() + 1)).slice(-2); // 获取月份，从0开始需要+1，并保证两位数
+  const month = ('0' + (date.getMonth() + 1)).slice(-2); // 获取月份，从0open始需要+1，并保证两位数
   const day = ('0' + date.getDate()).slice(-2); // 获取日期，并保证两位数
-  const hours = ('0' + date.getHours()).slice(-2); // 获取小时，并保证两位数
-  const minutes = ('0' + date.getMinutes()).slice(-2); // 获取分钟，并保证两位数
-  const seconds = ('0' + date.getSeconds()).slice(-2); // 获取秒钟，并保证两位数
+  const hours = ('0' + date.getHours()).slice(-2); // 获取Hour，并保证两位数
+  const minutes = ('0' + date.getMinutes()).slice(-2); // 获取minutes，并保证两位数
+  const seconds = ('0' + date.getSeconds()).slice(-2); // 获取Second钟，并保证两位数
 
   return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`; // 格式化输出
 };
@@ -251,16 +251,16 @@ function renderDuration(submit_time, finishTime) {
   const start = new Date(submit_time);
   const finish = new Date(finishTime);
 
-  // 计算Time差（毫秒）
+  // 计算Time差（毫Second）
   const durationMs = finish - start;
 
-  // 将Time差转换为秒，并保留一位小数
+  // 将Time差转换为Second，并保留一位小数
   const durationSec = (durationMs / 1000).toFixed(1);
 
-  // Settings颜色：大于60秒则为红色，小于等于60秒则为绿色
+  // Settings颜色：大于60Second则为红色，小于等于60Second则为绿色
   const color = durationSec > 60 ? 'red' : 'green';
 
-  // 返回带有样式的颜色标签
+  // 返回带有样式的颜色Label
   return (
     <Tag color={color} size='large'>
       {durationSec}s
@@ -280,7 +280,7 @@ const LogsTable = () => {
       },
     },
     {
-      title: '花费Time',
+      title: 'SpendTime',
       dataIndex: 'finish_time', // 以finish_time作为dataIndex
       key: 'finish_time',
       render: (finish, record) => {
@@ -317,7 +317,7 @@ const LogsTable = () => {
       },
     },
     {
-      title: '任务ID',
+      title: 'Task ID',
       dataIndex: 'mj_id',
       render: (text, record, index) => {
         return <div>{text}</div>;
@@ -340,7 +340,7 @@ const LogsTable = () => {
       },
     },
     {
-      title: '进度',
+      title: 'schedule',
       dataIndex: 'progress',
       render: (text, record, index) => {
         return (
@@ -363,7 +363,7 @@ const LogsTable = () => {
       },
     },
     {
-      title: '结果图片',
+      title: 'Result',
       dataIndex: 'image_url',
       render: (text, record, index) => {
         if (!text) {
@@ -373,10 +373,10 @@ const LogsTable = () => {
           <Button
             onClick={() => {
               setModalImageUrl(text); // 更新图片URLStatus
-              setIsModalOpenurl(true); // 打开模态框
+              setIsModalOpenurl(true); // 打open模态框
             }}
           >
-            查看图片
+            Check图片
           </Button>
         );
       },
@@ -428,7 +428,7 @@ const LogsTable = () => {
       },
     },
     {
-      title: '失败原因',
+      title: 'Failure reason',
       dataIndex: 'fail_reason',
       render: (text, record, index) => {
         // 如果text未定义，返回替代文本，For example空字符串''或其他
@@ -464,7 +464,7 @@ const LogsTable = () => {
   // 定义模态框图片URL的Status和更新函数
   const [modalImageUrl, setModalImageUrl] = useState('');
   let now = new Date();
-  // 初始化start_timestamp为前一天
+  // 初始化start_timestamp为前一day
   const [inputs, setInputs] = useState({
     channel_id: '',
     mj_id: '',
@@ -565,7 +565,7 @@ const LogsTable = () => {
         {isAdminUser && showBanner ? (
           <Banner
             type='info'
-            description='当前未开启Midjourney回调，部分项目可能None法获得绘图结果，可在运营Settings中开启。'
+            description='当前未open启Midjourney回调，部分项目可能None法获得Drawing结果，可在运营Settings中open启。'
           />
         ) : (
           <></>
@@ -583,7 +583,7 @@ const LogsTable = () => {
             />
             <Form.Input
               field='mj_id'
-              label='任务 ID'
+              label='Task ID'
               style={{ width: 176 }}
               value={mj_id}
               placeholder='Optional Values'
@@ -592,7 +592,7 @@ const LogsTable = () => {
             />
             <Form.DatePicker
               field='start_timestamp'
-              label='起始Time'
+              label='Start Time'
               style={{ width: 272 }}
               initValue={start_timestamp}
               value={start_timestamp}
@@ -603,7 +603,7 @@ const LogsTable = () => {
             <Form.DatePicker
               field='end_timestamp'
               fluid
-              label='结束Time'
+              label='End Time'
               style={{ width: 272 }}
               initValue={end_timestamp}
               value={end_timestamp}

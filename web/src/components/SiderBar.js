@@ -111,12 +111,12 @@ const SiderBar = () => {
       //   icon: <IconGift />,
       //   className: isAdmin() ? 'semi-navigation-item-normal' : 'tableHiddle',
       // },
-      {
-        text: 'Wallet',
-        itemKey: 'topup',
-        to: '/topup',
-        icon: <IconCreditCard />,
-      },
+      // {
+      //   text: 'Wallet',
+      //   itemKey: 'topup',
+      //   to: '/topup',
+      //   icon: <IconCreditCard />,
+      // },
       {
         text: 'User System',
         itemKey: 'user',
@@ -141,7 +141,7 @@ const SiderBar = () => {
             : 'tableHiddle',
       },
       // {
-      //   text: '绘图',
+      //   text: 'Drawing',
       //   itemKey: 'midjourney',
       //   to: '/midjourney',
       //   icon: <IconImage />,
@@ -151,7 +151,7 @@ const SiderBar = () => {
       //       : 'tableHiddle',
       // },
       // {
-      //   text: '异步任务',
+      //   text: 'Async task',
       //   itemKey: 'task',
       //   to: '/task',
       //   icon: <IconChecklistStroked />,
@@ -193,7 +193,7 @@ const SiderBar = () => {
       statusDispatch({ type: 'set', payload: data });
       setStatusData(data);
     } else {
-      showError('None法正常连接至服务器！');
+      showError('None method to connect to the server normally!');
     }
   };
 
@@ -232,7 +232,7 @@ const SiderBar = () => {
           }
         } catch (e) {
           console.error(e);
-          showError('Chat数据解析失败');
+          showError('Chat data parsing Failed');
         }
       }
     }

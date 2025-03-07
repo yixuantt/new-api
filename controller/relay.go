@@ -108,7 +108,7 @@ func Relay(c *gin.Context) {
 		openaiErr = relayRequest(c, relayMode, channel)
 
 		if openaiErr == nil {
-			return // 成功处理请求，直接返回
+			return // Success处理请求，直接返回
 		}
 
 		go processChannelError(c, channel.Id, channel.Type, channel.Name, channel.GetAutoBan(), openaiErr)
@@ -119,13 +119,13 @@ func Relay(c *gin.Context) {
 	}
 	useChannel := c.GetStringSlice("use_channel")
 	if len(useChannel) > 1 {
-		retryLogStr := fmt.Sprintf("重试：%s", strings.Trim(strings.Join(strings.Fields(fmt.Sprint(useChannel)), "->"), "[]"))
+		retryLogStr := fmt.Sprintf("Retry：%s", strings.Trim(strings.Join(strings.Fields(fmt.Sprint(useChannel)), "->"), "[]"))
 		common.LogInfo(c, retryLogStr)
 	}
 
 	if openaiErr != nil {
 		if openaiErr.StatusCode == http.StatusTooManyRequests {
-			openaiErr.Error.Message = "The current group load is saturated, please try again later"
+			openaiErr.Error.Message = "Current group upstream load is saturated. Please try again later"
 		}
 		openaiErr.Error.Message = common.MessageWithRequestId(openaiErr.Error.Message, requestId)
 		c.JSON(openaiErr.StatusCode, gin.H{
@@ -163,7 +163,7 @@ func getChannel(c *gin.Context, group, originalModel string, retryCount int) (*m
 	}
 	channel, err := model.CacheGetRandomSatisfiedChannel(group, originalModel, retryCount)
 	if err != nil {
-		return nil, errors.New(fmt.Sprintf("获取重试Channel失败: %s", err.Error()))
+		return nil, errors.New(fmt.Sprintf("获取RetryChannelFailed: %s", err.Error()))
 	}
 	middleware.SetupContextForSelectedChannel(c, channel, originalModel)
 	return channel, nil
@@ -189,7 +189,7 @@ func shouldRetry(c *gin.Context, openaiErr *dto.OpenAIErrorWithStatusCode, retry
 		return true
 	}
 	if openaiErr.StatusCode/100 == 5 {
-		// 超时不重试
+		// 超时不Retry
 		if openaiErr.StatusCode == 504 || openaiErr.StatusCode == 524 {
 			return false
 		}
@@ -203,7 +203,7 @@ func shouldRetry(c *gin.Context, openaiErr *dto.OpenAIErrorWithStatusCode, retry
 		return false
 	}
 	if openaiErr.StatusCode == 408 {
-		// azure处理超时不重试
+		// azure处理超时不Retry
 		return false
 	}
 	if openaiErr.StatusCode/100 == 2 {
@@ -241,7 +241,7 @@ func RelayMidjourney(c *gin.Context) {
 	if err != nil {
 		statusCode := http.StatusBadRequest
 		if err.Code == 30 {
-			err.Result = "当前Group负载已饱和，请稍后再试，或升级账户以Promote服务质量。"
+			err.Result = "当前Group负载已饱和，请稍后再试，或升级Account以Promote服务quality。"
 			statusCode = http.StatusTooManyRequests
 		}
 		c.JSON(statusCode, gin.H{
@@ -308,12 +308,12 @@ func RelayTask(c *gin.Context) {
 	}
 	useChannel := c.GetStringSlice("use_channel")
 	if len(useChannel) > 1 {
-		retryLogStr := fmt.Sprintf("重试：%s", strings.Trim(strings.Join(strings.Fields(fmt.Sprint(useChannel)), "->"), "[]"))
+		retryLogStr := fmt.Sprintf("Retry：%s", strings.Trim(strings.Join(strings.Fields(fmt.Sprint(useChannel)), "->"), "[]"))
 		common.LogInfo(c, retryLogStr)
 	}
 	if taskErr != nil {
 		if taskErr.StatusCode == http.StatusTooManyRequests {
-			taskErr.Message = "The current group load is saturated, please try again later"
+			taskErr.Message = "Current group upstream load is saturated. Please try again later"
 		}
 		c.JSON(taskErr.StatusCode, taskErr)
 	}
@@ -347,7 +347,7 @@ func shouldRetryTaskRelay(c *gin.Context, channelId int, taskErr *dto.TaskError,
 		return true
 	}
 	if taskErr.StatusCode/100 == 5 {
-		// 超时不重试
+		// 超时不Retry
 		if taskErr.StatusCode == 504 || taskErr.StatusCode == 524 {
 			return false
 		}
@@ -357,7 +357,7 @@ func shouldRetryTaskRelay(c *gin.Context, channelId int, taskErr *dto.TaskError,
 		return false
 	}
 	if taskErr.StatusCode == 408 {
-		// azure处理超时不重试
+		// azure处理超时不Retry
 		return false
 	}
 	if taskErr.LocalError {

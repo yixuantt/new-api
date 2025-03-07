@@ -27,7 +27,7 @@ import Midjourney from './pages/Midjourney';
 import Pricing from './pages/Pricing/index.js';
 import Task from './pages/Task/index.js';
 import Playground from './components/Playground.js';
-
+import Doc from './pages/Doc/index.js';
 const Home = lazy(() => import('./pages/Home'));
 const Detail = lazy(() => import('./pages/Detail'));
 const About = lazy(() => import('./pages/About'));
@@ -119,6 +119,14 @@ function App() {
             </PrivateRoute>
           }
         /> */}
+        <Route
+          path='/doc'
+          element={
+            <Suspense fallback={<Loading />}>
+              <Doc />
+            </Suspense>
+          }
+        />
         <Route
           path='/user'
           element={
@@ -265,6 +273,7 @@ function App() {
             </Suspense>
           }
         />
+        
         {/* <Route
           path='/chat/:id?'
           element={

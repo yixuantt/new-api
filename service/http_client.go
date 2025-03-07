@@ -41,7 +41,7 @@ func GetProxyHttpClient(proxyURLStr string) (*http.Client, error) {
 	// 解析ProxyURL
 	proxyURL, err := url.Parse(proxyURLStr)
 	if err != nil {
-		return nil, fmt.Errorf("解析ProxyURL失败: %v", err)
+		return nil, fmt.Errorf("解析ProxyURLFailed: %v", err)
 	}
 
 	// 获取Proxy的认证信息（如果有）
@@ -54,7 +54,7 @@ func GetProxyHttpClient(proxyURLStr string) (*http.Client, error) {
 		}
 	}
 
-	// 检查Proxy协议是否为socks5
+	// 检查ProxyLicense是否为socks5
 	if strings.HasPrefix(proxyURL.Scheme, "socks5") {
 		// 使用认证信息创建SOCKS5Proxy
 		dialer, err := proxy.SOCKS5("tcp", proxyURL.Host, auth, proxy.Direct)

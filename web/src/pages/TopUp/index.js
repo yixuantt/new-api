@@ -45,10 +45,10 @@ const TopUp = () => {
       });
       const { success, message, data } = res.data;
       if (success) {
-        showSuccess('Redeem成功！');
+        showSuccess('RedeemSuccess！');
         Modal.success({
-          title: 'Redeem成功！',
-          content: '成功RedeemQuota：' + renderQuota(data),
+          title: 'RedeemSuccess！',
+          content: 'SuccessRedeemQuota：' + renderQuota(data),
           centered: true,
         });
         setUserQuota((quota) => {
@@ -59,7 +59,7 @@ const TopUp = () => {
         showError(message);
       }
     } catch (err) {
-      showError('请求失败');
+      showError('请求Failed');
     } finally {
       setIsSubmitting(false);
     }
@@ -75,18 +75,18 @@ const TopUp = () => {
 
   const preTopUp = async (payment) => {
     if (!paymentEnabled) {
-      showError('Admin未开启在线Recharge！');
+      showError('Admin未open启在线Recharge！');
       return;
     }
     if (!Number.isInteger(Number(topUpCount))) {
-      showError('Recharge数量必须是整数！');
+      showError('Rechargequantity必须是整数！');
       return;
     }
     if (payAmount === 0) {
       await getAmount();
     }
     if (topUpCount < minTopUp) {
-      showError('Recharge数量不能小于' + minTopUp);
+      showError('Rechargequantity不能小于' + minTopUp);
       return;
     }
     setPayWay(payment);
@@ -98,7 +98,7 @@ const TopUp = () => {
       await getAmount();
     }
     if (topUpCount < minTopUp) {
-      showError('Recharge数量不能小于' + minTopUp);
+      showError('Rechargequantity不能小于' + minTopUp);
       return;
     }
     setOpen(false);
@@ -157,7 +157,7 @@ const TopUp = () => {
 
   const renderAmount = () => {
     // console.log(amount);
-    return payAmount + '元';
+    return payAmount + 'CNY';
   };
 
   const getAmount = async (value) => {
@@ -197,11 +197,11 @@ const TopUp = () => {
     <div>
       <Layout>
         <Layout.Header>
-          <h3>我的钱包</h3>
+          <h3>我的Wallet</h3>
         </Layout.Header>
         <Layout.Content>
           <Modal
-            title='确定要Recharge吗'
+            title='OK要Recharge吗'
             visible={open}
             onOk={onlineTopUp}
             onCancel={handleCancel}
@@ -210,9 +210,9 @@ const TopUp = () => {
             centered={true}
           >
             <p>
-              Recharge数量：{topUpCount}$（实到：{chargedAmount}$）
+              Rechargequantity：{topUpCount}$（实到：{chargedAmount}$）
             </p>
-            <p>实付金额：{renderAmount()}</p>
+            <p>Actual payment amount: {renderAmount()}</p>
             <p>是否确认Recharge？</p>
           </Modal>
           <div
@@ -263,8 +263,8 @@ const TopUp = () => {
                     <Form.Input
                       disabled={!paymentEnabled}
                       field={'redemptionCount'}
-                      label={'实付金额：' + renderAmount()}
-                      placeholder={'Recharge数量，必须整数，最低' + minTopUp + '$'}
+                      label={'Actual payment amount: ' + renderAmount()}
+                      placeholder={'Rechargequantity，必须整数，lowest' + minTopUp + '$'}
                       name='redemptionCount'
                       type={'number'}
                       value={topUpCount}
@@ -293,7 +293,7 @@ const TopUp = () => {
                           preTopUp('stripe');
                         }}
                       >
-                        {isPaying ? '支付中...' : '去支付'}
+                        {isPaying ? 'Paying' : '去支付'}
                       </Button>
                     </Space>
                   </Form>

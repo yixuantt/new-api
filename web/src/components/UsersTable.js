@@ -73,7 +73,7 @@ const UsersTable = () => {
                   {renderQuota(record.used_quota)}
                 </Tag>
               </Tooltip>
-              <Tooltip content={'调用次数'}>
+              <Tooltip content={'调用times数'}>
                 <Tag color='white' size='large'>
                   {renderNumber(record.request_count)}
                 </Tag>
@@ -84,18 +84,18 @@ const UsersTable = () => {
       },
     },
     {
-      title: '邀请信息',
+      title: 'Invitation information',
       dataIndex: 'invite',
       render: (text, record, index) => {
         return (
           <div>
             <Space spacing={1}>
-              <Tooltip content={'邀请人数'}>
+              <Tooltip content={'Number of people invited'}>
                 <Tag color='white' size='large'>
                   {renderNumber(record.aff_count)}
                 </Tag>
               </Tooltip>
-              <Tooltip content={'邀请总收益'}>
+              <Tooltip content={'邀请total revenue'}>
                 <Tag color='white' size='large'>
                   {renderQuota(record.aff_history_quota)}
                 </Tag>
@@ -117,7 +117,7 @@ const UsersTable = () => {
       },
     },
     {
-      title: '角色',
+      title: 'Role',
       dataIndex: 'role',
       render: (text, record, index) => {
         return <div>{renderRole(text)}</div>;
@@ -148,7 +148,7 @@ const UsersTable = () => {
           ) : (
             <>
               <Popconfirm
-                title='确定？'
+                title='Sure?'
                 okType={'warning'}
                 onConfirm={() => {
                   manageUser(record.id, 'promote', record);
@@ -159,7 +159,7 @@ const UsersTable = () => {
                 </Button>
               </Popconfirm>
               <Popconfirm
-                title='确定？'
+                title='Sure?'
                 okType={'warning'}
                 onConfirm={() => {
                   manageUser(record.id, 'demote', record);
@@ -209,8 +209,8 @@ const UsersTable = () => {
                 Edit
               </Button>
               <Popconfirm
-                title='确定是否要Logout此User？'
-                content='相当于DeleteUser，此修改将不可逆'
+                title='OK是否要Logout此User？'
+                content='相当于DeleteUser，This modification will be irreversible'
                 okType={'danger'}
                 position={'left'}
                 onConfirm={() => {
@@ -455,11 +455,11 @@ const UsersTable = () => {
         <div style={{ display: 'flex' }}>
           <Space>
             <Form.Input
-              label='搜索关键字'
+              label='Search keywords'
               icon='search'
               field='keyword'
               iconPosition='left'
-              placeholder='搜索User的 ID，Username，显示Name，以及Email Address ...'
+              placeholder='搜索User的 ID，Username，show示Name，andEmail Address ...'
               value={searchKeyword}
               loading={searching}
               onChange={(value) => handleKeywordChange(value)}

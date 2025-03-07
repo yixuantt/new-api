@@ -76,7 +76,7 @@ const Detail = (props) => {
     },
     title: {
       visible: true,
-      text: 'Model消耗分布',
+      text: 'ModelConsumption distribution',
       subtext: '0',
     },
     bar: {
@@ -119,7 +119,7 @@ const Detail = (props) => {
           }
           // add to first
           array.unshift({
-            key: '总计',
+            key: 'Total',
             value: renderQuotaNumberWithDigit(sum, 4),
           });
           return array;
@@ -163,7 +163,7 @@ const Detail = (props) => {
     },
     title: {
       visible: true,
-      text: 'Model调用次数占比',
+      text: 'Model调用times数占比',
     },
     legends: {
       visible: true,
@@ -210,7 +210,7 @@ const Detail = (props) => {
           created_at: now.getTime() / 1000,
         });
       }
-      // 根据dataExportDefaultTime重制Time粒度
+      // 根据dataExportDefaultTime重制Time Granularity
       let timeGranularity = 3600;
       if (dataExportDefaultTime === 'day') {
         timeGranularity = 86400;
@@ -273,7 +273,7 @@ const Detail = (props) => {
           value: item.count,
         });
       }
-      // 合并created_at和model_name 为 lineData, created_at 数据Type是小时的Time戳
+      // 合并created_at和model_name 为 lineData, created_at 数据Type是Hour的Time戳
       // 转换日期格式
       let createTime = timestamp2string1(
         item.created_at,
@@ -297,10 +297,10 @@ const Detail = (props) => {
 
     // sort by count
     pieData.sort((a, b) => b.value - a.value);
-    spec_pie.title.subtext = `总计：${renderNumber(times)}`;
+    spec_pie.title.subtext = `Total：${renderNumber(times)}`;
     spec_pie.data[0].values = pieData;
 
-    spec_line.title.subtext = `总计：${renderQuota(consumeQuota, 2)}`;
+    spec_line.title.subtext = `Total：${renderQuota(consumeQuota, 2)}`;
     spec_line.data[0].values = lineData;
     pieChart.updateSpec(spec_pie);
     lineChart.updateSpec(spec_line);
@@ -314,7 +314,7 @@ const Detail = (props) => {
   useEffect(() => {
     // setDataExportDefaultTime(localStorage.getItem('data_export_default_time'));
     // if (dataExportDefaultTime === 'day') {
-    //     // Settings开始Time为7天前
+    //     // Settingsopen始Time为7day前
     //     let st = timestamp2string(now.getTime() / 1000 - 86400 * 7)
     //     inputs.start_timestamp = st;
     //     formRef.current.formApi.setValue('start_timestamp', st);
@@ -332,14 +332,14 @@ const Detail = (props) => {
     <>
       <Layout>
         <Layout.Header>
-          <h3>数据看板</h3>
+          <h3>Dashboard</h3>
         </Layout.Header>
         <Layout.Content>
           <Form ref={formRef} layout='horizontal' style={{ marginTop: 10 }}>
             <>
               <Form.DatePicker
                 field='start_timestamp'
-                label='起始Time'
+                label='Start Time'
                 style={{ width: 272 }}
                 initValue={start_timestamp}
                 value={start_timestamp}
@@ -352,7 +352,7 @@ const Detail = (props) => {
               <Form.DatePicker
                 field='end_timestamp'
                 fluid
-                label='结束Time'
+                label='End Time'
                 style={{ width: 272 }}
                 initValue={end_timestamp}
                 value={end_timestamp}
@@ -362,15 +362,15 @@ const Detail = (props) => {
               />
               <Form.Select
                 field='data_export_default_time'
-                label='Time粒度'
+                label='Time Granularity'
                 style={{ width: 176 }}
                 initValue={dataExportDefaultTime}
-                placeholder={'Time粒度'}
+                placeholder={'Time Granularity'}
                 name='data_export_default_time'
                 optionList={[
-                  { label: '小时', value: 'hour' },
-                  { label: '天', value: 'day' },
-                  { label: '周', value: 'week' },
+                  { label: 'Hour', value: 'hour' },
+                  { label: 'day', value: 'day' },
+                  { label: 'week', value: 'week' },
                 ]}
                 onChange={(value) =>
                   handleInputChange(value, 'data_export_default_time')

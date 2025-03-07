@@ -31,7 +31,7 @@ func OpenAIErrorWrapper(err error, code string, statusCode int) *dto.OpenAIError
 	lowerText := strings.ToLower(text)
 	if strings.Contains(lowerText, "post") || strings.Contains(lowerText, "dial") || strings.Contains(lowerText, "http") {
 		common.SysLog(fmt.Sprintf("error: %s", text))
-		text = "请求上游地址失败"
+		text = "Request upstream address Failed"
 	}
 	openAIError := dto.OpenAIError{
 		Message: text,
@@ -114,9 +114,9 @@ func TaskErrorWrapper(err error, code string, statusCode int) *dto.TaskError {
 	lowerText := strings.ToLower(text)
 	if strings.Contains(lowerText, "post") || strings.Contains(lowerText, "dial") || strings.Contains(lowerText, "http") {
 		common.SysLog(fmt.Sprintf("error: %s", text))
-		text = "请求上游地址失败"
+		text = "Request upstream address Failed"
 	}
-	//避免暴露内部错误
+	//避免暴露内部mistake
 	taskError := &dto.TaskError{
 		Code:       code,
 		Message:    text,

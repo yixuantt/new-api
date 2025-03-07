@@ -102,7 +102,7 @@ func WeChatAuth(c *gin.Context) {
 		} else {
 			c.JSON(http.StatusOK, gin.H{
 				"success": false,
-				"message": "The administrator has turned off new user registration",
+				"message": "Administrator has disabled new user registration",
 			})
 			return
 		}

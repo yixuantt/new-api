@@ -23,7 +23,7 @@ const AddUser = (props) => {
     const res = await API.post(`/api/user/`, inputs);
     const { success, message } = res.data;
     if (success) {
-      showSuccess('User账户创建成功！');
+      showSuccess('UserAccount创建Success！');
       setInputs(originInputs);
       props.refresh();
       props.handleClose();
@@ -41,7 +41,7 @@ const AddUser = (props) => {
     <>
       <SideSheet
         placement={'left'}
-        title={<Title level={3}>{'添加User'}</Title>}
+        title={<Title level={3}>{'Add User'}</Title>}
         headerStyle={{ borderBottom: '1px solid var(--semi-color-border)' }}
         bodyStyle={{ borderBottom: '1px solid var(--semi-color-border)' }}
         visible={props.visible}
@@ -72,28 +72,28 @@ const AddUser = (props) => {
             label='Username'
             name='username'
             addonBefore={'Username'}
-            placeholder={'请EnterUsername'}
+            placeholder={'Please Enter Username'}
             onChange={(value) => handleInputChange('username', value)}
             value={username}
             autoComplete='off'
           />
           <Input
             style={{ marginTop: 20 }}
-            addonBefore={'显示名'}
-            label='显示Name'
+            addonBefore={'show name'}
+            label='showName'
             name='display_name'
             autoComplete='off'
-            placeholder={'请Enter显示Name'}
+            placeholder={'Please Enter display Name'}
             onChange={(value) => handleInputChange('display_name', value)}
             value={display_name}
           />
           <Input
             style={{ marginTop: 20 }}
-            label='密 码'
+            label='password'
             name='password'
             type={'password'}
             addonBefore={'Password'}
-            placeholder={'请EnterPassword'}
+            placeholder={'Please Enter Password'}
             onChange={(value) => handleInputChange('password', value)}
             value={password}
             autoComplete='off'

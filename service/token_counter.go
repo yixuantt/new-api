@@ -58,7 +58,7 @@ func getTokenEncoder(model string) *tiktoken.Tiktoken {
 	if ok && tokenEncoder != nil {
 		return tokenEncoder
 	}
-	// 如果ok（即model在tokenEncoderMap中），但是tokenEncoder为nil，说明可能是CustomModel
+	// 如果ok（即model在tokenEncoderMap中），但是tokenEncoder为nil，illustrate可能是CustomModel
 	if ok {
 		tokenEncoder, err := tiktoken.EncodingForModel(model)
 		if err != nil {
@@ -83,7 +83,7 @@ func getImageToken(imageUrl *dto.MessageImageUrl, model string, stream bool) (in
 	if imageUrl.Detail == "low" {
 		return baseTokens, nil
 	}
-	// TODO: 非流模式下不计算图片token数量
+	// TODO: not streamMode下不计算图片tokenquantity
 	if !constant.GetMediaTokenNotStream && !stream {
 		return 1000, nil
 	}
@@ -145,7 +145,7 @@ func getImageToken(imageUrl *dto.MessageImageUrl, model string, stream bool) (in
 	// 将另一边按照相同的比例缩小，向上取整
 	otherSide = int(math.Ceil(float64(otherSide) / scale))
 	log.Printf("shortSide: %d, otherSide: %d, scale: %f", shortSide, otherSide, scale)
-	// 计算图片的token数量(边的长度除以512，向上取整)
+	// 计算图片的tokenquantity(边的长度除以512，向上取整)
 	tiles := (shortSide + 511) / 512 * ((otherSide + 511) / 512)
 	log.Printf("tiles: %d", tiles)
 	return tiles*tileTokens + baseTokens, nil
@@ -276,7 +276,7 @@ func CountAudioToken(text string, model string) (int, error) {
 	}
 }
 
-// CountTokenText 统计文本的token数量，仅当文本包含敏感词，返回错误，同时返回token数量
+// CountTokenText 统计文本的tokenquantity，仅当文本包含敏感词，返回mistake，同时返回tokenquantity
 func CountTokenText(text string, model string) (int, error) {
 	var err error
 	tokenEncoder := getTokenEncoder(model)

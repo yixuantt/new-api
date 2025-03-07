@@ -41,14 +41,14 @@ const colors = [
 ];
 
 const renderTimestamp = (timestampInSeconds) => {
-  const date = new Date(timestampInSeconds * 1000); // 从秒转换为毫秒
+  const date = new Date(timestampInSeconds * 1000); // 从Second转换为毫Second
 
   const year = date.getFullYear(); // 获取年份
-  const month = ('0' + (date.getMonth() + 1)).slice(-2); // 获取月份，从0开始需要+1，并保证两位数
+  const month = ('0' + (date.getMonth() + 1)).slice(-2); // 获取月份，从0open始需要+1，并保证两位数
   const day = ('0' + date.getDate()).slice(-2); // 获取日期，并保证两位数
-  const hours = ('0' + date.getHours()).slice(-2); // 获取小时，并保证两位数
-  const minutes = ('0' + date.getMinutes()).slice(-2); // 获取分钟，并保证两位数
-  const seconds = ('0' + date.getSeconds()).slice(-2); // 获取秒钟，并保证两位数
+  const hours = ('0' + date.getHours()).slice(-2); // 获取Hour，并保证两位数
+  const minutes = ('0' + date.getMinutes()).slice(-2); // 获取minutes，并保证两位数
+  const seconds = ('0' + date.getSeconds()).slice(-2); // 获取Second钟，并保证两位数
 
   return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`; // 格式化输出
 };
@@ -61,16 +61,16 @@ function renderDuration(submit_time, finishTime) {
   const start = new Date(submit_time);
   const finish = new Date(finishTime);
 
-  // 计算Time差（毫秒）
+  // 计算Time差（毫Second）
   const durationMs = finish - start;
 
-  // 将Time差转换为秒，并保留一位小数
+  // 将Time差转换为Second，并保留一位小数
   const durationSec = (durationMs / 1000).toFixed(1);
 
-  // Settings颜色：大于60秒则为红色，小于等于60秒则为绿色
+  // Settings颜色：大于60Second则为红色，小于等于60Second则为绿色
   const color = durationSec > 60 ? 'red' : 'green';
 
-  // 返回带有样式的颜色标签
+  // 返回带有样式的颜色Label
   return (
     <Tag color={color} size='large'>
       {durationSec}s
@@ -91,14 +91,14 @@ const LogsTable = () => {
       },
     },
     {
-      title: '结束Time',
+      title: 'End Time',
       dataIndex: 'finish_time',
       render: (text, record, index) => {
         return <div>{text ? renderTimestamp(text) : '-'}</div>;
       },
     },
     {
-      title: '进度',
+      title: 'schedule',
       dataIndex: 'progress',
       width: 50,
       render: (text, record, index) => {
@@ -123,7 +123,7 @@ const LogsTable = () => {
       },
     },
     {
-      title: '花费Time',
+      title: 'SpendTime',
       dataIndex: 'finish_time', // 以finish_time作为dataIndex
       key: 'finish_time',
       render: (finish, record) => {
@@ -153,7 +153,7 @@ const LogsTable = () => {
       },
     },
     {
-      title: '平台',
+      title: 'platform',
       dataIndex: 'platform',
       render: (text, record, index) => {
         return <div>{renderPlatform(text)}</div>;
@@ -167,7 +167,7 @@ const LogsTable = () => {
       },
     },
     {
-      title: '任务ID（click to viewDetails）',
+      title: 'Task ID（click to viewDetails）',
       dataIndex: 'task_id',
       render: (text, record, index) => {
         return (
@@ -185,7 +185,7 @@ const LogsTable = () => {
       },
     },
     {
-      title: '任务Status',
+      title: 'Task Status',
       dataIndex: 'status',
       render: (text, record, index) => {
         return <div>{renderStatus(text)}</div>;
@@ -193,7 +193,7 @@ const LogsTable = () => {
     },
 
     {
-      title: '失败原因',
+      title: 'Failure reason',
       dataIndex: 'fail_reason',
       render: (text, record, index) => {
         // 如果text未定义，返回替代文本，For example空字符串''或其他
@@ -224,7 +224,7 @@ const LogsTable = () => {
   const [logType] = useState(0);
 
   let now = new Date();
-  // 初始化start_timestamp为前一天
+  // 初始化start_timestamp为前一day
   let zeroNow = new Date(now.getFullYear(), now.getMonth(), now.getDate());
   const [inputs, setInputs] = useState({
     channel_id: '',
@@ -314,14 +314,14 @@ const LogsTable = () => {
         return (
           <Label basic color='grey'>
             {' '}
-            生成音乐{' '}
+            generate music{' '}
           </Label>
         );
       case 'LYRICS':
         return (
           <Label basic color='pink'>
             {' '}
-            生成歌词{' '}
+            Generate lyrics{' '}
           </Label>
         );
 
@@ -329,7 +329,7 @@ const LogsTable = () => {
         return (
           <Label basic color='black'>
             {' '}
-            未知{' '}
+            unknown{' '}
           </Label>
         );
     }
@@ -348,7 +348,7 @@ const LogsTable = () => {
         return (
           <Label basic color='black'>
             {' '}
-            未知{' '}
+            unknown{' '}
           </Label>
         );
     }
@@ -360,49 +360,49 @@ const LogsTable = () => {
         return (
           <Label basic color='green'>
             {' '}
-            成功{' '}
+            Success{' '}
           </Label>
         );
       case 'NOT_START':
         return (
           <Label basic color='black'>
             {' '}
-            未启动{' '}
+            No start{' '}
           </Label>
         );
       case 'SUBMITTED':
         return (
           <Label basic color='yellow'>
             {' '}
-            队列中{' '}
+            In queue{' '}
           </Label>
         );
       case 'IN_PROGRESS':
         return (
           <Label basic color='blue'>
             {' '}
-            执行中{' '}
+            processing{' '}
           </Label>
         );
       case 'FAILURE':
         return (
           <Label basic color='red'>
             {' '}
-            失败{' '}
+            Failed{' '}
           </Label>
         );
       case 'QUEUED':
         return (
           <Label basic color='red'>
             {' '}
-            排队中{' '}
+            Queuing{' '}
           </Label>
         );
       case 'UNKNOWN':
         return (
           <Label basic color='red'>
             {' '}
-            未知{' '}
+            unknown{' '}
           </Label>
         );
       case '':
@@ -416,7 +416,7 @@ const LogsTable = () => {
         return (
           <Label basic color='black'>
             {' '}
-            未知{' '}
+            unknown{' '}
           </Label>
         );
     }
@@ -440,7 +440,7 @@ const LogsTable = () => {
             )}
             <Form.Input
               field='task_id'
-              label={'任务 ID'}
+              label={'Task ID'}
               style={{ width: '236px', marginBottom: '10px' }}
               value={task_id}
               placeholder={'Optional Values'}
@@ -450,7 +450,7 @@ const LogsTable = () => {
 
             <Form.DatePicker
               field='start_timestamp'
-              label={'起始Time'}
+              label={'Start Time'}
               style={{ width: '236px', marginBottom: '10px' }}
               initValue={start_timestamp}
               value={start_timestamp}
@@ -461,7 +461,7 @@ const LogsTable = () => {
             <Form.DatePicker
               field='end_timestamp'
               fluid
-              label={'结束Time'}
+              label={'End Time'}
               style={{ width: '236px', marginBottom: '10px' }}
               initValue={end_timestamp}
               value={end_timestamp}

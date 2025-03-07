@@ -29,7 +29,7 @@ func UpdateQuotaData() {
 	}()
 	for {
 		if common.DataExportEnabled {
-			common.SysLog("正在更新数据看板数据...")
+			common.SysLog("正在更新Dashboard数据...")
 			SaveQuotaDataCache()
 		}
 		time.Sleep(time.Duration(common.DataExportInterval) * time.Minute)
@@ -61,7 +61,7 @@ func logQuotaDataCache(userId int, username string, modelName string, quota int,
 }
 
 func LogQuotaData(userId int, username string, modelName string, quota int, createdAt int64, tokenUsed int) {
-	// 只精确到小时
+	// 只精确到Hour
 	createdAt = createdAt - (createdAt % 3600)
 
 	CacheQuotaDataLock.Lock()
@@ -73,7 +73,7 @@ func SaveQuotaDataCache() {
 	CacheQuotaDataLock.Lock()
 	defer CacheQuotaDataLock.Unlock()
 	size := len(CacheQuotaData)
-	// 如果缓存中有数据，就保存到数据库中
+	// 如果缓存中有数据，就save到数据库中
 	// 1. 先Query数据库中是否有数据
 	// 2. 如果有数据，就更新数据
 	// 3. 如果没有数据，就插入数据
@@ -91,7 +91,7 @@ func SaveQuotaDataCache() {
 		}
 	}
 	CacheQuotaData = make(map[string]*QuotaData)
-	common.SysLog(fmt.Sprintf("保存数据看板数据成功，共保存%d条数据", size))
+	common.SysLog(fmt.Sprintf("saveDashboard数据Success，共save%d条数据", size))
 }
 
 func increaseQuotaData(userId int, username string, modelName string, count int, quota int, createdAt int64) {

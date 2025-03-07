@@ -35,6 +35,6 @@ func ResetModelRatio(c *gin.Context) {
 	}
 	c.JSON(200, gin.H{
 		"success": true,
-		"message": "重置Model rate成功",
+		"message": "重置Model rateSuccess",
 	})
 }

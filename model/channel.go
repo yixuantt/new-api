@@ -338,9 +338,9 @@ func DeleteDisabledChannel() (int64, error) {
 
 func GetOpenAIAccessTokenWillExpireChannel() ([]*Channel, error) {
 	var channels []*Channel
-	// 计算24小时后的Time戳
+	// 计算24Hour后的Time戳
 	expired := time.Now().Add(24 * time.Hour).Unix()
-	// Query所有在24小时内将会过期,且有的Channel
+	// Query所有在24Hour内将会过期,且有的Channel
 	err := DB.Where("type = 1 AND open_ai_refresh_token IS NOT NULL AND open_ai_refresh_token != '' AND open_ai_access_token_expires_time > 0 AND open_ai_access_token_expires_time <= ?", expired).Find(&channels).Error
 	return channels, err
 }

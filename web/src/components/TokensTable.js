@@ -200,7 +200,7 @@ const TokensTable = () => {
             }
           } catch (e) {
             console.log(e);
-            showError('Chat链接配置错误，请联系Admin');
+            showError('Chat链接配置mistake，请联系Admin');
           }
         }
         return (
@@ -211,7 +211,7 @@ const TokensTable = () => {
               position='top'
             >
               <Button theme='light' type='tertiary' style={{ marginRight: 1 }}>
-                查看
+                Check
               </Button>
             </Popover>
             <Button
@@ -261,8 +261,8 @@ const TokensTable = () => {
               {/*</Dropdown>*/}
             </SplitButtonGroup>
             <Popconfirm
-              title='确定是否要Delete此Token？'
-              content='此修改将不可逆'
+              title='OK是否要Delete此Token？'
+              content='This modification will be irreversible'
               okType={'danger'}
               position={'left'}
               onConfirm={() => {
@@ -576,7 +576,7 @@ const TokensTable = () => {
       >
         <Form.Input
           field='keyword'
-          label='搜索关键字'
+          label='Search keywords'
           placeholder='TokenName'
           value={searchKeyword}
           loading={searching}
@@ -642,7 +642,7 @@ const TokensTable = () => {
         type='warning'
         onClick={async () => {
           if (selectedKeys.length === 0) {
-            showError('请至少选择一个Token！');
+            showError('请至少选择一indivualToken！');
             return;
           }
           let keys = '';

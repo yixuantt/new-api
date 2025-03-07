@@ -60,7 +60,7 @@ func SensitiveWordContains(text string) (bool, []string) {
 		return false, nil
 	}
 	checkText := strings.ToLower(text)
-	// 构建一个AC自动机
+	// 构建一indivualAC自动机
 	m := InitAc()
 	hits := m.MultiPatternSearch([]rune(checkText), false)
 	if len(hits) > 0 {

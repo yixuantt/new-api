@@ -52,14 +52,14 @@ const Home = () => {
     displayHomePageContent().then();
   }, []);
   return (
-    <>
+    <div style={{ width: '100%', overflowX: 'hidden' }}>
       {homePageContentLoaded && homePageContent === '' ? (
         <>
           <Card
             bordered={false}
             headerLine={false}
             title='System Status'
-            bodyStyle={{ padding: '10px 20px' }}
+            // bodyStyle={{ padding: '10px 20px' }}
           >
             <Row gutter={16}>
               <Col span={12}>
@@ -72,7 +72,7 @@ const Home = () => {
                         color: 'var(--semi-color-text-1)',
                       }}
                     >
-                      System Information总览
+                      System Information Overview
                     </span>
                   }
                 >
@@ -104,7 +104,7 @@ const Home = () => {
                     </a>
                   </p>
                   <p>
-                    协议：
+                    License：
                     <a
                       href='https://www.apache.org/licenses/LICENSE-2.0'
                       target='_blank'
@@ -113,7 +113,7 @@ const Home = () => {
                       Apache-2.0 License
                     </a>
                   </p>
-                  <p>启动Time：{getStartTimeString()}</p>
+                  <p>Start Time：{getStartTimeString()}</p>
                 </Card>
               </Col>
               <Col span={12}>
@@ -126,7 +126,7 @@ const Home = () => {
                         color: 'var(--semi-color-text-1)',
                       }}
                     >
-                      System Configuration总览
+                      System Configuration Overview
                     </span>
                   }
                 >
@@ -134,21 +134,21 @@ const Home = () => {
                     Email Verification：
                     {statusState?.status?.email_verification === true
                       ? 'Enabled'
-                      : '未Enable'}
+                      : 'Not Enabled'}
                   </p>
                   <p>
                     GitHub Authentication：
                     {statusState?.status?.github_oauth === true
                       ? 'Enabled'
-                      : '未Enable'}
+                      : 'Not Enabled'}
                   </p>
-                  <p>
+                  {/* <p>
                     LINUX DO 身份验证：
                     {statusState?.status?.linuxdo_oauth === true
                       ? 'Enabled'
                       : '未Enable'}
-                  </p>
-                  <p>
+                  </p> */}
+                  {/* <p>
                     WeChat Authentication：
                     {statusState?.status?.wechat_login === true
                       ? 'Enabled'
@@ -161,11 +161,11 @@ const Home = () => {
                       : '未Enable'}
                   </p>
                   <p>
-                    Telegram 身份验证：
+                    Telegram authentication：
                     {statusState?.status?.telegram_oauth === true
                       ? 'Enabled'
                       : '未Enable'}
-                  </p>
+                  </p> */}
                 </Card>
               </Col>
             </Row>
@@ -176,17 +176,18 @@ const Home = () => {
           {homePageContent.startsWith('https://') ? (
             <iframe
               src={homePageContent}
-              style={{ width: '100%', height: '100vh', border: 'none' }}
+              style={{ width: '100%', height: '100vh', border: 'none', overflow: 'hidden'}}
             />
+           
           ) : (
             <div
-              style={{ fontSize: 'larger' }}
-              dangerouslySetInnerHTML={{ __html: homePageContent }}
-            ></div>
-          )}
-        </>
-      )}
-    </>
+            style={{ fontSize: 'larger', width: '100%', overflowX: 'hidden' }}
+            dangerouslySetInnerHTML={{ __html: homePageContent }}
+          />
+        )}
+      </>
+    )}
+  </div>
   );
 };
 

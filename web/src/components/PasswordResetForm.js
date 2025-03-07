@@ -90,7 +90,7 @@ const PasswordResetForm = () => {
               loading={loading}
               disabled={disableButton}
             >
-              {disableButton ? `重试 (${countdown})` : 'Submit'}
+              {disableButton ? `Retry (${countdown})` : 'Submit'}
             </Button>
           </Segment>
         </Form>

@@ -37,7 +37,7 @@ const GitHubOAuth = () => {
     } else {
       showError(message);
       if (count === 0) {
-        setPrompt(`Operation失败，重定向至Login界面中...`);
+        setPrompt(`OperationFailed，重定向至Login界面中...`);
         navigate('/setting'); // in case this is failed to bind GitHub
         return;
       }

@@ -54,23 +54,23 @@ func getPriority(group string, model string, retry int) (int, error) {
 	err := DB.Model(&Ability{}).
 		Select("DISTINCT(priority)").
 		Where(groupCol+" = ? and model = ? and enabled = "+trueVal, group, model).
-		Order("priority DESC").              // 按优先级降序排序
-		Pluck("priority", &priorities).Error // Pluck用于将Query的结果直接扫描到一个切片中
+		Order("priority DESC").              // 按Priority降序排序
+		Pluck("priority", &priorities).Error // Pluck用于将Query的结果直接扫描到一indivual切片中
 
 	if err != nil {
-		// 处理错误
+		// 处理mistake
 		return 0, err
 	}
 
 	if len(priorities) == 0 {
-		// 如果没有Query到优先级，则返回错误
+		// 如果没有Query到Priority，则返回mistake
 		return 0, errors.New("数据库一致性被破坏")
 	}
 
-	// 确定要使用的优先级
+	// OK要使用的Priority
 	var priorityToUse int
 	if retry >= len(priorities) {
-		// 如果重试次数大于优先级数，则使用最小的优先级
+		// 如果Retrytimes数大于Priority数，则使用最小的Priority
 		priorityToUse = priorities[len(priorities)-1]
 	} else {
 		priorityToUse = priorities[retry]

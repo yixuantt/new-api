@@ -56,15 +56,15 @@ const OtherSetting = () => {
       await updateOption('Notice', inputs.Notice);
       showSuccess('Announcement已更新');
     } catch (error) {
-      console.error('Announcement更新失败', error);
-      showError('Announcement更新失败');
+      console.error('Announcement更新Failed', error);
+      showError('Announcement更新Failed');
     } finally {
       setLoadingInput((loadingInput) => ({ ...loadingInput, Notice: false }));
     }
   };
-  // 个性化Settings
+  // indivual性化Settings
   const formAPIPersonalization = useRef();
-  //  个性化Settings - SystemName
+  //  indivual性化Settings - SystemName
   const submitSystemName = async () => {
     try {
       setLoadingInput((loadingInput) => ({
@@ -72,10 +72,10 @@ const OtherSetting = () => {
         SystemName: true,
       }));
       await updateOption('SystemName', inputs.SystemName);
-      showSuccess('系统Name已更新');
+      showSuccess('SystemName已更新');
     } catch (error) {
-      console.error('系统Name更新失败', error);
-      showError('系统Name更新失败');
+      console.error('SystemName更新Failed', error);
+      showError('SystemName更新Failed');
     } finally {
       setLoadingInput((loadingInput) => ({
         ...loadingInput,
@@ -84,20 +84,20 @@ const OtherSetting = () => {
     }
   };
 
-  // 个性化Settings - Logo
+  // indivual性化Settings - Logo
   const submitLogo = async () => {
     try {
       setLoadingInput((loadingInput) => ({ ...loadingInput, Logo: true }));
       await updateOption('Logo', inputs.Logo);
-      showSuccess('Logo 已更新');
+      showSuccess('Logo updated');
     } catch (error) {
-      console.error('Logo 更新失败', error);
-      showError('Logo 更新失败');
+      console.error('Logo 更新Failed', error);
+      showError('Logo 更新Failed');
     } finally {
       setLoadingInput((loadingInput) => ({ ...loadingInput, Logo: false }));
     }
   };
-  // 个性化Settings - Home内容
+  // indivual性化Settings - Home内容
   const submitOption = async (key) => {
     try {
       setLoadingInput((loadingInput) => ({
@@ -107,8 +107,8 @@ const OtherSetting = () => {
       await updateOption(key, inputs[key]);
       showSuccess('Home内容已更新');
     } catch (error) {
-      console.error('Home内容更新失败', error);
-      showError('Home内容更新失败');
+      console.error('Home内容更新Failed', error);
+      showError('Home内容更新Failed');
     } finally {
       setLoadingInput((loadingInput) => ({
         ...loadingInput,
@@ -116,28 +116,28 @@ const OtherSetting = () => {
       }));
     }
   };
-  // 个性化Settings - About
+  // indivual性化Settings - About
   const submitAbout = async () => {
     try {
       setLoadingInput((loadingInput) => ({ ...loadingInput, About: true }));
       await updateOption('About', inputs.About);
-      showSuccess('About内容已更新');
+      showSuccess('About content has been updated');
     } catch (error) {
-      console.error('About内容更新失败', error);
-      showError('About内容更新失败');
+      console.error('About Content Update Failed', error);
+      showError('About Content Update Failed');
     } finally {
       setLoadingInput((loadingInput) => ({ ...loadingInput, About: false }));
     }
   };
-  // 个性化Settings - Footer
+  // indivual性化Settings - Footer
   const submitFooter = async () => {
     try {
       setLoadingInput((loadingInput) => ({ ...loadingInput, Footer: true }));
       await updateOption('Footer', inputs.Footer);
-      showSuccess('Footer内容已更新');
+      showSuccess('Footer content has been updated');
     } catch (error) {
-      console.error('Footer内容更新失败', error);
-      showError('Footer内容更新失败');
+      console.error('Footer content update Failed', error);
+      showError('Footer content update Failed');
     } finally {
       setLoadingInput((loadingInput) => ({ ...loadingInput, Footer: false }));
     }
@@ -207,16 +207,16 @@ const OtherSetting = () => {
             </Button>
           </Form.Section>
         </Form>
-        {/* 个性化Settings */}
+        {/* indivual性化Settings */}
         <Form
           values={inputs}
           getFormApi={(formAPI) => (formAPIPersonalization.current = formAPI)}
           style={{ marginBottom: 15 }}
         >
-          <Form.Section text={'个性化Settings'}>
+          <Form.Section text={'indivual性化Settings'}>
             <Form.Input
-              label={'系统Name'}
-              placeholder={'在此Enter系统Name'}
+              label={'SystemName'}
+              placeholder={'在此EnterSystemName'}
               field={'SystemName'}
               onChange={handleInputChange}
             />
@@ -224,7 +224,7 @@ const OtherSetting = () => {
               onClick={submitSystemName}
               loading={loadingInput['SystemName']}
             >
-              Settings系统Name
+              SettingsSystemName
             </Button>
             <Form.Input
               label={'Logo Image URL'}
@@ -238,7 +238,7 @@ const OtherSetting = () => {
             <Form.TextArea
               label={'Home内容'}
               placeholder={
-                '在此EnterHome内容，支持 Markdown & HTML 代码，Settings后Home的Status信息将不再显示。如果Enter的是一个链接，则会使用该链接作为 iframe 的 src 属性，这允许你Settings任意网页作为Home。'
+                '在此EnterHome内容，支持 Markdown & HTML 代码，Settings后Home的Status信息将不再show示。如果Enter的是一indivual链接，则会使用该链接作为 iframe 的 src 属性，这允许你Settings任意网页作为Home。'
               }
               field={'HomePageContent'}
               onChange={handleInputChange}
@@ -254,7 +254,7 @@ const OtherSetting = () => {
             <Form.TextArea
               label={'About'}
               placeholder={
-                '在此Enter新的About内容，支持 Markdown & HTML 代码。如果Enter的是一个链接，则会使用该链接作为 iframe 的 src 属性，这允许你Settings任意网页作为About页面。'
+                '在此Enter新的About内容，支持 Markdown & HTML 代码。如果Enter的是一indivual链接，则会使用该链接作为 iframe 的 src 属性，这允许你Settings任意网页作为About页面。'
               }
               field={'About'}
               onChange={handleInputChange}

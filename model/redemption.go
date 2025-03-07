@@ -76,7 +76,7 @@ func Redeem(key string, userId int) (quota int, err error) {
 		return err
 	})
 	if err != nil {
-		return 0, errors.New("Redeem失败，" + err.Error())
+		return 0, errors.New("RedeemFailed，" + err.Error())
 	}
 	RecordLog(userId, LogTypeTopup, fmt.Sprintf("Recharge %s through redemption code，Redeem码ID %d", common.LogQuota(redemption.Quota), redemption.Id))
 	return redemption.Quota, nil

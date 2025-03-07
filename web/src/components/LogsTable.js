@@ -74,28 +74,28 @@ function renderType(type) {
       return (
         <Tag color='lime' size='large'>
           {' '}
-          Consumption{' '}
+          Consume{' '}
         </Tag>
       );
     case 3:
       return (
         <Tag color='orange' size='large'>
           {' '}
-          Mange{' '}
+          Manage{' '}
         </Tag>
       );
     case 4:
       return (
         <Tag color='purple' size='large'>
           {' '}
-          系统{' '}
+          System{' '}
         </Tag>
       );
     default:
       return (
         <Tag color='black' size='large'>
           {' '}
-          未知{' '}
+          unknown{' '}
         </Tag>
       );
   }
@@ -105,13 +105,13 @@ function renderIsStream(bool) {
   if (bool) {
     return (
       <Tag color='blue' size='large'>
-        流
+        stream
       </Tag>
     );
   } else {
     return (
       <Tag color='purple' size='large'>
-        非流
+        not stream
       </Tag>
     );
   }
@@ -276,7 +276,7 @@ const LogsTable = () => {
       },
     },
     {
-      title: '用时/首字',
+      title: 'Time/first word',
       dataIndex: 'use_time',
       render: (text, record, index) => {
         if (record.is_stream) {
@@ -326,7 +326,7 @@ const LogsTable = () => {
       },
     },
     {
-      title: '花费',
+      title: 'Spend',
       dataIndex: 'quota',
       render: (text, record, index) => {
         return record.type === 0 || record.type === 2 ? (
@@ -337,7 +337,7 @@ const LogsTable = () => {
       },
     },
     {
-      title: '重试',
+      title: 'Retry',
       dataIndex: 'retry',
       className: isAdmin() ? 'tableShow' : 'tableHiddle',
       render: (text, record, index) => {
@@ -418,7 +418,7 @@ const LogsTable = () => {
   const [logType, setLogType] = useState(0);
   const isAdminUser = isAdmin();
   let now = new Date();
-  // 初始化start_timestamp为今天0点
+  // 初始化start_timestamp为今day0点
   const [inputs, setInputs] = useState({
     username: '',
     token_name: '',
@@ -595,7 +595,7 @@ const LogsTable = () => {
           <Spin spinning={loadingStat}>
             <Space>
               <Tag color='green' size='large' style={{ padding: 15 }}>
-                总消耗Quota: {renderQuota(stat.quota)}
+                Total ConsumptionQuota: {renderQuota(stat.quota)}
               </Tag>
               <Tag color='blue' size='large' style={{ padding: 15 }}>
                 RPM: {stat.rpm}
@@ -628,7 +628,7 @@ const LogsTable = () => {
             />
             <Form.DatePicker
               field='start_timestamp'
-              label='起始Time'
+              label='Start Time'
               style={{ width: 272 }}
               initValue={start_timestamp}
               value={start_timestamp}
@@ -639,7 +639,7 @@ const LogsTable = () => {
             <Form.DatePicker
               field='end_timestamp'
               fluid
-              label='结束Time'
+              label='End Time'
               style={{ width: 272 }}
               initValue={end_timestamp}
               value={end_timestamp}
@@ -707,11 +707,11 @@ const LogsTable = () => {
             loadLogs(0, pageSize, parseInt(value));
           }}
         >
-          <Select.Option value='0'>全部</Select.Option>
+          <Select.Option value='0'>All</Select.Option>
           <Select.Option value='1'>Recharge</Select.Option>
-          <Select.Option value='2'>Consumption</Select.Option>
-          <Select.Option value='3'>Mange</Select.Option>
-          <Select.Option value='4'>系统</Select.Option>
+          <Select.Option value='2'>Consume</Select.Option>
+          <Select.Option value='3'>Manage</Select.Option>
+          <Select.Option value='4'>System</Select.Option>
         </Select>
       </Layout>
     </>

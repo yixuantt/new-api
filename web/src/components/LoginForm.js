@@ -48,7 +48,7 @@ const LoginForm = () => {
 
   useEffect(() => {
     if (searchParams.get('expired')) {
-      showError('Not logged in or login has expired, please log in again!');
+      showError('Not logged in or session expired. Please login again!');
     }
     let status = localStorage.getItem('status');
     if (status) {
@@ -95,7 +95,7 @@ const LoginForm = () => {
 
   async function handleSubmit(e) {
     if (turnstileEnabled && turnstileToken === '') {
-      showInfo('Please retry in a few seconds，Turnstile 正在检查User环境！');
+      showInfo('Please retry in a few seconds, Turnstile is checking the User environment!');
       return;
     }
     setSubmitted(true);
@@ -115,8 +115,8 @@ const LoginForm = () => {
         showSuccess('Login succeeded!');
         if (username === 'root' && password === '123456') {
           Modal.error({
-            title: '您正在使用DefaultPassword！',
-            content: '请立刻修改DefaultPassword！',
+            title: 'You are using Default Password!',
+            content: 'Please change Default Password immediately!',
             centered: true,
           });
         }
@@ -176,7 +176,7 @@ const LoginForm = () => {
             <div style={{ width: 500 }}>
               <Card>
                 <Title heading={2} style={{ textAlign: 'center' }}>
-                  User login
+                  User Login
                 </Title>
                 <Form>
                   <Form.Input
@@ -214,10 +214,10 @@ const LoginForm = () => {
                   }}
                 >
                   <Text>
-                    没有账号请先 <Link to='/register'>Register账号</Link>
+                    If you don't have an account, please <Link to='/register'>Register账号</Link>
                   </Text>
                   <Text>
-                    忘记Password <Link to='/reset'>Click to reset</Link>
+                    forget the password <Link to='/reset'>Click to reset</Link>
                   </Text>
                 </div>
                 {status.github_oauth ||
@@ -226,7 +226,7 @@ const LoginForm = () => {
                 status.telegram_oauth ? (
                   <>
                     <Divider margin='12px' align='center'>
-                      第三方Login
+                      Third party login
                     </Divider>
                     <div
                       style={{
@@ -288,7 +288,7 @@ const LoginForm = () => {
                   <></>
                 )}
                 <Modal
-                  title='微信扫码Login'
+                  title='WeChat scan code to log in'
                   visible={showWeChatLoginModal}
                   maskClosable={true}
                   onOk={onSubmitWeChatVerificationCode}

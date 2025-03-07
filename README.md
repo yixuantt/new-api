@@ -39,7 +39,7 @@
 7. 兼容原版One API的数据库，可直接使用原版数据库（one-api.db）
 8. 支持模型按次数收费，可在 系统设置-运营设置 中设置
 9. 支持渠道**加权随机**
-10. 数据看板
+10. Data Dashboard
 11. 可设置令牌能调用的模型
 12. 支持Telegram授权Login。
     1. 系统设置-配置Login注册-允许通过TelegramLogin
@@ -143,5 +143,9 @@ docker run --name new-api -d --restart always -p 3000:3000 -e SQL_DSN="root:1234
 
 [![Star History Chart](https://api.star-history.com/svg?repos=Calcium-Ion/new-api&type=Date)](https://star-history.com/#Calcium-Ion/new-api&Date)
 
+---
+npm install
+npm run build
+---
 docker build -t new-api:latest .
 docker compose up

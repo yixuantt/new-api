@@ -82,7 +82,7 @@ func main() {
 		go model.SyncChannelCache(common.SyncFrequency)
 	}
 
-	// 数据看板
+	// Data Dashboard
 	go model.UpdateQuotaData()
 
 	if os.Getenv("CHANNEL_UPDATE_FREQUENCY") != "" {

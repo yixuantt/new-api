@@ -19,13 +19,13 @@ const defaultMessage = [
     role: 'user',
     id: '2',
     createAt: 1715676751919,
-    content: '你好',
+    content: 'Hello',
   },
   {
     role: 'assistant',
     id: '3',
     createAt: 1715676751919,
-    content: '你好，请问有什么可以帮助您的吗？',
+    content: 'Hello,请问有什么可以帮助您的吗？',
   },
 ];
 
@@ -57,7 +57,7 @@ const Playground = () => {
 
   useEffect(() => {
     if (searchParams.get('expired')) {
-      showError('Not logged in or login has expired, please log in again!');
+      showError('Not logged in or session expired. Please login again!');
     }
     let status = localStorage.getItem('status');
     if (status) {

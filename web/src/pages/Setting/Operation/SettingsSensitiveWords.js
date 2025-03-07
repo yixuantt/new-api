@@ -20,7 +20,7 @@ export default function SettingsSensitiveWords(props) {
 
   function onSubmit() {
     const updateArray = compareObjects(inputs, inputsRow);
-    if (!updateArray.length) return showWarning('你似乎并没有修改什么');
+    if (!updateArray.length) return showWarning('You seem to have not modified anything');
     const requestQueue = updateArray.map((item) => {
       let value = '';
       if (typeof inputs[item.key] === 'boolean') {
@@ -39,13 +39,13 @@ export default function SettingsSensitiveWords(props) {
         if (requestQueue.length === 1) {
           if (res.includes(undefined)) return;
         } else if (requestQueue.length > 1) {
-          if (res.includes(undefined)) return showError('部分保存失败，请重试');
+          if (res.includes(undefined)) return showError('部分saveFailed，请Retry');
         }
-        showSuccess('保存成功');
+        showSuccess('Saved successfully');
         props.refresh();
       })
       .catch(() => {
-        showError('保存失败，请重试');
+        showError('saveFailed，请Retry');
       })
       .finally(() => {
         setLoading(false);
@@ -107,9 +107,9 @@ export default function SettingsSensitiveWords(props) {
             <Row>
               <Col span={16}>
                 <Form.TextArea
-                  label={'屏蔽词列表'}
-                  extraText={'一行一个屏蔽词，不需要符号分割'}
-                  placeholder={'一行一个屏蔽词，不需要符号分割'}
+                  label={'Sensitive word list'}
+                  extraText={'一行一indivual屏蔽词，不需要符号分割'}
+                  placeholder={'一行一indivual屏蔽词，不需要符号分割'}
                   field={'SensitiveWords'}
                   onChange={(value) =>
                     setInputs({
@@ -124,7 +124,7 @@ export default function SettingsSensitiveWords(props) {
             </Row>
             <Row>
               <Button size='large' onClick={onSubmit}>
-                保存屏蔽词过滤Settings
+                save屏蔽词过滤Settings
               </Button>
             </Row>
           </Form.Section>

@@ -106,7 +106,7 @@ const EditUser = (props) => {
     }
     const { success, message } = res.data;
     if (success) {
-      showSuccess('User信息更新成功！');
+      showSuccess('User信息更新Success！');
       props.refresh();
       props.handleClose();
     } else {
@@ -161,7 +161,7 @@ const EditUser = (props) => {
           <Input
             label='Username'
             name='username'
-            placeholder={'请Enter新的Username'}
+            placeholder={'Please enter your new username'}
             onChange={(value) => handleInputChange('username', value)}
             value={username}
             autoComplete='new-password'
@@ -173,18 +173,18 @@ const EditUser = (props) => {
             label='Password'
             name='password'
             type={'password'}
-            placeholder={'请Enter新的Password，最短 8 位'}
+            placeholder={'Please enter a new password, minimum 8 characters'}
             onChange={(value) => handleInputChange('password', value)}
             value={password}
             autoComplete='new-password'
           />
           <div style={{ marginTop: 20 }}>
-            <Typography.Text>显示Name</Typography.Text>
+            <Typography.Text>show示Name</Typography.Text>
           </div>
           <Input
-            label='显示Name'
+            label='showName'
             name='display_name'
-            placeholder={'请Enter新的显示Name'}
+            placeholder={'Please enter a new display name'}
             onChange={(value) => handleInputChange('display_name', value)}
             value={display_name}
             autoComplete='new-password'
@@ -195,83 +195,83 @@ const EditUser = (props) => {
                 <Typography.Text>Group</Typography.Text>
               </div>
               <Select
-                placeholder={'请选择Group'}
+                placeholder={'Please select Group'}
                 name='group'
                 fluid
                 search
                 selection
                 allowAdditions
-                additionLabel={'请在系统Settings页面EditGroup倍率以添加新的Group：'}
+                additionLabel={'Please edit group ratio on the System Settings page to add a new Group:'}
                 onChange={(value) => handleInputChange('group', value)}
                 value={inputs.group}
                 autoComplete='new-password'
                 optionList={groupOptions}
               />
               <div style={{ marginTop: 20 }}>
-                <Typography.Text>{`剩Balance度${renderQuotaWithPrompt(quota)}`}</Typography.Text>
+                <Typography.Text>{` Balance ${renderQuotaWithPrompt(quota)}`}</Typography.Text>
               </div>
               <Space>
                 <Input
                   name='quota'
-                  placeholder={'请Enter新的剩Balance度'}
+                  placeholder={'Please enter the new remaining balance'}
                   onChange={(value) => handleInputChange('quota', value)}
                   value={quota}
                   type={'number'}
                   autoComplete='new-password'
                 />
-                <Button onClick={openAddQuotaModal}>添加Quota</Button>
+                <Button onClick={openAddQuotaModal}>Add Quota</Button>
               </Space>
             </>
           )}
-          <Divider style={{ marginTop: 20 }}>以下信息不可修改</Divider>
+          <Divider style={{ marginTop: 20 }}>The following information cannot be modified</Divider>
           <div style={{ marginTop: 20 }}>
-            <Typography.Text>已Bind的 GitHub 账户</Typography.Text>
+            <Typography.Text>Binded GitHub Account</Typography.Text>
           </div>
           <Input
             name='github_id'
             value={github_id}
             autoComplete='new-password'
-            placeholder='此项只读，需要User通过个人Settings页面的相关Bind按钮进行Bind，不可直接修改'
+            placeholder='This item is read-only and requires the user to bind through the corresponding close bind button on the Indivual Settings page. It cannot be modified directly.'
             readonly
           />
           <div style={{ marginTop: 20 }}>
-            <Typography.Text>已Bind的 LINUX DO 账户</Typography.Text>
+            <Typography.Text>Binded LINUX DO Account</Typography.Text>
           </div>
           <Input
             name='linuxdo_id'
             value={linuxdo_id + '（' + linuxdo_level + '级）'}
             autoComplete='new-password'
-            placeholder='此项只读，需要User通过个人Settings页面的相关Bind按钮进行Bind，不可直接修改'
+            placeholder='This item is read-only and requires the user to bind through the corresponding close bind button on the Indivual Settings page. It cannot be modified directly.'
             readonly
           />
           <div style={{ marginTop: 20 }}>
-            <Typography.Text>已Bind的微信账户</Typography.Text>
+            <Typography.Text>Bound Wechat Account</Typography.Text>
           </div>
           <Input
             name='wechat_id'
             value={wechat_id}
             autoComplete='new-password'
-            placeholder='此项只读，需要User通过个人Settings页面的相关Bind按钮进行Bind，不可直接修改'
+            placeholder='This item is read-only and requires the user to bind through the corresponding close bind button on the Indivual Settings page. It cannot be modified directly.'
             readonly
           />
           <div style={{ marginTop: 20 }}>
-            <Typography.Text>已Bind的 Telegram 账户</Typography.Text>
+            <Typography.Text>Telegram Account that has been bound</Typography.Text>
           </div>
           <Input
             name='telegram_id'
             value={telegram_id}
             autoComplete='new-password'
-            placeholder='此项只读，需要User通过个人Settings页面的相关Bind按钮进行Bind，不可直接修改'
+            placeholder='This item is read-only and requires the user to bind through the corresponding close bind button on the Indivual Settings page. It cannot be modified directly.'
             readonly
           />
           <div style={{ marginTop: 20 }}>
-            <Typography.Text>已Bind的邮箱账户</Typography.Text>
+            <Typography.Text>Bound Mail Account</Typography.Text>
           </div>
           <Input
             name='email'
             value={email}
             autoComplete='new-password'
-            placeholder='此项只读，需要User通过个人Settings页面的相关Bind按钮进行Bind，不可直接修改'
+            placeholder='This item is read-only and requires the user to bind through the corresponding close bind button on the Indivual Settings page. It cannot be modified directly.'
             readonly
           />
         </Spin>
@@ -291,7 +291,7 @@ const EditUser = (props) => {
         </div>
         <Input
           name='addQuotaLocal'
-          placeholder={'需要添加的Quota（支持负数）'}
+          placeholder={'Quota to be added (negative numbers are supported)'}
           onChange={(value) => {
             setAddQuotaLocal(value);
           }}

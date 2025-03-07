@@ -13,7 +13,7 @@ const Setting = () => {
   const [tabActiveKey, setTabActiveKey] = useState('1');
   let panes = [
     {
-      tab: '个人Settings',
+      tab: 'Indivual Settings',
       content: <PersonalSetting />,
       itemKey: 'personal',
     },
@@ -21,17 +21,17 @@ const Setting = () => {
 
   if (isRoot()) {
     panes.push({
-      tab: '运营Settings',
+      tab: 'Operation Settings',
       content: <OperationSetting />,
       itemKey: 'operation',
     });
     panes.push({
-      tab: '系统Settings',
+      tab: 'System Settings',
       content: <SystemSetting />,
       itemKey: 'system',
     });
     panes.push({
-      tab: '其他Settings',
+      tab: 'Other Settings',
       content: <OtherSetting />,
       itemKey: 'other',
     });

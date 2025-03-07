@@ -96,10 +96,10 @@ func SearchUsers(keyword string, group string) ([]*User, error) {
 		groupCol = `"group"`
 	}
 
-	// 尝试将关键字转换为整数ID
+	// 尝试将keywords 转换为整数ID
 	keywordInt, err := strconv.Atoi(keyword)
 	if err == nil {
-		// 如果转换成功，按照ID和可选的组别搜索User
+		// 如果转换Success，按照ID和可选的组别搜索User
 		query := DB.Unscoped().Omit("password").Where("id = ?", keywordInt)
 		if group != "" {
 			query = query.Where(groupCol+" = ?", group) // 使用反引号包围group
@@ -194,12 +194,12 @@ func (user *User) TransferAffQuotaToQuota(quota int) error {
 		return fmt.Errorf("转移Quota最小为%s！", common.LogQuota(int(common.QuotaPerUnit)))
 	}
 
-	// 开始数据库事务
+	// open始数据库事务
 	tx := DB.Begin()
 	if tx.Error != nil {
 		return tx.Error
 	}
-	defer tx.Rollback() // 确保在函数退出时事务能回滚
+	defer tx.Rollback() // 确保在函数Quit时事务能回滚
 
 	// 加锁QueryUser以确保数据一致性
 	err := tx.Set("gorm:query_option", "FOR UPDATE").First(&user, user.Id).Error
@@ -207,7 +207,7 @@ func (user *User) TransferAffQuotaToQuota(quota int) error {
 		return err
 	}
 
-	// 再次检查User的AffQuota是否足够
+	// 再times检查User的AffQuota是否足够
 	if user.AffQuota < quota {
 		return errors.New("邀请Quota不足！")
 	}
@@ -216,7 +216,7 @@ func (user *User) TransferAffQuotaToQuota(quota int) error {
 	user.AffQuota -= quota
 	user.Quota += quota
 
-	// 保存UserStatus
+	// saveUserStatus
 	if err := tx.Save(user).Error; err != nil {
 		return err
 	}
@@ -387,7 +387,7 @@ func (user *User) FillUserByTelegramId() error {
 	}
 	err := DB.Where(User{TelegramId: user.TelegramId}).First(user).Error
 	if errors.Is(err, gorm.ErrRecordNotFound) {
-		return errors.New("该 Telegram 账户未Bind")
+		return errors.New("该 Telegram Account未Bind")
 	}
 	return nil
 }

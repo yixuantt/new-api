@@ -24,7 +24,7 @@ func DecodeBase64ImageData(base64String string) (image.Config, string, string, e
 		return image.Config{}, "", "", err
 	}
 
-	// 创建一个bytes.Buffer用于存储解码后的数据
+	// 创建一indivualbytes.Buffer用于存储解码后的数据
 	reader := bytes.NewReader(decodedData)
 	config, format, err := getImageConfig(reader)
 	return config, format, base64String, err
@@ -41,7 +41,7 @@ func IsImageUrl(url string) (bool, error) {
 	return true, nil
 }
 
-// GetImageFromUrl 获取图片的类型和base64编码的数据
+// GetImageFromUrl 获取图片的Type和base64编码的数据
 func GetImageFromUrl(url string) (mimeType string, data string, err error) {
 	isImage, err := IsImageUrl(url)
 	if !isImage {
@@ -82,7 +82,7 @@ func DecodeUrlImageData(imageUrl string) (image.Config, string, error) {
 	for _, limit := range []int64{1024 * 8, 1024 * 24, 1024 * 64} {
 		SysLog(fmt.Sprintf("try to decode image config with limit: %d", limit))
 
-		// 从response.Body读取更多的数据直到达到当前的限制
+		// 从response.Body读取Expand more的数据直到达到当前的限制
 		additionalData := make([]byte, limit-int64(len(readData)))
 		n, _ := io.ReadFull(response.Body, additionalData)
 		readData = append(readData, additionalData[:n]...)
@@ -98,7 +98,7 @@ func DecodeUrlImageData(imageUrl string) (image.Config, string, error) {
 		}
 	}
 
-	return image.Config{}, "", err // 返回最后一个错误
+	return image.Config{}, "", err // 返回最后一indivualmistake
 }
 
 func getImageConfig(reader io.Reader) (image.Config, string, error) {

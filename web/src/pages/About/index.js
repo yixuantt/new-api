@@ -20,7 +20,7 @@ const About = () => {
       localStorage.setItem('about', aboutContent);
     } else {
       showError(message);
-      setAbout('加载About内容失败...');
+      setAbout('加载About内容Failed...');
     }
     setAboutLoaded(true);
   };
@@ -48,7 +48,7 @@ const About = () => {
                 JustSong。
               </p>
               <p>
-                本项目根据MIT许可证授权，需在遵守Apache-2.0协议的前提下使用。
+                本项目根据MIT许可证授权，需在遵守Apache-2.0License的前提下使用。
               </p>
             </Layout.Content>
           </Layout>

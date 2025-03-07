@@ -4,12 +4,12 @@ import { Banner, Layout } from '@douyinfe/semi-ui';
 const Token = () => (
   <>
     <Layout>
-      <Layout.Header>
+      {/* <Layout.Header>
         <Banner
           type='warning'
           description='TokenNone法精确控制使用Quota，请勿直接将Token分发给User。'
         />
-      </Layout.Header>
+      </Layout.Header> */}
       <Layout.Content>
         <TokensTable />
       </Layout.Content>

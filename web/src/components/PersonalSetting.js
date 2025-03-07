@@ -157,12 +157,12 @@ const PersonalSetting = () => {
   const handleSystemTokenClick = async (e) => {
     e.target.select();
     await copy(e.target.value);
-    showSuccess(`系统Token已Copy到剪切板`);
+    showSuccess(`SystemToken已Copy到剪切板`);
   };
 
   const deleteAccount = async () => {
     if (inputs.self_account_deletion_confirmation !== userState.user.username) {
-      showError('请Enter your account name以Confirm Delete！');
+      showError('请Enter your account name以Confirm deletion！');
       return;
     }
 
@@ -170,7 +170,7 @@ const PersonalSetting = () => {
     const { success, message } = res.data;
 
     if (success) {
-      showSuccess('账户已Delete！');
+      showSuccess('Account已Delete！');
       await API.get('/api/user/logout');
       userDispatch({ type: 'logout' });
       localStorage.removeItem('user');
@@ -187,7 +187,7 @@ const PersonalSetting = () => {
     );
     const { success, message } = res.data;
     if (success) {
-      showSuccess('微信账户Binding succeeded!');
+      showSuccess('WeChatAccountBinding succeeded!');
       setShowWeChatBindModal(false);
     } else {
       showError(message);
@@ -196,7 +196,7 @@ const PersonalSetting = () => {
 
   const changePassword = async () => {
     if (inputs.set_new_password !== inputs.set_new_password_confirmation) {
-      showError('两次Enter的Password不一致！');
+      showError('两timesEnter的Password不一致！');
       return;
     }
     const res = await API.put(`/api/user/self`, {
@@ -204,7 +204,7 @@ const PersonalSetting = () => {
     });
     const { success, message } = res.data;
     if (success) {
-      showSuccess('Password修改成功！');
+      showSuccess('Password修改Success！');
       setShowWeChatBindModal(false);
     } else {
       showError(message);
@@ -214,7 +214,7 @@ const PersonalSetting = () => {
 
   const transfer = async () => {
     if (transferAmount < getQuotaPerUnit()) {
-      showError('划转金额最低为' + renderQuota(getQuotaPerUnit()));
+      showError('The minimum transfer amount is' + renderQuota(getQuotaPerUnit()));
       return;
     }
     const res = await API.post(`/api/user/aff_transfer`, {
@@ -232,7 +232,7 @@ const PersonalSetting = () => {
 
   const sendVerificationCode = async () => {
     if (inputs.email === '') {
-      showError('请Enter邮箱！');
+      showError('请EnterMail！');
       return;
     }
     setDisableButton(true);
@@ -255,7 +255,7 @@ const PersonalSetting = () => {
 
   const bindEmail = async () => {
     if (inputs.email_verification_code === '') {
-      showError('请Enter邮箱Verification Code！');
+      showError('请EnterMailVerification Code！');
       return;
     }
     setLoading(true);
@@ -264,7 +264,7 @@ const PersonalSetting = () => {
     );
     const { success, message } = res.data;
     if (success) {
-      showSuccess('邮箱账户Binding succeeded!');
+      showSuccess('MailAccountBinding succeeded!');
       setShowEmailBindModal(false);
       userState.user.email = inputs.email;
     } else {
@@ -299,7 +299,7 @@ const PersonalSetting = () => {
       <Layout>
         <Layout.Content>
           <Modal
-            title='请Enter要划转的数量'
+            title='请Enter要transfer的quantity'
             visible={openTransfer}
             onOk={transfer}
             onCancel={handleCancel}
@@ -317,7 +317,7 @@ const PersonalSetting = () => {
             </div>
             <div style={{ marginTop: 20 }}>
               <Typography.Text>
-                {`划转Quota${renderQuotaWithPrompt(transferAmount)} 最低` +
+                {`transferQuota${renderQuotaWithPrompt(transferAmount)} lowest` +
                   renderQuota(getQuotaPerUnit())}
               </Typography.Text>
               <div>
@@ -368,7 +368,7 @@ const PersonalSetting = () => {
                   <Descriptions.Item itemKey='当前Balance'>
                     {renderQuota(userState?.user?.quota)}
                   </Descriptions.Item>
-                  <Descriptions.Item itemKey='历史消耗'>
+                  <Descriptions.Item itemKey='Consumption'>
                     {renderQuota(userState?.user?.used_quota)}
                   </Descriptions.Item>
                   <Descriptions.Item itemKey='Number of Requests'>
@@ -397,7 +397,7 @@ const PersonalSetting = () => {
             <Card
               footer={
                 <div>
-                  <Typography.Text>邀请链接</Typography.Text>
+                  <Typography.Text>Invitation link</Typography.Text>
                   <Input
                     style={{ marginTop: 10 }}
                     value={affLink}
@@ -407,10 +407,10 @@ const PersonalSetting = () => {
                 </div>
               }
             >
-              <Typography.Title heading={6}>邀请信息</Typography.Title>
+              <Typography.Title heading={6}>Invitation information</Typography.Title>
               <div style={{ marginTop: 10 }}>
                 <Descriptions row>
-                  <Descriptions.Item itemKey='待使用收益'>
+                  <Descriptions.Item itemKey='Proceeds to be used'>
                     <span style={{ color: 'rgba(var(--semi-red-5), 1)' }}>
                       {renderQuota(userState?.user?.aff_quota)}
                     </span>
@@ -420,22 +420,22 @@ const PersonalSetting = () => {
                       size={'small'}
                       style={{ marginLeft: 10 }}
                     >
-                      划转
+                      transfer
                     </Button>
                   </Descriptions.Item>
-                  <Descriptions.Item itemKey='总收益'>
+                  <Descriptions.Item itemKey='total revenue'>
                     {renderQuota(userState?.user?.aff_history_quota)}
                   </Descriptions.Item>
-                  <Descriptions.Item itemKey='邀请人数'>
+                  <Descriptions.Item itemKey='Number of people invited'>
                     {userState?.user?.aff_count}
                   </Descriptions.Item>
                 </Descriptions>
               </div>
             </Card>
             <Card>
-              <Typography.Title heading={6}>个人信息</Typography.Title>
+              <Typography.Title heading={6}>indivual人信息</Typography.Title>
               <div style={{ marginTop: 20 }}>
-                <Typography.Text strong>邮箱</Typography.Text>
+                <Typography.Text strong>Mail</Typography.Text>
                 <div
                   style={{ display: 'flex', justifyContent: 'space-between' }}
                 >
@@ -457,13 +457,13 @@ const PersonalSetting = () => {
                     >
                       {userState.user && userState.user.email !== ''
                         ? '修改Bind'
-                        : 'Bind邮箱'}
+                        : 'BindMail'}
                     </Button>
                   </div>
                 </div>
               </div>
               <div style={{ marginTop: 10 }}>
-                <Typography.Text strong>微信</Typography.Text>
+                <Typography.Text strong>WeChat</Typography.Text>
                 <div
                   style={{ display: 'flex', justifyContent: 'space-between' }}
                 >
@@ -588,14 +588,14 @@ const PersonalSetting = () => {
               <div style={{ marginTop: 10 }}>
                 <Space>
                   <Button onClick={generateAccessToken}>
-                    生成系统访问Token
+                    生成System访问Token
                   </Button>
                   <Button
                     onClick={() => {
                       setShowChangePasswordModal(true);
                     }}
                   >
-                    修改Password
+                    Change password
                   </Button>
                   <Button
                     type={'danger'}
@@ -603,7 +603,7 @@ const PersonalSetting = () => {
                       setShowAccountDeleteModal(true);
                     }}
                   >
-                    Delete个人账户
+                    Deleteindivual人Account
                   </Button>
                 </Space>
 
@@ -713,13 +713,13 @@ const PersonalSetting = () => {
               <div style={{ marginTop: 20 }}>
                 <Banner
                   type='danger'
-                  description='You are deleting your account, all data will be cleared and unrecoverable.'
+                  description='You are deleting your account. All data will be cleared and cannot be recovered.'
                   closeIcon={null}
                 />
               </div>
               <div style={{ marginTop: 20 }}>
                 <Input
-                  placeholder={`Enter your account name ${userState?.user?.username} 以Confirm Delete`}
+                  placeholder={`Enter your account name ${userState?.user?.username} 以Confirm deletion`}
                   name='self_account_deletion_confirmation'
                   value={inputs.self_account_deletion_confirmation}
                   onChange={(value) =>
@@ -751,7 +751,7 @@ const PersonalSetting = () => {
               <div style={{ marginTop: 20 }}>
                 <Input
                   name='set_new_password'
-                  placeholder='新Password'
+                  placeholder='New Password'
                   value={inputs.set_new_password}
                   onChange={(value) =>
                     handleInputChange('set_new_password', value)
@@ -760,7 +760,7 @@ const PersonalSetting = () => {
                 <Input
                   style={{ marginTop: 20 }}
                   name='set_new_password_confirmation'
-                  placeholder='确认新Password'
+                  placeholder='确认New Password'
                   value={inputs.set_new_password_confirmation}
                   onChange={(value) =>
                     handleInputChange('set_new_password_confirmation', value)

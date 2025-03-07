@@ -47,7 +47,7 @@ func getGitHubUserInfoByCode(code string) (*GitHubUser, error) {
 	res, err := client.Do(req)
 	if err != nil {
 		common.SysLog(err.Error())
-		return nil, errors.New("Unable to connect to GitHub server, please try again later!")
+		return nil, errors.New("Unable to connect to GitHub server. Please try again later!")
 	}
 	defer res.Body.Close()
 	var oAuthResponse GitHubOAuthResponse
@@ -63,7 +63,7 @@ func getGitHubUserInfoByCode(code string) (*GitHubUser, error) {
 	res2, err := client.Do(req)
 	if err != nil {
 		common.SysLog(err.Error())
-		return nil, errors.New("Unable to connect to GitHub server, please try again later!")
+		return nil, errors.New("Unable to connect to GitHub server. Please try again later!")
 	}
 	defer res2.Body.Close()
 	var githubUser GitHubUser
@@ -72,7 +72,7 @@ func getGitHubUserInfoByCode(code string) (*GitHubUser, error) {
 		return nil, err
 	}
 	if githubUser.Login == "" {
-		return nil, errors.New("The return value is illegal, the user field is empty, please try again later!")
+		return nil, errors.New("Invalid return value, user field is empty. Please try again later!")
 	}
 	return &githubUser, nil
 }
@@ -96,7 +96,7 @@ func GitHubOAuth(c *gin.Context) {
 	if !common.GitHubOAuthEnabled {
 		c.JSON(http.StatusOK, gin.H{
 			"success": false,
-			"message": "The administrator did not turn on login and registration via GitHub",
+			"message": "Administrator has not enabled GitHub login and registration",
 		})
 		return
 	}
@@ -155,7 +155,7 @@ func GitHubOAuth(c *gin.Context) {
 		} else {
 			c.JSON(http.StatusOK, gin.H{
 				"success": false,
-				"message": "The administrator has turned off new user registration",
+				"message": "Administrator has disabled new user registration",
 			})
 			return
 		}
@@ -175,7 +175,7 @@ func GitHubBind(c *gin.Context) {
 	if !common.GitHubOAuthEnabled {
 		c.JSON(http.StatusOK, gin.H{
 			"success": false,
-			"message": "The administrator did not turn on login and registration via GitHub",
+			"message": "Administrator has not enabled GitHub login and registration",
 		})
 		return
 	}
@@ -194,7 +194,7 @@ func GitHubBind(c *gin.Context) {
 	if model.IsGitHubIdAlreadyTaken(user.GitHubId) {
 		c.JSON(http.StatusOK, gin.H{
 			"success": false,
-			"message": "The GitHub account has been bound",
+			"message": "This GitHub account is already bound",
 		})
 		return
 	}

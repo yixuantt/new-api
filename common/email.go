@@ -10,11 +10,11 @@ import (
 )
 
 func generateMessageID() string {
-	// 生成时间戳和随机字符串
+	// 生成Time戳和随机字符串
 	timestamp := time.Now().UnixNano()
 	randomStr := GetRandomString(12)
 
-	// 使用域名或服务器地址初始化变量
+	// 使用域名或Server Address初始化变量
 	domainOrServer := SMTPServer
 
 	// 如果 SMTPAccount 包含 '@'，提取域名

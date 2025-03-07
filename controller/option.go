@@ -46,7 +46,7 @@ func UpdateOption(c *gin.Context) {
 		if option.Value == "true" && common.GitHubClientId == "" {
 			c.JSON(http.StatusOK, gin.H{
 				"success": false,
-				"message": "Unable to enable GitHub OAuth, please fill in GitHub Client ID and GitHub Client Secret first!",
+				"message": "Unable to enable GitHub OAuth. Please enter GitHub Client ID and GitHub Client Secret first!",
 			})
 			return
 		}
@@ -54,7 +54,7 @@ func UpdateOption(c *gin.Context) {
 		if option.Value == "true" && common.LinuxDoClientId == "" {
 			c.JSON(http.StatusOK, gin.H{
 				"success": false,
-				"message": "None法Enable LINUX DO OAuth，请先填入 LINUX DO Client Id 以及 LINUX DO Client Secret！",
+				"message": "None法Enable LINUX DO OAuth，请先Fill LINUX DO Client Id and LINUX DO Client Secret！",
 			})
 			return
 		}
@@ -62,7 +62,7 @@ func UpdateOption(c *gin.Context) {
 		if option.Value == "true" && len(common.EmailDomainWhitelist) == 0 {
 			c.JSON(http.StatusOK, gin.H{
 				"success": false,
-				"message": "None法Enable邮箱域名限制，请先填入限制的邮箱域名！",
+				"message": "None法EnableMail域名限制，请先Fill限制的Mail域名！",
 			})
 			return
 		}
@@ -70,7 +70,7 @@ func UpdateOption(c *gin.Context) {
 		if option.Value == "true" && common.WeChatServerAddress == "" {
 			c.JSON(http.StatusOK, gin.H{
 				"success": false,
-				"message": "Unable to enable WeChat login, please fill in the relevant configuration information for WeChat login first!",
+				"message": "Unable to enable WeChat login. Please enter WeChat login configuration first!",
 			})
 			return
 		}
@@ -78,7 +78,7 @@ func UpdateOption(c *gin.Context) {
 		if option.Value == "true" && common.TurnstileSiteKey == "" {
 			c.JSON(http.StatusOK, gin.H{
 				"success": false,
-				"message": "Unable to enable Turnstile verification, please fill in the relevant configuration information for Turnstile verification first!",
+				"message": "Unable to enable Turnstile verification. Please enter Turnstile verification configuration first!",
 			})
 			return
 		}

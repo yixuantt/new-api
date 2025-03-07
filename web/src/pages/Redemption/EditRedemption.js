@@ -85,11 +85,11 @@ const EditRedemption = (props) => {
     const { success, message, data } = res.data;
     if (success) {
       if (isEdit) {
-        showSuccess('Redeem码更新成功！');
+        showSuccess('Redeem码更新Success！');
         props.refresh();
         props.handleClose();
       } else {
-        showSuccess('Redeem码创建成功！');
+        showSuccess('Redeem码创建Success！');
         setInputs(originInputs);
         props.refresh();
         props.handleClose();
@@ -104,10 +104,10 @@ const EditRedemption = (props) => {
       }
       // downloadTextAsFile(text, `${inputs.name}.txt`);
       Modal.confirm({
-        title: 'Redeem码创建成功',
+        title: 'Redeem码创建Success',
         content: (
           <div>
-            <p>Redeem码创建成功，是否下载Redeem码？</p>
+            <p>Redeem码创建Success，是否下载Redeem码？</p>
             <p>Redeem码将以文本文件的形式下载，文件名为Redeem码的Name。</p>
           </div>
         ),

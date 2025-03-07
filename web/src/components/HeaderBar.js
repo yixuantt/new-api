@@ -9,6 +9,8 @@ import '../index.css';
 import fireworks from 'react-fireworks';
 
 import {
+  IconAppCenter,
+  IconBookmark,
   IconHelpCircle,
   IconHome,
   IconHomeStroked,
@@ -36,15 +38,16 @@ let buttons = [
     text: 'Home',
     itemKey: 'home',
     to: '/',
-    // icon: <IconHomeStroked />,
+    icon: <IconHomeStroked />,
   },
-  // {
-  //   text: 'Playground',
-  //   itemKey: 'playground',
-  //   to: '/playground',
-  //   // icon: <IconNoteMoneyStroked />,
-  // },
+  {
+    text: 'Dashboard',
+    itemKey: 'dashboard',
+    to: "/doc",
+    icon: <IconAppCenter />,
+  },
 ];
+
 
 // if (localStorage.getItem('chat_link')) {
 //   headerButtons.splice(1, 0, {
@@ -72,7 +75,7 @@ const HeaderBar = () => {
   async function logout() {
     setShowSidebar(false);
     await API.get('/api/user/logout');
-    showSuccess('Logout succeeded!');
+    showSuccess('Logout successful!');
     userDispatch({ type: 'logout' });
     localStorage.removeItem('user');
     navigate('/login');
@@ -115,6 +118,7 @@ const HeaderBar = () => {
                 login: '/login',
                 register: '/register',
                 home: '/',
+                dashboard: '/doc',
               };
               return (
                 <Link

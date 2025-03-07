@@ -50,7 +50,7 @@ const RegisterForm = () => {
       return;
     }
     if (password !== password2) {
-      showInfo('两次Enter的Password不一致');
+      showInfo('两timesEnter的Password不一致');
       return;
     }
     if (username && password) {
@@ -72,7 +72,7 @@ const RegisterForm = () => {
         localStorage.removeItem('aff');
 
         navigate('/login');
-        showSuccess('Register成功！');
+        showSuccess('RegisterSuccess！');
       } else {
         showError(message);
       }
@@ -92,7 +92,7 @@ const RegisterForm = () => {
     );
     const { success, message } = res.data;
     if (success) {
-      showSuccess('Verification Code sent successfully，请检查你的邮箱！');
+      showSuccess('Verification Code sent successfully，请检查你的Mail！');
     } else {
       showError(message);
     }
@@ -134,8 +134,8 @@ const RegisterForm = () => {
                   />
                   <Form.Input
                     field={'password2'}
-                    label={'确认Password'}
-                    placeholder='确认Password'
+                    label={'Confirm Password'}
+                    placeholder='Confirm Password'
                     name='password2'
                     type='password'
                     onChange={(value) => handleChange('password2', value)}
@@ -144,7 +144,7 @@ const RegisterForm = () => {
                     <>
                       <Form.Input
                         field={'email'}
-                        label={'邮箱'}
+                        label={'Mail'}
                         placeholder='EnterEmail Address'
                         onChange={(value) => handleChange('email', value)}
                         name='email'

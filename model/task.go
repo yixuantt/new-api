@@ -25,7 +25,7 @@ type Task struct {
 	CreatedAt  int64                 `json:"created_at" gorm:"index"`
 	UpdatedAt  int64                 `json:"updated_at"`
 	TaskID     string                `json:"task_id" gorm:"type:varchar(50);index"`  // 第三方id，不一定有/ song id\ Task id
-	Platform   constant.TaskPlatform `json:"platform" gorm:"type:varchar(30);index"` // 平台
+	Platform   constant.TaskPlatform `json:"platform" gorm:"type:varchar(30);index"` // platform
 	UserId     int                   `json:"user_id" gorm:"index"`
 	ChannelId  int                   `json:"channel_id" gorm:"index"`
 	Quota      int                   `json:"quota"`
@@ -64,7 +64,7 @@ func (m Properties) Value() (driver.Value, error) {
 	return json.Marshal(m)
 }
 
-// SyncTaskQueryParams 用于包含所有搜索条件的结构体，可以根据需求添加更多字段
+// SyncTaskQueryParams 用于包含所有搜索条件的结构体，可以根据需求添加Expand more字段
 type SyncTaskQueryParams struct {
 	Platform       constant.TaskPlatform
 	ChannelID      string

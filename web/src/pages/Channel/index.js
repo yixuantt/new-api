@@ -6,7 +6,7 @@ const File = () => (
   <>
     <Layout>
       <Layout.Header>
-        <h3>MangeChannel</h3>
+        <h3>ManageChannel</h3>
       </Layout.Header>
       <Layout.Content>
         <ChannelsTable />

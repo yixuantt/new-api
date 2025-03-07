@@ -85,14 +85,14 @@ export function showError(error) {
     if (error.name === 'AxiosError') {
       switch (error.response.status) {
         case 401:
-          // toast.error('Error: Not logged in or login has expired, please log in again!', showErrorOptions);
+          // toast.error('Error: Not logged in or session expired. Please login again!', showErrorOptions);
           window.location.href = '/login?expired=true';
           break;
         case 429:
           Toast.error('Error: Number of Requests过多，请稍后再试！');
           break;
         case 500:
-          Toast.error('Error: 服务器内部错误，请联系Admin！');
+          Toast.error('Error: 服务器内部mistake，请联系Admin！');
           break;
         case 405:
           Toast.info('本站仅作演示之用，None服务端！');
@@ -237,7 +237,7 @@ export function verifyJSONPromise(value) {
     JSON.parse(value);
     return Promise.resolve();
   } catch (e) {
-    return Promise.reject('不是合法的 JSON 字符串');
+    return Promise.reject('Not a valid JSON string');
   }
 }
 
@@ -251,15 +251,15 @@ export function setPromptShown(id) {
 }
 
 /**
- * 比较两个对象的属性，找出有变化的属性，并返回包含变化属性信息的数组
+ * 比较两indivual对象的属性，找出有变化的属性，并返回包含变化属性信息的数组
  * @param {Object} oldObject - 旧对象
  * @param {Object} newObject - 新对象
- * @return {Array} 包含变化属性信息的数组，每个元素是一个对象，包含 key, oldValue 和 newValue
+ * @return {Array} 包含变化属性信息的数组，每indivualCNY素是一indivual对象，包含 key, oldValue 和 newValue
  */
 export function compareObjects(oldObject, newObject) {
   const changedProperties = [];
 
-  // 比较两个对象的属性
+  // 比较两indivual对象的属性
   for (const key in oldObject) {
     if (oldObject.hasOwnProperty(key) && newObject.hasOwnProperty(key)) {
       if (oldObject[key] !== newObject[key]) {

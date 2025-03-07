@@ -84,7 +84,7 @@ func RequestPayLink(c *gin.Context) {
 		return
 	}
 	if !common.PaymentEnabled {
-		c.JSON(200, gin.H{"message": "error", "data": "Admin未开启在线支付"})
+		c.JSON(200, gin.H{"message": "error", "data": "Admin未open启在线支付"})
 		return
 	}
 	if req.PaymentMethod != "stripe" {
@@ -92,11 +92,11 @@ func RequestPayLink(c *gin.Context) {
 		return
 	}
 	if req.Amount < common.MinTopUp {
-		c.JSON(200, gin.H{"message": fmt.Sprintf("Recharge数量不能小于 %d", common.MinTopUp), "data": 10})
+		c.JSON(200, gin.H{"message": fmt.Sprintf("Rechargequantity不能小于 %d", common.MinTopUp), "data": 10})
 		return
 	}
 	if req.Amount > 10000 {
-		c.JSON(200, gin.H{"message": "Recharge数量不能大于 10000", "data": 10})
+		c.JSON(200, gin.H{"message": "Rechargequantity不能大于 10000", "data": 10})
 		return
 	}
 
@@ -109,8 +109,8 @@ func RequestPayLink(c *gin.Context) {
 
 	payLink, err := genStripeLink(referenceId, user.StripeCustomer, user.Email, int64(req.Amount))
 	if err != nil {
-		log.Println("获取Stripe Checkout支付链接失败", err)
-		c.JSON(200, gin.H{"message": "error", "data": "拉起支付失败"})
+		log.Println("获取Stripe Checkout支付链接Failed", err)
+		c.JSON(200, gin.H{"message": "error", "data": "拉起支付Failed"})
 		return
 	}
 
@@ -124,7 +124,7 @@ func RequestPayLink(c *gin.Context) {
 	}
 	err = topUp.Insert()
 	if err != nil {
-		c.JSON(200, gin.H{"message": "error", "data": "创建订单失败"})
+		c.JSON(200, gin.H{"message": "error", "data": "创建订单Failed"})
 		return
 	}
 	c.JSON(200, gin.H{
@@ -139,15 +139,15 @@ func RequestAmount(c *gin.Context) {
 	var req AmountRequest
 	err := c.ShouldBindJSON(&req)
 	if err != nil {
-		c.JSON(200, gin.H{"message": "error", "data": "参数错误"})
+		c.JSON(200, gin.H{"message": "error", "data": "parametermistake"})
 		return
 	}
 	if !common.PaymentEnabled {
-		c.JSON(200, gin.H{"message": "error", "data": "Admin未开启在线支付"})
+		c.JSON(200, gin.H{"message": "error", "data": "Admin未open启在线支付"})
 		return
 	}
 	if req.Amount < common.MinTopUp {
-		c.JSON(200, gin.H{"message": "error", "data": fmt.Sprintf("Recharge数量不能小于 %d", common.MinTopUp)})
+		c.JSON(200, gin.H{"message": "error", "data": fmt.Sprintf("Rechargequantity不能小于 %d", common.MinTopUp)})
 		return
 	}
 	id := c.GetInt("id")

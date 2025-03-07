@@ -5,8 +5,8 @@ import (
 )
 
 var UserUsableGroups = map[string]string{
-	"default": "默认分组",
-	"vip":     "vip分组",
+	"default": "defaultGroup",
+	"vip":     "vipGroup",
 }
 
 func UserUsableGroups2JSONString() string {
@@ -33,7 +33,7 @@ func GetUserUsableGroups(userGroup string) map[string]string {
 		for k, v := range UserUsableGroups {
 			appendUserUsableGroups[k] = v
 		}
-		appendUserUsableGroups[userGroup] = "用户分组"
+		appendUserUsableGroups[userGroup] = "UsersGroup"
 		return appendUserUsableGroups
 	}
 	// 如果userGroup在UserUsableGroups中，返回UserUsableGroups

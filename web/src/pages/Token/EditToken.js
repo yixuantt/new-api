@@ -143,7 +143,7 @@ const EditToken = (props) => {
     loadGroups();
   }, [isEdit]);
 
-  // 新增 state 变量 tokenCount 来记录User想要创建的Token数量，Default为 1
+  // 新增 state 变量 tokenCount 来记录User想要创建的Tokenquantity，Default为 1
   const [tokenCount, setTokenCount] = useState(1);
 
   // 新增处理 tokenCount 变化的函数
@@ -155,7 +155,7 @@ const EditToken = (props) => {
     }
   };
 
-  // 生成一个随机的四位字母数字字符串
+  // 生成一indivual随机的四位字母数字字符串
   const generateRandomSuffix = () => {
     const characters =
       'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -177,7 +177,7 @@ const EditToken = (props) => {
       if (localInputs.expired_time !== -1) {
         let time = Date.parse(localInputs.expired_time);
         if (isNaN(time)) {
-          showError('过期Time格式错误！');
+          showError('Expiration Time format mistake!');
           setLoading(false);
           return;
         }
@@ -190,19 +190,19 @@ const EditToken = (props) => {
       });
       const { success, message } = res.data;
       if (success) {
-        showSuccess('Token更新成功！');
+        showSuccess('Token update Success!');
         props.refresh();
         props.handleClose();
       } else {
         showError(message);
       }
     } else {
-      // 处理新增多个Token的情况
-      let successCount = 0; // 记录成功创建的Token数量
+      // 处理新增多indivualToken的情况
+      let successCount = 0; // 记录Success创建的Tokenquantity
       for (let i = 0; i < tokenCount; i++) {
         let localInputs = { ...inputs };
         if (i !== 0) {
-          // 如果User想要创建多个Token，则给每个Token一个序号后缀
+          // 如果User想要创建多indivualToken，则给每indivualToken一indivual序号后缀
           localInputs.name = `${inputs.name}-${generateRandomSuffix()}`;
         }
         localInputs.remain_quota = parseInt(localInputs.remain_quota);
@@ -210,7 +210,7 @@ const EditToken = (props) => {
         if (localInputs.expired_time !== -1) {
           let time = Date.parse(localInputs.expired_time);
           if (isNaN(time)) {
-            showError('过期Time格式错误！');
+            showError('Expiration Time format mistake!');
             setLoading(false);
             break;
           }
@@ -224,13 +224,13 @@ const EditToken = (props) => {
           successCount++;
         } else {
           showError(message);
-          break; // 如果创建失败，终止循环
+          break; // 如果创建Failed，终止循环
         }
       }
 
       if (successCount > 0) {
         showSuccess(
-          `${successCount}个Token创建成功，请在列表页面点击Copy获取Token！`,
+          `${successCount}indivual Token was created Successfully. Please click Copy on the list page to get the Token!`,
         );
         props.refresh();
         props.handleClose();
@@ -238,7 +238,7 @@ const EditToken = (props) => {
     }
     setLoading(false);
     setInputs(originInputs); // 重置表单
-    setTokenCount(1); // 重置数量为Default值
+    setTokenCount(1); // 重置quantity为Default值
   };
 
   return (
@@ -246,7 +246,7 @@ const EditToken = (props) => {
       <SideSheet
         placement={isEdit ? 'right' : 'left'}
         title={
-          <Title level={3}>{isEdit ? '更新Token信息' : '创建新的Token'}</Title>
+          <Title level={3}>{isEdit ? 'Update Token Information' : 'Creating a New Token'}</Title>
         }
         headerStyle={{ borderBottom: '1px solid var(--semi-color-border)' }}
         bodyStyle={{ borderBottom: '1px solid var(--semi-color-border)' }}
@@ -309,7 +309,7 @@ const EditToken = (props) => {
                   setExpiredTime(0, 0, 1, 0);
                 }}
               >
-                一小时
+                一Hour
               </Button>
               <Button
                 type={'tertiary'}
@@ -317,7 +317,7 @@ const EditToken = (props) => {
                   setExpiredTime(1, 0, 0, 0);
                 }}
               >
-                一个月
+                一indivual月
               </Button>
               <Button
                 type={'tertiary'}
@@ -325,7 +325,7 @@ const EditToken = (props) => {
                   setExpiredTime(0, 1, 0, 0);
                 }}
               >
-                一天
+                一day
               </Button>
             </Space>
           </div>
@@ -334,7 +334,7 @@ const EditToken = (props) => {
           <Banner
             type={'warning'}
             description={
-              'Note，Token的Quota仅用于限制Token本身的最大Quota使用量，实际的使用受到账户的剩Balance度限制。'
+              'Note，Token的Quota仅用于限制Token本身的最大Quota使用量，实际的使用受到Account的剩Balance度限制。'
             }
           ></Banner>
           <div style={{ marginTop: 20 }}>
@@ -363,22 +363,22 @@ const EditToken = (props) => {
           {!isEdit && (
             <>
               <div style={{ marginTop: 20 }}>
-                <Typography.Text>新建数量</Typography.Text>
+                <Typography.Text>Create quantity</Typography.Text>
               </div>
               <AutoComplete
                 style={{ marginTop: 8 }}
-                label='数量'
-                placeholder={'请选择或Enter创建Token的数量'}
+                label='quantity'
+                placeholder={'Please select or enter the quantity to create a token'}
                 onChange={(value) => handleTokenCountChange(value)}
                 onSelect={(value) => handleTokenCountChange(value)}
                 value={tokenCount.toString()}
                 autoComplete='off'
                 type='number'
                 data={[
-                  { value: 10, label: '10个' },
-                  { value: 20, label: '20个' },
-                  { value: 30, label: '30个' },
-                  { value: 100, label: '100个' },
+                  { value: 10, label: '10indivual' },
+                  { value: 20, label: '20indivual' },
+                  { value: 30, label: '30indivual' },
+                  { value: 100, label: '100indivual' },
                 ]}
                 disabled={unlimited_quota}
               />
@@ -398,12 +398,12 @@ const EditToken = (props) => {
           </div>
           <Divider />
           <div style={{ marginTop: 10 }}>
-            <Typography.Text>IP白名单（请勿过度信任此功能）</Typography.Text>
+            <Typography.Text>IP whitelist (do not overly trust this function)</Typography.Text>
           </div>
           <TextArea
             label='IP白名单'
             name='allow_ips'
-            placeholder={'允许的IP，一行一个'}
+            placeholder={'允许的IP，一行一indivual'}
             onChange={(value) => {
               handleInputChange('allow_ips', value);
             }}
@@ -420,14 +420,14 @@ const EditToken = (props) => {
                 }
               ></Checkbox>
               <Typography.Text>
-                EnableModel限制（非必要，不建议Enable）
+                EnableModel restriction (not necessary, not recommended)
               </Typography.Text>
             </Space>
           </div>
 
           <Select
             style={{ marginTop: 8 }}
-            placeholder={'请选择该Channel所支持的Model'}
+            placeholder={'Please select the Model supported by this Channel'}
             name='models'
             required
             multiple

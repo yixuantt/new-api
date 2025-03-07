@@ -53,7 +53,7 @@ func getLinuxDoUserInfoByCode(code string) (*LinuxDoUser, error) {
 	res, err := client.Do(req)
 	if err != nil {
 		common.SysLog(err.Error())
-		return nil, errors.New("None法连接至 LINUX DO 服务器，请稍后重试！")
+		return nil, errors.New("None法连接至 LINUX DO 服务器，请稍后Retry！")
 	}
 	defer res.Body.Close()
 	var oAuthResponse LinuxDoOAuthResponse
@@ -69,7 +69,7 @@ func getLinuxDoUserInfoByCode(code string) (*LinuxDoUser, error) {
 	res2, err := client.Do(req)
 	if err != nil {
 		common.SysLog(err.Error())
-		return nil, errors.New("None法连接至 LINUX DO 服务器，请稍后重试！")
+		return nil, errors.New("None法连接至 LINUX DO 服务器，请稍后Retry！")
 	}
 	defer res2.Body.Close()
 	var linuxdoUser LinuxDoUser
@@ -78,10 +78,10 @@ func getLinuxDoUserInfoByCode(code string) (*LinuxDoUser, error) {
 		return nil, err
 	}
 	if linuxdoUser.ID == 0 {
-		return nil, errors.New("The return value is illegal, the user field is empty, please try again later!")
+		return nil, errors.New("Invalid return value, user field is empty. Please try again later!")
 	}
 	if linuxdoUser.TrustLevel < common.LinuxDoMinLevel {
-		return nil, errors.New("User LINUX DO 信任等级不足！")
+		return nil, errors.New("User LINUX DO 信任grade不足！")
 	}
 	return &linuxdoUser, nil
 }
@@ -105,7 +105,7 @@ func LinuxDoOAuth(c *gin.Context) {
 	if !common.LinuxDoOAuthEnabled {
 		c.JSON(http.StatusOK, gin.H{
 			"success": false,
-			"message": "Admin未开启通过 LINUX DO Login以及Register",
+			"message": "Admin未open启通过 LINUX DO LoginandRegister",
 		})
 		return
 	}
@@ -173,7 +173,7 @@ func LinuxDoOAuth(c *gin.Context) {
 		} else {
 			c.JSON(http.StatusOK, gin.H{
 				"success": false,
-				"message": "The administrator has turned off new user registration",
+				"message": "Administrator has disabled new user registration",
 			})
 			return
 		}
@@ -193,7 +193,7 @@ func LinuxDoBind(c *gin.Context) {
 	if !common.LinuxDoOAuthEnabled {
 		c.JSON(http.StatusOK, gin.H{
 			"success": false,
-			"message": "Admin未开启通过 LINUX DO Login以及Register",
+			"message": "Admin未open启通过 LINUX DO LoginandRegister",
 		})
 		return
 	}
@@ -213,7 +213,7 @@ func LinuxDoBind(c *gin.Context) {
 	if model.IsLinuxDoIdAlreadyTaken(user.LinuxDoId) {
 		c.JSON(http.StatusOK, gin.H{
 			"success": false,
-			"message": "该 LINUX DO 账户已被Bind",
+			"message": "该 LINUX DO Account已被Bind",
 		})
 		return
 	}

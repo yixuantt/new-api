@@ -73,27 +73,27 @@ func RedisDel(key string) error {
 
 func RedisDecrease(key string, value int64) error {
 
-	// 检查键的剩余生存时间
+	// 检查键的剩余生存Time
 	ttlCmd := RDB.TTL(context.Background(), key)
 	ttl, err := ttlCmd.Result()
 	if err != nil {
-		// 失败则尝试直接减少
+		// Failed则尝试直接减少
 		return RDB.DecrBy(context.Background(), key, value).Err()
 	}
 
-	// 如果剩余生存时间大于0，则进行减少操作
+	// 如果剩余生存Time大于0，则进行减少Actions
 	if ttl > 0 {
 		ctx := context.Background()
-		// 开始一个Redis事务
+		// open始一indivualRedis事务
 		txn := RDB.TxPipeline()
 
-		// 减少余额
+		// 减少Balance
 		decrCmd := txn.DecrBy(ctx, key, value)
 		if err := decrCmd.Err(); err != nil {
-			return err // 如果减少失败，则直接返回错误
+			return err // 如果减少Failed，则直接返回mistake
 		}
 
-		// 重新设置过期时间，使用原来的过期时间
+		// 重新Settings过期Time，使用原来的过期Time
 		txn.Expire(ctx, key, ttl)
 
 		// 执行事务

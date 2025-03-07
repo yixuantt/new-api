@@ -21,7 +21,7 @@ export default function SettingsCreditLimit(props) {
 
   function onSubmit() {
     const updateArray = compareObjects(inputs, inputsRow);
-    if (!updateArray.length) return showWarning('你似乎并没有修改什么');
+    if (!updateArray.length) return showWarning('You seem to have not modified anything');
     const requestQueue = updateArray.map((item) => {
       let value = '';
       if (typeof inputs[item.key] === 'boolean') {
@@ -40,13 +40,13 @@ export default function SettingsCreditLimit(props) {
         if (requestQueue.length === 1) {
           if (res.includes(undefined)) return;
         } else if (requestQueue.length > 1) {
-          if (res.includes(undefined)) return showError('部分保存失败，请重试');
+          if (res.includes(undefined)) return showError('部分saveFailed，请Retry');
         }
-        showSuccess('保存成功');
+        showSuccess('Saved successfully');
         props.refresh();
       })
       .catch(() => {
-        showError('保存失败，请重试');
+        showError('saveFailed，请Retry');
       })
       .finally(() => {
         setLoading(false);
@@ -126,7 +126,7 @@ export default function SettingsCreditLimit(props) {
               </Col>
               <Col span={6}>
                 <Form.InputNumber
-                  label={'新User使用邀请码奖励Quota'}
+                  label={'新User使用Invitation code奖励Quota'}
                   field={'QuotaForInvitee'}
                   step={1}
                   min={0}
@@ -145,7 +145,7 @@ export default function SettingsCreditLimit(props) {
 
             <Row>
               <Button size='large' onClick={onSubmit}>
-                保存QuotaSettings
+                saveQuotaSettings
               </Button>
             </Row>
           </Form.Section>

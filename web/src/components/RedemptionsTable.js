@@ -102,7 +102,7 @@ const RedemptionsTable = () => {
         <div>
           <Popover content={record.key} style={{ padding: 20 }} position='top'>
             <Button theme='light' type='tertiary' style={{ marginRight: 1 }}>
-              查看
+              Check
             </Button>
           </Popover>
           <Button
@@ -116,8 +116,8 @@ const RedemptionsTable = () => {
             Copy
           </Button>
           <Popconfirm
-            title='确定是否要Delete此Redeem码？'
-            content='此修改将不可逆'
+            title='OK是否要Delete此Redeem码？'
+            content='This modification will be irreversible'
             okType={'danger'}
             position={'left'}
             onConfirm={() => {
@@ -381,11 +381,11 @@ const RedemptionsTable = () => {
       ></EditRedemption>
       <Form onSubmit={searchRedemptions}>
         <Form.Input
-          label='搜索关键字'
+          label='Search keywords'
           field='keyword'
           icon='search'
           iconPosition='left'
-          placeholder='关键字(id或者Name)'
+          placeholder='keywords (id或者Name)'
           value={searchKeyword}
           loading={searching}
           onChange={handleKeywordChange}
@@ -432,7 +432,7 @@ const RedemptionsTable = () => {
         type='warning'
         onClick={async () => {
           if (selectedKeys.length === 0) {
-            showError('请至少选择一个Redeem码！');
+            showError('请至少选择一indivualRedeem码！');
             return;
           }
           let keys = '';

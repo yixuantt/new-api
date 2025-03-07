@@ -35,7 +35,7 @@ export default function SettingsChats(props) {
         .then(() => {
           console.log('Validation passed');
           const updateArray = compareObjects(inputs, inputsRow);
-          if (!updateArray.length) return showWarning('你似乎并没有修改什么');
+          if (!updateArray.length) return showWarning('You seem to have not modified anything');
           const requestQueue = updateArray.map((item) => {
             let value = '';
             if (typeof inputs[item.key] === 'boolean') {
@@ -55,13 +55,13 @@ export default function SettingsChats(props) {
                 if (res.includes(undefined)) return;
               } else if (requestQueue.length > 1) {
                 if (res.includes(undefined))
-                  return showError('部分保存失败，请重试');
+                  return showError('部分saveFailed，请Retry');
               }
-              showSuccess('保存成功');
+              showSuccess('Saved successfully');
               props.refresh();
             })
             .catch(() => {
-              showError('保存失败，请重试');
+              showError('saveFailed，请Retry');
             })
             .finally(() => {
               setLoading(false);
@@ -120,13 +120,13 @@ export default function SettingsChats(props) {
           <Banner
             type='warning'
             description={
-              '必须将上方Chat链接全部Settings为空，才能使用下方ChatSettings功能'
+              '必须将上方Chat链接AllSettings为空，才能使用下方ChatSettings功能'
             }
           />
           <Banner
             type='info'
             description={
-              '链接中的{key}将自动替换为sk-xxxx，{address}将自动替换为系统Settings的Server Address，末尾不带/和/v1'
+              '链接中的{key}将自动替换为sk-xxxx，{address}将自动替换为SystemSettings的Server Address，末尾不带/和/v1'
             }
           />
           <Form.TextArea
@@ -142,7 +142,7 @@ export default function SettingsChats(props) {
                 validator: (rule, value) => {
                   return verifyJSON(value);
                 },
-                message: '不是合法的 JSON 字符串',
+                message: 'Not a valid JSON string',
               },
             ]}
             onChange={(value) =>
@@ -155,7 +155,7 @@ export default function SettingsChats(props) {
         </Form.Section>
       </Form>
       <Space>
-        <Button onClick={onSubmit}>保存ChatSettings</Button>
+        <Button onClick={onSubmit}>saveChatSettings</Button>
       </Space>
     </Spin>
   );

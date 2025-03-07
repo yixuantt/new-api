@@ -28,7 +28,7 @@ export default function GeneralSettings(props) {
   }
   function onSubmit() {
     const updateArray = compareObjects(inputs, inputsRow);
-    if (!updateArray.length) return showWarning('你似乎并没有修改什么');
+    if (!updateArray.length) return showWarning('You seem to have not modified anything');
     const requestQueue = updateArray.map((item) => {
       let value = '';
       if (typeof inputs[item.key] === 'boolean') {
@@ -47,13 +47,13 @@ export default function GeneralSettings(props) {
         if (requestQueue.length === 1) {
           if (res.includes(undefined)) return;
         } else if (requestQueue.length > 1) {
-          if (res.includes(undefined)) return showError('部分保存失败，请重试');
+          if (res.includes(undefined)) return showError('部分saveFailed，请Retry');
         }
-        showSuccess('保存成功');
+        showSuccess('Saved successfully');
         props.refresh();
       })
       .catch(() => {
-        showError('保存失败，请重试');
+        showError('saveFailed，请Retry');
       })
       .finally(() => {
         setLoading(false);
@@ -128,9 +128,9 @@ export default function GeneralSettings(props) {
               <Col span={8}>
                 <Form.Input
                   field={'RetryTimes'}
-                  label={'失败重试次数'}
+                  label={'FailedRetrytimes数'}
                   initValue={''}
-                  placeholder='失败重试次数'
+                  placeholder='FailedRetrytimes数'
                   onChange={onChange}
                   showClear
                 />
@@ -155,7 +155,7 @@ export default function GeneralSettings(props) {
               <Col span={8}>
                 <Form.Switch
                   field={'DisplayTokenStatEnabled'}
-                  label={'Billing 相关 API 显示TokenQuota而非UserQuota'}
+                  label={'Billing 相close API show示TokenQuota而非UserQuota'}
                   size='large'
                   checkedText='｜'
                   uncheckedText='〇'
@@ -185,7 +185,7 @@ export default function GeneralSettings(props) {
             </Row>
             <Row>
               <Button size='large' onClick={onSubmit}>
-                保存通用Settings
+                save通用Settings
               </Button>
             </Row>
           </Form.Section>
