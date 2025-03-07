@@ -106,7 +106,7 @@ const EditUser = (props) => {
     }
     const { success, message } = res.data;
     if (success) {
-      showSuccess('User信息更新Success！');
+      showSuccess('User Information更新Success！');
       props.refresh();
       props.handleClose();
     } else {

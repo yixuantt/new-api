@@ -275,7 +275,7 @@ func PreConsumeTokenQuota(relayInfo *relaycommon.RelayInfo, quota int) (userQuot
 		return 0, err
 	}
 	if userQuota < quota {
-		return 0, errors.New(fmt.Sprintf("Insufficient user quota，剩Balance度为 %d", userQuota))
+		return 0, errors.New(fmt.Sprintf("Insufficient user quota，Available Balance为 %d", userQuota))
 	}
 	if !relayInfo.IsPlayground {
 		err = DecreaseTokenQuota(relayInfo.TokenId, quota)

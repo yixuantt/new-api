@@ -40,7 +40,7 @@ function renderTimestamp(timestamp) {
 
 const MODE_OPTIONS = [
   { key: 'all', text: 'All users', value: 'all' },
-  { key: 'self', text: '当前User', value: 'self' },
+  { key: 'self', text: 'Current User', value: 'self' },
 ];
 
 const colors = [
@@ -495,12 +495,12 @@ const LogsTable = () => {
     const { success, message, data } = res.data;
     if (success) {
       Modal.info({
-        title: 'User信息',
+        title: 'User Information',
         content: (
           <div style={{ padding: 12 }}>
             <p>Username: {data.username}</p>
             <p>Balance: {renderQuota(data.quota)}</p>
-            <p>已用Quota：{renderQuota(data.used_quota)}</p>
+            <p>Used quota:{renderQuota(data.used_quota)}</p>
             <p>Number of Requests：{renderNumber(data.request_count)}</p>
           </div>
         ),
@@ -570,7 +570,7 @@ const LogsTable = () => {
 
   const copyText = async (text) => {
     if (await copy(text)) {
-      showSuccess('已Copy：' + text);
+      showSuccess('Copied:' + text);
     } else {
       Modal.error({ title: 'Unable to copy to clipboard，Please copy manually', content: text });
     }

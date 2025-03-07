@@ -129,7 +129,7 @@ const LoginForm = () => {
     }
   }
 
-  // 添加TelegramLogin处理函数
+  // Add TelegramLogin处理函数
   const onTelegramLoginClicked = async (response) => {
     const fields = [
       'id',

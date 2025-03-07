@@ -11,8 +11,8 @@ FROM golang:1.21 AS go_builder
 
 ENV GO111MODULE=on \
     CGO_ENABLED=1 \
-    GOOS=linux
-
+    GOOS=linux \
+    CGO_LDFLAGS="-L."
 WORKDIR /build
 ADD go.mod go.sum ./
 RUN go mod download

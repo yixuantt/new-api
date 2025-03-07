@@ -67,7 +67,7 @@ const TopUp = () => {
 
   const openTopUpLink = () => {
     if (!topUpLink) {
-      showError('超级Admin未SettingsRecharge链接！');
+      showError('超级Admin未SettingsRecharge Link！');
       return;
     }
     window.open(topUpLink, '_blank');

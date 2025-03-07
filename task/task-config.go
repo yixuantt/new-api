@@ -9,7 +9,7 @@ import (
 func InitCron() {
 	c := cron.New(cron.WithSeconds())
 
-	// 添加定时任务
+	// Add 定时任务
 	_, err := c.AddFunc("0 0 * * * *", func() {
 		RefreshAccessToken()
 	})

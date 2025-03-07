@@ -47,13 +47,13 @@ export default function GeneralSettings(props) {
         if (requestQueue.length === 1) {
           if (res.includes(undefined)) return;
         } else if (requestQueue.length > 1) {
-          if (res.includes(undefined)) return showError('部分saveFailed，请Retry');
+          if (res.includes(undefined)) return showError('Partial save Failed, please try again');
         }
         showSuccess('Saved successfully');
         props.refresh();
       })
       .catch(() => {
-        showError('saveFailed，请Retry');
+        showError('Save Failed，Please try again');
       })
       .finally(() => {
         setLoading(false);
@@ -76,19 +76,19 @@ export default function GeneralSettings(props) {
       <Spin spinning={loading}>
         <Banner
           type='warning'
-          description={'Chat链接功能已经弃用，请使用下方ChatSettings功能'}
+          description={'The Chat link function has been deprecated. Please use the ChatSettings function below.'}
         />
         <Form
           values={inputs}
           getFormApi={(formAPI) => (refForm.current = formAPI)}
           style={{ marginBottom: 15 }}
         >
-          <Form.Section text={'通用Settings'}>
+          <Form.Section text={'General Settings'}>
             <Row gutter={16}>
               <Col span={8}>
                 <Form.Input
                   field={'TopUpLink'}
-                  label={'Recharge链接'}
+                  label={'Recharge Link'}
                   initValue={''}
                   placeholder={'For example, the purchase link of the card issuing website'}
                   onChange={onChange}
@@ -98,7 +98,7 @@ export default function GeneralSettings(props) {
               <Col span={8}>
                 <Form.Input
                   field={'ChatLink'}
-                  label={'DefaultChat页面链接'}
+                  label={'Default Chat page link'}
                   initValue={''}
                   placeholder='For example, the deployment address of ChatGPT Next Web'
                   onChange={onChange}
@@ -108,7 +108,7 @@ export default function GeneralSettings(props) {
               <Col span={8}>
                 <Form.Input
                   field={'ChatLink2'}
-                  label={'Chat页面 2 链接'}
+                  label={'Chat Page 2 Link'}
                   initValue={''}
                   placeholder='For example, the deployment address of ChatGPT Next Web'
                   onChange={onChange}
@@ -128,9 +128,9 @@ export default function GeneralSettings(props) {
               <Col span={8}>
                 <Form.Input
                   field={'RetryTimes'}
-                  label={'FailedRetrytimes数'}
+                  label={'Failed Retry Times'}
                   initValue={''}
-                  placeholder='FailedRetrytimes数'
+                  placeholder='Failed Retry Times'
                   onChange={onChange}
                   showClear
                 />
@@ -155,7 +155,7 @@ export default function GeneralSettings(props) {
               <Col span={8}>
                 <Form.Switch
                   field={'DisplayTokenStatEnabled'}
-                  label={'Billing 相close API show示TokenQuota而非UserQuota'}
+                  label={'Billing API shows Token Quota instead of User Quota'}
                   size='large'
                   checkedText='｜'
                   uncheckedText='〇'
@@ -170,7 +170,7 @@ export default function GeneralSettings(props) {
               <Col span={8}>
                 <Form.Switch
                   field={'DefaultCollapseSidebar'}
-                  label={'Default折叠侧边栏'}
+                  label={'Default折叠Sidebar'}
                   size='large'
                   checkedText='｜'
                   uncheckedText='〇'
@@ -185,7 +185,7 @@ export default function GeneralSettings(props) {
             </Row>
             <Row>
               <Button size='large' onClick={onSubmit}>
-                save通用Settings
+                saveGeneral Settings
               </Button>
             </Row>
           </Form.Section>

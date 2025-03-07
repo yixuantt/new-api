@@ -32,9 +32,9 @@
 
 - mj_zoom (比例变焦)
 - mj_shorten (提示词缩短)
-- mj_modal (窗口提交，局部重绘和自定义比例变焦必须和mj_modal一同添加)
-- mj_inpaint (局部重绘提交，必须和mj_modal一同添加)
-- mj_custom_zoom (自定义比例变焦，必须和mj_modal一同添加)
+- mj_modal (窗口提交，局部重绘和自定义比例变焦必须和mj_modal一同Add )
+- mj_inpaint (局部重绘提交，必须和mj_modal一同Add )
+- mj_custom_zoom (自定义比例变焦，必须和mj_modal一同Add )
 - mj_high_variation (强变换)
 - mj_low_variation (弱变换)
 - mj_pan (平移)
@@ -70,13 +70,13 @@
 
 部署Midjourney-Proxy，并配置好midjourney账号等（强烈建议设置密钥），[项目地址](https://github.com/novicezk/midjourney-proxy)
 
-2. 在渠道Mange中添加渠道，渠道类型选择**Midjourney Proxy**，如果是plus版本选择**Midjourney Proxy Plus**
+2. 在渠道Mange中Add 渠道，渠道类型选择**Midjourney Proxy**，如果是plus版本选择**Midjourney Proxy Plus**
    ，模型请参考上方模型列表
 3. **代理**填写midjourney-proxy部署的地址，例如：http://localhost:8080
 4. 密钥填写midjourney-proxy的密钥，如果没有设置密钥，可以随便填
 
-### 对接上游new api
+### 对接上游FinEmbed
 
-1. 在渠道Mange中添加渠道，渠道类型选择**Midjourney Proxy Plus**，模型请参考上方模型列表
-2. **代理**填写上游new api的地址，例如：http://localhost:3000
-3. 密钥填写上游new api的密钥
+1. 在渠道Mange中Add 渠道，渠道类型选择**Midjourney Proxy Plus**，模型请参考上方模型列表
+2. **代理**填写上游FinEmbed的地址，例如：http://localhost:3000
+3. 密钥填写上游FinEmbed的密钥

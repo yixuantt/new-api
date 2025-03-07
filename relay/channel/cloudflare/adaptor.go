@@ -57,7 +57,7 @@ func (a *Adaptor) ConvertRerankRequest(c *gin.Context, relayMode int, request dt
 }
 
 func (a *Adaptor) ConvertAudioRequest(c *gin.Context, info *relaycommon.RelayInfo, request dto.AudioRequest) (io.Reader, error) {
-	// 添加文件字段
+	// Add 文件字段
 	file, _, err := c.Request.FormFile("file")
 	if err != nil {
 		return nil, errors.New("file is required")

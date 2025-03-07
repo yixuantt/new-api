@@ -23,7 +23,7 @@ type Midjourney struct {
 	Properties  string `json:"properties"`
 }
 
-// TaskQueryParams 用于包含所有搜索条件的结构体，可以根据需求添加Expand more字段
+// TaskQueryParams 用于包含所有搜索条件的结构体，可以根据需求Add Expand more字段
 type TaskQueryParams struct {
 	ChannelID      string
 	MjID           string
@@ -65,7 +65,7 @@ func GetAllTasks(startIdx int, num int, queryParams TaskQueryParams) []*Midjourn
 	// 初始化Query构建器
 	query := DB
 
-	// 添加过滤条件
+	// Add 过滤条件
 	if queryParams.ChannelID != "" {
 		query = query.Where("channel_id = ?", queryParams.ChannelID)
 	}

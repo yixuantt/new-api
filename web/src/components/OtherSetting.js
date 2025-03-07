@@ -47,9 +47,9 @@ const OtherSetting = () => {
     setInputs((inputs) => ({ ...inputs, [name]: value }));
   };
 
-  // 通用Settings
+  // General Settings
   const formAPISettingGeneral = useRef();
-  // 通用Settings - Notice
+  // General Settings - Notice
   const submitNotice = async () => {
     try {
       setLoadingInput((loadingInput) => ({ ...loadingInput, Notice: true }));
@@ -62,9 +62,9 @@ const OtherSetting = () => {
       setLoadingInput((loadingInput) => ({ ...loadingInput, Notice: false }));
     }
   };
-  // indivual性化Settings
+  // Indivual Personalization Settings
   const formAPIPersonalization = useRef();
-  //  indivual性化Settings - SystemName
+  //  Indivual Personalization Settings - SystemName
   const submitSystemName = async () => {
     try {
       setLoadingInput((loadingInput) => ({
@@ -84,7 +84,7 @@ const OtherSetting = () => {
     }
   };
 
-  // indivual性化Settings - Logo
+  // Indivual Personalization Settings - Logo
   const submitLogo = async () => {
     try {
       setLoadingInput((loadingInput) => ({ ...loadingInput, Logo: true }));
@@ -97,7 +97,7 @@ const OtherSetting = () => {
       setLoadingInput((loadingInput) => ({ ...loadingInput, Logo: false }));
     }
   };
-  // indivual性化Settings - Home内容
+  // Indivual Personalization Settings - Home内容
   const submitOption = async (key) => {
     try {
       setLoadingInput((loadingInput) => ({
@@ -116,7 +116,7 @@ const OtherSetting = () => {
       }));
     }
   };
-  // indivual性化Settings - About
+  // Indivual Personalization Settings - About
   const submitAbout = async () => {
     try {
       setLoadingInput((loadingInput) => ({ ...loadingInput, About: true }));
@@ -129,7 +129,7 @@ const OtherSetting = () => {
       setLoadingInput((loadingInput) => ({ ...loadingInput, About: false }));
     }
   };
-  // indivual性化Settings - Footer
+  // Indivual Personalization Settings - Footer
   const submitFooter = async () => {
     try {
       setLoadingInput((loadingInput) => ({ ...loadingInput, Footer: true }));
@@ -187,16 +187,16 @@ const OtherSetting = () => {
   return (
     <Row>
       <Col span={24}>
-        {/* 通用Settings */}
+        {/* General Settings */}
         <Form
           values={inputs}
           getFormApi={(formAPI) => (formAPISettingGeneral.current = formAPI)}
           style={{ marginBottom: 15 }}
         >
-          <Form.Section text={'通用Settings'}>
+          <Form.Section text={'General Settings'}>
             <Form.TextArea
               label={'Announcement'}
-              placeholder={'在此Enter新的Announcement内容，支持 Markdown & HTML 代码'}
+              placeholder={'Enter new Announcement content here, supports Markdown & HTML code'}
               field={'Notice'}
               onChange={handleInputChange}
               style={{ fontFamily: 'JetBrains Mono, Consolas' }}
@@ -207,13 +207,13 @@ const OtherSetting = () => {
             </Button>
           </Form.Section>
         </Form>
-        {/* indivual性化Settings */}
+        {/* Indivual Personalization Settings */}
         <Form
           values={inputs}
           getFormApi={(formAPI) => (formAPIPersonalization.current = formAPI)}
           style={{ marginBottom: 15 }}
         >
-          <Form.Section text={'indivual性化Settings'}>
+          <Form.Section text={'Indivual Personalization Settings'}>
             <Form.Input
               label={'SystemName'}
               placeholder={'在此EnterSystemName'}

@@ -297,7 +297,7 @@ const LogsTable = () => {
 
   const copyText = async (text) => {
     if (await copy(text)) {
-      showSuccess('已Copy：' + text);
+      showSuccess('Copied:' + text);
     } else {
       // setSearchKeyword(text);
       Modal.error({ title: 'Unable to copy to clipboard，Please copy manually', content: text });

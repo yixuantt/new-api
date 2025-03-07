@@ -40,13 +40,13 @@ export default function SettingsMonitoring(props) {
         if (requestQueue.length === 1) {
           if (res.includes(undefined)) return;
         } else if (requestQueue.length > 1) {
-          if (res.includes(undefined)) return showError('部分saveFailed，请Retry');
+          if (res.includes(undefined)) return showError('Partial Save Failed, Please try again');
         }
         showSuccess('Saved successfully');
         props.refresh();
       })
       .catch(() => {
-        showError('saveFailed，请Retry');
+        showError('Save Failed, Please try again');
       })
       .finally(() => {
         setLoading(false);
@@ -72,15 +72,15 @@ export default function SettingsMonitoring(props) {
           getFormApi={(formAPI) => (refForm.current = formAPI)}
           style={{ marginBottom: 15 }}
         >
-          <Form.Section text={'监控Settings'}>
+          <Form.Section text={'Monitoring Settings'}>
             <Row gutter={16}>
               <Col span={8}>
                 <Form.InputNumber
-                  label={'最长Response time'}
+                  label={'Maximum Response time'}
                   step={1}
                   min={0}
                   suffix={'Second'}
-                  extraText={'当运行通道AllTest时，超过此Time将自动Disable通道'}
+                  extraText={'When running channel All Test, the channel will be automatically disabled if this time is exceeded'}
                   placeholder={''}
                   field={'ChannelDisableThreshold'}
                   onChange={(value) =>
@@ -97,7 +97,7 @@ export default function SettingsMonitoring(props) {
                   step={1}
                   min={0}
                   suffix={'Token'}
-                  extraText={'低于此Quota时将发送Mail提醒User'}
+                  extraText={'When the quota is lower than this, an email will be sent to remind the user'}
                   placeholder={''}
                   field={'QuotaRemindThreshold'}
                   onChange={(value) =>
@@ -113,7 +113,7 @@ export default function SettingsMonitoring(props) {
               <Col span={8}>
                 <Form.Switch
                   field={'AutomaticDisableChannelEnabled'}
-                  label={'Failed时自动Disable通道'}
+                  label={'Automatically disable the channel when Failed'}
                   size='large'
                   checkedText='｜'
                   uncheckedText='〇'
@@ -128,7 +128,7 @@ export default function SettingsMonitoring(props) {
               <Col span={8}>
                 <Form.Switch
                   field={'AutomaticEnableChannelEnabled'}
-                  label={'Success时自动Enable通道'}
+                  label={'Automatically enable the channel when Success'}
                   size='large'
                   checkedText='｜'
                   uncheckedText='〇'
@@ -143,7 +143,7 @@ export default function SettingsMonitoring(props) {
             </Row>
             <Row>
               <Button size='large' onClick={onSubmit}>
-                save监控Settings
+                saveMonitoring Settings
               </Button>
             </Row>
           </Form.Section>

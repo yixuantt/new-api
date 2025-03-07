@@ -63,12 +63,12 @@ const UsersTable = () => {
         return (
           <div>
             <Space spacing={1}>
-              <Tooltip content={'剩Balance度'}>
+              <Tooltip content={'Available Balance'}>
                 <Tag color='white' size='large'>
                   {renderQuota(record.quota)}
                 </Tag>
               </Tooltip>
-              <Tooltip content={'已用Quota'}>
+              <Tooltip content={'Used Quota'}>
                 <Tag color='white' size='large'>
                   {renderQuota(record.used_quota)}
                 </Tag>
@@ -459,7 +459,7 @@ const UsersTable = () => {
               icon='search'
               field='keyword'
               iconPosition='left'
-              placeholder='搜索User的 ID，Username，show示Name，andEmail Address ...'
+              placeholder="Search for User's ID, Username, Display Name, and Email Address..."
               value={searchKeyword}
               loading={searching}
               onChange={(value) => handleKeywordChange(value)}
@@ -506,7 +506,7 @@ const UsersTable = () => {
           setShowAddUser(true);
         }}
       >
-        添加User
+        Add User
       </Button>
     </>
   );

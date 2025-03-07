@@ -2,7 +2,7 @@
 
 ![new-api](/web/public/logo.png)
 
-# New API
+# FinEmbed
 
 <a href="https://trendshift.io/repositories/8227" target="_blank"><img src="https://trendshift.io/api/badge/repositories/8227" alt="Calcium-Ion%2Fnew-api | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
 
@@ -28,8 +28,8 @@
 ## 主要变更
 此分叉版本的主要变更如下：
 
-1. 全新的UI界面（部分界面还待更新）
-2. 添加[Midjourney-Proxy(Plus)](https://github.com/novicezk/midjourney-proxy)接口的支持，[对接文档](Midjourney.md)
+1. 全新的UI界面（Partial 界面还待更新）
+2. Add [Midjourney-Proxy(Plus)](https://github.com/novicezk/midjourney-proxy)接口的支持，[对接文档](Midjourney.md)
 3. 支持在线充值功能，可在系统设置中设置，当前支持的支付接口：
     + [x] 易支付
 4. 支持用key查询使用额度:
@@ -46,7 +46,7 @@
     2. 对[@Botfather](https://t.me/botfather)输入指令/setdomain
     3. 选择你的bot，然后输入http(s)://你的网站地址/login
     4. Telegram Bot 名称是bot username 去掉@后的字符串
-13. 添加 [Suno API](https://github.com/Suno-API/Suno-API)接口的支持，[对接文档](Suno.md)
+13. Add  [Suno API](https://github.com/Suno-API/Suno-API)接口的支持，[对接文档](Suno.md)
 14. 支持Rerank模型，目前仅兼容Cohere和Jina，可接入Dify，[对接文档](Rerank.md)
 
 ## 模型支持
@@ -54,7 +54,7 @@
 1. 第三方模型 **gps** （gpt-4-gizmo-*, g-*）
 2. 智谱glm-4v，glm-4v识图
 3. Anthropic Claude 3
-4. [Ollama](https://github.com/ollama/ollama?tab=readme-ov-file)，添加渠道时，密钥可以随便填写，默认的请求地址是[http://localhost:11434](http://localhost:11434)，如果需要修改请在渠道中修改
+4. [Ollama](https://github.com/ollama/ollama?tab=readme-ov-file)，Add 渠道时，密钥可以随便填写，默认的请求地址是[http://localhost:11434](http://localhost:11434)，如果需要修改请在渠道中修改
 5. [Midjourney-Proxy(Plus)](https://github.com/novicezk/midjourney-proxy)接口，[对接文档](Midjourney.md)
 6. [零一万物](https://platform.lingyiwanwu.com/)
 7. 自定义渠道，支持填入完整调用地址
@@ -63,7 +63,7 @@
 10. Dify
 11. Vertex AI，目前兼容Claude，Gemini，Llama3.1
 
-您可以在渠道中添加自定义模型gpt-4-gizmo-*或g-*，此模型并非OpenAI官方模型，而是第三方模型，使用官方key无法调用。
+您可以在渠道中Add 自定义模型gpt-4-gizmo-*或g-*，此模型并非OpenAI官方模型，而是第三方模型，使用官方key无法调用。
 
 ## 比原版One API多出的配置
 - `GENERATE_DEFAULT_TOKEN`：是否为新注册用户生成初始令牌，默认为 `false`。
@@ -83,7 +83,7 @@
 ```shell
 # 使用 SQLite 的部署命令：
 docker run --name new-api -d --restart always -p 3000:3000 -e TZ=Asia/Shanghai -v /home/ubuntu/data/new-api:/data calciumion/new-api:latest
-# 使用 MySQL 的部署命令，在上面的基础上添加 `-e SQL_DSN="root:123456@tcp(localhost:3306)/oneapi"`，请自行修改数据库连接参数。
+# 使用 MySQL 的部署命令，在上面的基础上Add  `-e SQL_DSN="root:123456@tcp(localhost:3306)/oneapi"`，请自行修改数据库连接参数。
 # 例如：
 docker run --name new-api -d --restart always -p 3000:3000 -e SQL_DSN="root:123456@tcp(localhost:3306)/oneapi" -e TZ=Asia/Shanghai -v /home/ubuntu/data/new-api:/data calciumion/new-api:latest
 ```
@@ -91,7 +91,7 @@ docker run --name new-api -d --restart always -p 3000:3000 -e SQL_DSN="root:1234
 ```shell
 # 使用 SQLite 的部署命令：
 docker run --name new-api -d --restart always -p 3000:3000 -e TZ=Asia/Shanghai -v /www/wwwroot/new-api:/data calciumion/new-api:latest
-# 使用 MySQL 的部署命令，在上面的基础上添加 `-e SQL_DSN="root:123456@tcp(localhost:3306)/oneapi"`，请自行修改数据库连接参数。
+# 使用 MySQL 的部署命令，在上面的基础上Add  `-e SQL_DSN="root:123456@tcp(localhost:3306)/oneapi"`，请自行修改数据库连接参数。
 # 例如：
 # 注意：数据库要开启远程访问，并且只允许服务器IP访问
 docker run --name new-api -d --restart always -p 3000:3000 -e SQL_DSN="root:123456@tcp(宝塔的服务器地址:宝塔数据库端口)/宝塔数据库名称" -e TZ=Asia/Shanghai -v /www/wwwroot/new-api:/data calciumion/new-api:latest

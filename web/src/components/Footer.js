@@ -22,7 +22,7 @@ const FooterBar = () => {
         target='_blank'
         rel='noreferrer'
       >
-        New API {import.meta.env.VITE_REACT_APP_VERSION}{' '}
+        FinEmbed {import.meta.env.VITE_REACT_APP_VERSION}{' '}
       </a>
       built by{' '}
       <a href='https://github.com/Calcium-Ion' target='_blank' rel='noreferrer'>

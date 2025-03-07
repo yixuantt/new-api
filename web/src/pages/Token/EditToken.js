@@ -285,9 +285,9 @@ const EditToken = (props) => {
           />
           <Divider />
           <DatePicker
-            label='过期Time'
+            label='Expiration Time'
             name='expired_time'
-            placeholder={'请选择过期Time'}
+            placeholder={'请选择Expiration Time'}
             onChange={(value) => handleInputChange('expired_time', value)}
             value={expired_time}
             autoComplete='new-password'
@@ -334,7 +334,7 @@ const EditToken = (props) => {
           <Banner
             type={'warning'}
             description={
-              'Note，Token的Quota仅用于限制Token本身的最大Quota使用量，实际的使用受到Account的剩Balance度限制。'
+              'Note，Token的Quota仅用于限制Token本身的最大Quota使用量，实际的使用受到Account的Available Balance限制。'
             }
           ></Banner>
           <div style={{ marginTop: 20 }}>

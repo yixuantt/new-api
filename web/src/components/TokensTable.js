@@ -98,21 +98,21 @@ const TokensTable = () => {
       },
     },
     {
-      title: '已用Quota',
+      title: 'Used Quota',
       dataIndex: 'used_quota',
       render: (text, record, index) => {
         return <div>{renderQuota(parseInt(text))}</div>;
       },
     },
     {
-      title: '剩Balance度',
+      title: 'Available Balance',
       dataIndex: 'remain_quota',
       render: (text, record, index) => {
         return (
           <div>
             {record.unlimited_quota ? (
               <Tag size={'large'} color={'white'}>
-                None限制
+                None Restrictions
               </Tag>
             ) : (
               <Tag size={'large'} color={'light-blue'}>
@@ -124,14 +124,14 @@ const TokensTable = () => {
       },
     },
     {
-      title: '创建Time',
+      title: 'CreateTime',
       dataIndex: 'created_time',
       render: (text, record, index) => {
         return <div>{renderTimestamp(text)}</div>;
       },
     },
     {
-      title: '过期Time',
+      title: 'Expiration Time',
       dataIndex: 'expired_time',
       render: (text, record, index) => {
         return (
@@ -635,14 +635,14 @@ const TokensTable = () => {
           setShowEdit(true);
         }}
       >
-        添加Token
+        Add Token
       </Button>
       <Button
-        label='Copy所选Token'
+        label='Copy the selected token'
         type='warning'
         onClick={async () => {
           if (selectedKeys.length === 0) {
-            showError('请至少选择一indivualToken！');
+            showError('Please select at least one Token!');
             return;
           }
           let keys = '';
@@ -653,7 +653,7 @@ const TokensTable = () => {
           await copyText(keys);
         }}
       >
-        Copy所选Token到剪贴板
+        Copy the selected Token to the clipboard
       </Button>
     </>
   );

@@ -76,7 +76,7 @@ const Detail = (props) => {
     },
     title: {
       visible: true,
-      text: 'ModelConsumption distribution',
+      text: 'Model Consumption Distribution',
       subtext: '0',
     },
     bar: {
@@ -163,7 +163,7 @@ const Detail = (props) => {
     },
     title: {
       visible: true,
-      text: 'Model调用times数占比',
+      text: 'Model call times ratio',
     },
     legends: {
       visible: true,
@@ -205,7 +205,7 @@ const Detail = (props) => {
       if (data.length === 0) {
         data.push({
           count: 0,
-          model_name: 'None数据',
+          model_name: 'None',
           quota: 0,
           created_at: now.getTime() / 1000,
         });

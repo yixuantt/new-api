@@ -27,7 +27,7 @@ const OperationSetting = () => {
     UserUsableGroups: '',
     TopUpLink: '',
     ChatLink: '',
-    ChatLink2: '', // 添加的新Status变量
+    ChatLink2: '', // Add 的新Status变量
     QuotaPerUnit: 0,
     AutomaticDisableChannelEnabled: false,
     AutomaticEnableChannelEnabled: false,
@@ -49,7 +49,7 @@ const OperationSetting = () => {
     DataExportEnabled: false,
     DataExportDefaultTime: 'hour',
     DataExportInterval: 5,
-    DefaultCollapseSidebar: false, // Default折叠侧边栏
+    DefaultCollapseSidebar: false, // Default折叠Sidebar
     RetryTimes: 0,
     Chats: '[]',
   });
@@ -105,18 +105,18 @@ const OperationSetting = () => {
   return (
     <>
       <Spin spinning={loading} size='large'>
-        {/* 通用Settings */}
+        {/* General Settings */}
         <Card style={{ marginTop: '10px' }}>
           <SettingsGeneral options={inputs} refresh={onRefresh} />
         </Card>
-        {/* DrawingSettings */}
+        {/* DrawingSettings
         <Card style={{ marginTop: '10px' }}>
           <SettingsDrawing options={inputs} refresh={onRefresh} />
-        </Card>
+        </Card> */}
         {/* 屏蔽词过滤Settings */}
-        <Card style={{ marginTop: '10px' }}>
+        {/* <Card style={{ marginTop: '10px' }}>
           <SettingsSensitiveWords options={inputs} refresh={onRefresh} />
-        </Card>
+        </Card> */}
         {/* LogSettings */}
         <Card style={{ marginTop: '10px' }}>
           <SettingsLog options={inputs} refresh={onRefresh} />
@@ -125,7 +125,7 @@ const OperationSetting = () => {
         <Card style={{ marginTop: '10px' }}>
           <SettingsDataDashboard options={inputs} refresh={onRefresh} />
         </Card>
-        {/* 监控Settings */}
+        {/* Monitoring Settings */}
         <Card style={{ marginTop: '10px' }}>
           <SettingsMonitoring options={inputs} refresh={onRefresh} />
         </Card>

@@ -325,7 +325,7 @@ const SafetySetting = () => {
       <Grid.Column>
         <Form loading={loading} inverted={isDark}>
           <Header as='h3' inverted={isDark}>
-            通用Settings
+            General Settings
           </Header>
           <Form.Group widths='equal'>
             <Form.Input
@@ -554,7 +554,7 @@ const SafetySetting = () => {
               options={EmailDomainWhitelist}
             />
             <Form.Input
-              label='添加新的允许的Mail域名'
+              label='Add 新的允许的Mail域名'
               action={
                 <Button
                   type='button'
@@ -729,7 +729,7 @@ const SafetySetting = () => {
           </Form.Button>
           <Divider />
           <Header as='h3' inverted={isDark}>
-            配置 Telegram Login
+            Configure Telegram Login
           </Header>
           <Form.Group inline>
             <Form.Input
@@ -744,7 +744,7 @@ const SafetySetting = () => {
               name='TelegramBotName'
               onChange={handleInputChange}
               value={inputs.TelegramBotName}
-              placeholder='Enter你的 Telegram Bot Name'
+              placeholder='Enter your Telegram Bot Name'
             />
           </Form.Group>
           <Form.Button onClick={submitTelegramSettings}>

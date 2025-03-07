@@ -154,7 +154,7 @@ const RegisterForm = () => {
                             onClick={sendVerificationCode}
                             disabled={loading}
                           >
-                            获取Verification Code
+                            Get Verification Code
                           </Button>
                         }
                       />

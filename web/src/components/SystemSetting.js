@@ -217,7 +217,7 @@ const SystemSetting = () => {
 
     let stripePriceId = removeTrailingSlash(inputs.StripePriceId);
     if (stripePriceId && !stripePriceId.startsWith('price_')) {
-      showError('Enter了None效的Stripe 物品PricingID');
+      showError('Enter the Stripe item PricingID with None effect');
       return;
     }
     await updateOption('StripePriceId', stripePriceId);
@@ -360,7 +360,7 @@ const SystemSetting = () => {
       <Grid.Column>
         <Form loading={loading} inverted={isDark}>
           <Header as='h3' inverted={isDark}>
-            通用Settings
+            General Settings
           </Header>
           <Form.Group widths='equal'>
             <Form.Input
@@ -617,7 +617,7 @@ const SystemSetting = () => {
               options={EmailDomainWhitelist}
             />
             <Form.Input
-              label='添加新的允许的Mail域名'
+              label='Add 新的允许的Mail域名'
               action={
                 <Button
                   type='button'
@@ -844,7 +844,7 @@ const SystemSetting = () => {
           </Form.Button>
           <Divider />
           <Header as='h3' inverted={isDark}>
-            配置 Telegram Login
+            Configure Telegram Login
           </Header>
           <Form.Group inline>
             <Form.Input
@@ -859,7 +859,7 @@ const SystemSetting = () => {
               name='TelegramBotName'
               onChange={handleInputChange}
               value={inputs.TelegramBotName}
-              placeholder='Enter你的 Telegram Bot Name'
+              placeholder='Enter your Telegram Bot Name'
             />
           </Form.Group>
           <Form.Button onClick={submitTelegramSettings}>
@@ -869,7 +869,7 @@ const SystemSetting = () => {
           <Header as='h3' inverted={isDark}>
             Configure Turnstile
             <Header.Subheader>
-              用以支持User校验，
+            To support User verification,
               <a
                 href='https://dash.cloudflare.com/'
                 target='_blank'

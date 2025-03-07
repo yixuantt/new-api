@@ -64,7 +64,7 @@ func (m Properties) Value() (driver.Value, error) {
 	return json.Marshal(m)
 }
 
-// SyncTaskQueryParams 用于包含所有搜索条件的结构体，可以根据需求添加Expand more字段
+// SyncTaskQueryParams 用于包含所有搜索条件的结构体，可以根据需求Add Expand more字段
 type SyncTaskQueryParams struct {
 	Platform       constant.TaskPlatform
 	ChannelID      string
@@ -132,7 +132,7 @@ func TaskGetAllTasks(startIdx int, num int, queryParams SyncTaskQueryParams) []*
 	// 初始化Query构建器
 	query := DB
 
-	// 添加过滤条件
+	// Add 过滤条件
 	if queryParams.ChannelID != "" {
 		query = query.Where("channel_id = ?", queryParams.ChannelID)
 	}
@@ -274,7 +274,7 @@ type TaskQuotaUsage struct {
 
 func SumUsedTaskQuota(queryParams SyncTaskQueryParams) (stat []TaskQuotaUsage, err error) {
 	query := DB.Model(Task{})
-	// 添加过滤条件
+	// Add 过滤条件
 	if queryParams.ChannelID != "" {
 		query = query.Where("channel_id = ?", queryParams.ChannelID)
 	}

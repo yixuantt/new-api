@@ -541,7 +541,7 @@ const LogsTable = () => {
 
   const copyText = async (text) => {
     if (await copy(text)) {
-      showSuccess('已Copy：' + text);
+      showSuccess('Copied:' + text);
     } else {
       // setSearchKeyword(text);
       Modal.error({ title: 'Unable to copy to clipboard，Please copy manually', content: text });
@@ -565,7 +565,7 @@ const LogsTable = () => {
         {isAdminUser && showBanner ? (
           <Banner
             type='info'
-            description='当前未open启Midjourney回调，部分项目可能None法获得Drawing结果，可在运营Settings中open启。'
+            description='当前未open启Midjourney回调，Partial 项目可能None法获得Drawing结果，可在运营Settings中open启。'
           />
         ) : (
           <></>

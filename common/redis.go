@@ -93,7 +93,7 @@ func RedisDecrease(key string, value int64) error {
 			return err // 如果减少Failed，则直接返回mistake
 		}
 
-		// 重新Settings过期Time，使用原来的过期Time
+		// 重新SettingsExpiration Time，使用原来的Expiration Time
 		txn.Expire(ctx, key, ttl)
 
 		// 执行事务

@@ -10,7 +10,7 @@ function Doc() {
 
   useEffect(() => {
     // Option 1: Hardcoded URL
-    setDocContent('https://yixuantt.github.io/pages/doc');
+    setDocContent('https://yixuantt.github.io/pages/doc.html');
     setLoading(false);
     
     // Option 2: From API (similar to the example code)

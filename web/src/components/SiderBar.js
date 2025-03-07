@@ -302,7 +302,7 @@ const SiderBar = () => {
           </>
         }
       >
-        <Nav.Footer collapseButton={true}></Nav.Footer>
+      <Nav.Footer collapseButton={true}></Nav.Footer>
       </Nav>
     </>
   );

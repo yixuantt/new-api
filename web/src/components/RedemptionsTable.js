@@ -82,7 +82,7 @@ const RedemptionsTable = () => {
       },
     },
     {
-      title: '创建Time',
+      title: 'CreateTime',
       dataIndex: 'created_time',
       render: (text, record, index) => {
         return <div>{renderTimestamp(text)}</div>;
@@ -425,7 +425,7 @@ const RedemptionsTable = () => {
           setShowEdit(true);
         }}
       >
-        添加Redeem码
+        Add Redeem码
       </Button>
       <Button
         label='Copy所选Redeem码'

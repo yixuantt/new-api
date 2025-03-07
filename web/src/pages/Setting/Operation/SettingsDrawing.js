@@ -42,13 +42,13 @@ export default function SettingsDrawing(props) {
         if (requestQueue.length === 1) {
           if (res.includes(undefined)) return;
         } else if (requestQueue.length > 1) {
-          if (res.includes(undefined)) return showError('部分saveFailed，请Retry');
+          if (res.includes(undefined)) return showError('Partial Save Failed, Please try again');
         }
         showSuccess('Saved successfully');
         props.refresh();
       })
       .catch(() => {
-        showError('saveFailed，请Retry');
+        showError('Save Failed, Please try again');
       })
       .finally(() => {
         setLoading(false);

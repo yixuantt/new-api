@@ -386,9 +386,9 @@ const EditChannel = (props) => {
     modelArray.forEach((model) => {
       // 检查Model是否已存在，且ModelName非空
       if (model && !localModels.includes(model)) {
-        localModels.push(model); // 添加到Model列表
+        localModels.push(model); // Add 到Model列表
         localModelOptions.push({
-          // 添加到下拉选项
+          // Add 到下拉选项
           key: model,
           text: model,
           value: model,

@@ -105,7 +105,7 @@ func (a *Adaptor) ConvertAudioRequest(c *gin.Context, info *relaycommon.RelayInf
 
 		writer.WriteField("model", request.Model)
 
-		// 添加文件字段
+		// Add 文件字段
 		file, header, err := c.Request.FormFile("file")
 		if err != nil {
 			return nil, errors.New("file is required")

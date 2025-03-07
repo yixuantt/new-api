@@ -186,9 +186,9 @@ const ModelPricing = () => {
                     onClick={() => {
                       setSelectedGroup(group);
                       showInfo(
-                        '当前Check的Group为：' +
+                        'The current Check Group is:' +
                           group +
-                          '，Ratio为：' +
+                          ', Ratio is:' +
                           groupRatio[group],
                       );
                     }}
@@ -202,54 +202,54 @@ const ModelPricing = () => {
         );
       },
     },
-    {
-      title: () => (
-        <span style={{ display: 'flex', alignItems: 'center' }}>
-          Ratio
-          <Popover
-            content={
-              <div style={{ padding: 8 }}>
-                Ratio is used to convert different pricing models.
-                <br />
-                click to view Ratio illustrate
-              </div>
-            }
-            position='top'
-            style={{
-              backgroundColor: 'rgba(var(--semi-blue-4),1)',
-              borderColor: 'rgba(var(--semi-blue-4),1)',
-              color: 'var(--semi-color-white)',
-              borderWidth: 1,
-              borderStyle: 'solid',
-            }}
-          >
-            <IconHelpCircle
-              onClick={() => {
-                setModalImageUrl('/ratio.png');
-                setIsModalOpenurl(true);
-              }}
-            />
-          </Popover>
-        </span>
-      ),
-      dataIndex: 'model_ratio',
-      render: (text, record, index) => {
-        let content = text;
-        let completionRatio = parseFloat(record.completion_ratio.toFixed(3));
-        content = (
-          <>
-            <Text>Model：{record.quota_type === 0 ? text : 'None'}</Text>
-            <br />
-            <Text>
-              Completion：{record.quota_type === 0 ? completionRatio : 'None'}
-            </Text>
-            <br />
-            <Text>Group：{groupRatio[selectedGroup]}</Text>
-          </>
-        );
-        return <div>{content}</div>;
-      },
-    },
+    // {
+      // title: () => (
+        // <span style={{ display: 'flex', alignItems: 'center' }}>
+        //   Ratio
+        //   <Popover
+        //     content={
+        //       <div style={{ padding: 8 }}>
+        //         Ratio is used to convert different pricing models.
+        //         <br />
+        //         click to view Ratio illustrate
+        //       </div>
+        //     }
+        //     position='top'
+        //     style={{
+        //       backgroundColor: 'rgba(var(--semi-blue-4),1)',
+        //       borderColor: 'rgba(var(--semi-blue-4),1)',
+        //       color: 'var(--semi-color-white)',
+        //       borderWidth: 1,
+        //       borderStyle: 'solid',
+        //     }}
+        //   >
+        //     <IconHelpCircle
+        //       onClick={() => {
+        //         setModalImageUrl('/ratio.png');
+        //         setIsModalOpenurl(true);
+        //       }}
+        //     />
+        //   </Popover>
+        // </span>
+      // ),
+      // dataIndex: 'model_ratio',
+    //   render: (text, record, index) => {
+    //     let content = text;
+    //     let completionRatio = parseFloat(record.completion_ratio.toFixed(3));
+    //     content = (
+    //       <>
+    //         <Text>Model：{record.quota_type === 0 ? text : 'None'}</Text>
+    //         <br />
+    //         <Text>
+    //           Completion：{record.quota_type === 0 ? completionRatio : 'None'}
+    //         </Text>
+    //         <br />
+    //         <Text>Group：{groupRatio[selectedGroup]}</Text>
+    //       </>
+    //     );
+    //     return <div>{content}</div>;
+    //   },
+    // },
     {
       title: 'Model Pricing',
       dataIndex: 'model_price',
@@ -267,13 +267,13 @@ const ModelPricing = () => {
           content = (
             <>
               <Text>Prompt ${inputRatioPrice} / 1M tokens</Text>
-              <br />
-              <Text>Completion ${completionRatioPrice} / 1M tokens</Text>
+              {/* <br />
+              <Text>Completion ${completionRatioPrice} / 1M tokens</Text> */}
             </>
           );
         } else {
           let price = parseFloat(text) * groupRatio[selectedGroup];
-          content = <>Model Pricing：${price}</>;
+          content = <>Model Pricing: ${price}</>;
         }
         return <div>{content}</div>;
       },
@@ -354,7 +354,7 @@ const ModelPricing = () => {
             type='success'
             fullMode={false}
             closeIcon='null'
-            // description={`Your DefaultGroup: ${userState.user.group}}`}
+            description={`Please use the website url as the api base.`}
           />
         ) : (
           <Banner

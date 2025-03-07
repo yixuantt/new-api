@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, useLocation } from 'react-router-dom';
+import en_US from '@douyinfe/semi-ui/lib/es/locale/source/en_US';
 import App from './App';
 import HeaderBar from './components/HeaderBar';
 import 'semantic-ui-offline/semantic.min.css';
@@ -9,7 +10,7 @@ import { UserProvider } from './context/User';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { StatusProvider } from './context/Status';
-import { Layout } from '@douyinfe/semi-ui';
+import { LocaleProvider, Layout } from '@douyinfe/semi-ui';
 import SiderBar from './components/SiderBar';
 import { ThemeProvider } from './context/Theme';
 import FooterBar from './components/Footer';
@@ -18,12 +19,13 @@ import FooterBar from './components/Footer';
 
 const { Sider, Content, Header, Footer } = Layout;
 
-// 创建一个布局组件，根据当前路径决定是否显示侧边栏
+// 创建一个布局组件，根据当前路径决定是否显示Sidebar
 function RootLayout() {
   const location = useLocation();
   const isHomePage = location.pathname === '/' || location.pathname === '/home';
   
   return (
+    <LocaleProvider locale={en_US}>
     <Layout style={{ height: '100vh', display: 'flex', flexDirection: 'column' }}>
       <Header>
         <HeaderBar />
@@ -49,6 +51,7 @@ function RootLayout() {
       </Layout>
       <ToastContainer />
     </Layout>
+    </LocaleProvider>
   );
 }
 
