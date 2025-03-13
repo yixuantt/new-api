@@ -11,6 +11,7 @@ import fireworks from 'react-fireworks';
 import {
   IconAppCenter,
   IconBookmark,
+  IconBookOpenStroked,
   IconHelpCircle,
   IconHome,
   IconHomeStroked,
@@ -43,8 +44,14 @@ let buttons = [
   {
     text: 'Dashboard',
     itemKey: 'dashboard',
-    to: "/doc",
+    to: "/log",
     icon: <IconAppCenter />,
+  },
+  {
+    text: 'Document',
+    itemKey: 'document',
+    to: "/doc",
+    icon: <IconBookOpenStroked />,
   },
 ];
 
@@ -118,7 +125,8 @@ const HeaderBar = () => {
                 login: '/login',
                 register: '/register',
                 home: '/',
-                dashboard: '/doc',
+                dashboard: '/log',
+                document: '/doc',
               };
               return (
                 <Link

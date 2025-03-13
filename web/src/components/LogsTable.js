@@ -363,49 +363,49 @@ const LogsTable = () => {
         return isAdminUser ? <div>{content}</div> : <></>;
       },
     },
-    {
-      title: 'Details',
-      dataIndex: 'content',
-      render: (text, record, index) => {
-        let other = getLogOther(record.other);
-        if (other == null || record.type !== 2) {
-          return (
-            <Paragraph
-              ellipsis={{
-                rows: 2,
-                showTooltip: {
-                  type: 'popover',
-                  opts: { style: { width: 240 } },
-                },
-              }}
-              style={{ maxWidth: 240 }}
-            >
-              {text}
-            </Paragraph>
-          );
-        }
-        let content = renderModelPrice(
-          record.prompt_tokens,
-          record.completion_tokens,
-          other.model_ratio,
-          other.model_price,
-          other.completion_ratio,
-          other.group_ratio,
-        );
-        return (
-          <Tooltip content={content}>
-            <Paragraph
-              ellipsis={{
-                rows: 2,
-              }}
-              style={{ maxWidth: 240 }}
-            >
-              {text}
-            </Paragraph>
-          </Tooltip>
-        );
-      },
-    },
+    // {
+    //   title: 'Details',
+    //   dataIndex: 'content',
+    //   render: (text, record, index) => {
+    //     let other = getLogOther(record.other);
+    //     if (other == null || record.type !== 2) {
+    //       return (
+    //         <Paragraph
+    //           ellipsis={{
+    //             rows: 2,
+    //             showTooltip: {
+    //               type: 'popover',
+    //               opts: { style: { width: 240 } },
+    //             },
+    //           }}
+    //           style={{ maxWidth: 240 }}
+    //         >
+    //           {text}
+    //         </Paragraph>
+    //       );
+    //     }
+    //     let content = renderModelPrice(
+    //       record.prompt_tokens,
+    //       record.completion_tokens,
+    //       other.model_ratio,
+    //       other.model_price,
+    //       other.completion_ratio,
+    //       other.group_ratio,
+    //     );
+    //     return (
+    //       <Tooltip content={content}>
+    //         <Paragraph
+    //           ellipsis={{
+    //             rows: 2,
+    //           }}
+    //           style={{ maxWidth: 240 }}
+    //         >
+    //           {text}
+    //         </Paragraph>
+    //       </Tooltip>
+    //     );
+    //   },
+    // },
   ];
 
   const [logs, setLogs] = useState([]);
@@ -595,7 +595,7 @@ const LogsTable = () => {
           <Spin spinning={loadingStat}>
             <Space>
               <Tag color='green' size='large' style={{ padding: 15 }}>
-                Total ConsumptionQuota: {renderQuota(stat.quota)}
+                Total Consumption Quota: {renderQuota(stat.quota)}
               </Tag>
               <Tag color='blue' size='large' style={{ padding: 15 }}>
                 RPM: {stat.rpm}
@@ -610,7 +610,7 @@ const LogsTable = () => {
           <>
             <Form.Input
               field='token_name'
-              label='TokenName'
+              label='Token Name'
               style={{ width: 176 }}
               value={token_name}
               placeholder={'Optional Values'}
@@ -619,7 +619,7 @@ const LogsTable = () => {
             />
             <Form.Input
               field='model_name'
-              label='ModelName'
+              label='Model Name'
               style={{ width: 176 }}
               value={model_name}
               placeholder='Optional Values'

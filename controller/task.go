@@ -24,7 +24,7 @@ func UpdateTaskBulk() {
 	//imageModel := "midjourney"
 	for {
 		time.Sleep(time.Duration(15) * time.Second)
-		common.SysLog("任务schedule轮询open始")
+		common.SysLog("Task schedule polling starts")
 		ctx := context.TODO()
 		allTasks := model.GetAllUnFinishSyncTasks(500)
 		platformTask := make(map[constant.TaskPlatform][]*model.Task)
@@ -64,7 +64,7 @@ func UpdateTaskBulk() {
 
 			UpdateTaskByPlatform(platform, taskChannelM, taskM)
 		}
-		common.SysLog("任务schedule轮询完成")
+		common.SysLog("Task schedule polling completed")
 	}
 }
 

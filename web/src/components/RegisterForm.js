@@ -50,12 +50,12 @@ const RegisterForm = () => {
       return;
     }
     if (password !== password2) {
-      showInfo('两timesEnter的Password不一致');
+      showInfo('The passwords entered at both times do not match');
       return;
     }
     if (username && password) {
       if (turnstileEnabled && turnstileToken === '') {
-        showInfo('Please retry in a few seconds，Turnstile 正在检查User环境！');
+        showInfo('Please retry in a few seconds, Turnstile is checking the User environment!');
         return;
       }
       setLoading(true);
@@ -83,7 +83,7 @@ const RegisterForm = () => {
   const sendVerificationCode = async () => {
     if (inputs.email === '') return;
     if (turnstileEnabled && turnstileToken === '') {
-      showInfo('Please retry in a few seconds，Turnstile 正在检查User环境！');
+      showInfo('Please retry in a few seconds, Turnstile is checking the User environment!');
       return;
     }
     setLoading(true);
@@ -92,7 +92,7 @@ const RegisterForm = () => {
     );
     const { success, message } = res.data;
     if (success) {
-      showSuccess('Verification Code sent successfully，请检查你的Mail！');
+      showSuccess('Verification Code sent successfully, please check your Mail!');
     } else {
       showError(message);
     }
@@ -114,7 +114,7 @@ const RegisterForm = () => {
             <div style={{ width: 500 }}>
               <Card>
                 <Title heading={2} style={{ textAlign: 'center' }}>
-                  新UserRegister
+                  Register
                 </Title>
                 <Form size='large'>
                   <Form.Input
@@ -127,7 +127,7 @@ const RegisterForm = () => {
                   <Form.Input
                     field={'password'}
                     label={'Password'}
-                    placeholder='Password，最短 8 位，最长 20 位'
+                    placeholder='Password, minimum 8 characters, maximum 20 characters'
                     name='password'
                     type='password'
                     onChange={(value) => handleChange('password', value)}

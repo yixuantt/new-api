@@ -277,8 +277,8 @@ const ChannelsTable = () => {
             Edit
           </Button>
           <Popconfirm
-            title='OK是否要Copy此Channel？'
-            content='CopyChannel的所有信息'
+            title='Do you want to copy this Channel?'
+            content='Copy all information about the Channel'
             okType={'danger'}
             position={'left'}
             onConfirm={async () => {

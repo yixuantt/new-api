@@ -1,7 +1,7 @@
 /* HomePage.css */
 :root {
   --openai-blue: #10a37f;
-  --openai-dark: #202123;
+  --openai-dark: var(--text-color);
   --openai-gray: #ececf1;
   --finance-green: #10a37f;
   --text-gray: #6e6e80;
@@ -23,6 +23,55 @@ html, body, #root {
     height: 100%;
     overflow: auto;
     font-family: "Helvetica Neue",Helvetica,Arial,"Microsoft Yahei","Hiragino Sans GB","Heiti SC","WenQuanYi Micro Hei",sans-serif;
+  }
+
+ /* 默认浅色模式 */
+:root {
+    --background-color: #ffffff;
+    --text-color: #000000;
+    --primary-color: #10a37f;
+    --section-bg: #f9fafb;
+    --animation-color: rgba(16,163,127,0.05);
+    --icon-bg: #10a37f; /* var(--openai-blue) */
+    --icon-stroke: white;
+    --scrollbar-thumb: #888;
+  }
+  
+  /* 深色模式 */
+  .dark {
+    --background-color: #1a1a1a;
+    --text-color: #ffffff;
+    --primary-color: #00cc99;
+    --section-bg: #2a2a2a;
+    --animation-color: rgba(0,204,153,0.1);
+    --icon-bg: #00cc99; /* 与 --primary-color 一致 */
+    --icon-stroke: #ffffff;
+    --scrollbar-thumb: #555;
+  }
+  
+  body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+  }
+  
+
+  .background-animation {
+    background-image:
+      linear-gradient(60deg, var(--animation-color) 25%, transparent 25%),
+      linear-gradient(120deg, var(--animation-color) 25%, transparent 25%);
+
+  }
+  
+  footer, .testimonials {
+    background: var(--section-bg);
+  }
+  
+  .feature-icon {
+    background: var(--icon-bg);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
   }
 /* 动画 */
 @keyframes wave {
@@ -114,6 +163,15 @@ html, body, #root {
   text-decoration: none;
   transition: all 0.2s ease-in-out;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 0.75rem 1.5rem;
+  background: var(--finance-green);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .cta-button:hover {
@@ -172,15 +230,24 @@ footer ul li a:hover {
 
 /* 用户评价区 */
 .testimonials {
-    background: #f9fafb;
-}
-
-.testimonial-grid {
+    background: var(--testimonials-bg);
+  }
+  
+  /* 评价网格布局 */
+  .testimonial-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
-}
-
+  }
+  
+  /* 评价卡片 */
+  .testimonial-card {
+    padding: 2rem;
+    border-radius: 12px;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
 .container_footer {
     max-width: 1200px;
     margin: 0 auto;
@@ -200,7 +267,7 @@ footer ul li a:hover {
 .feature-card, .testimonial-card {
     padding: 2rem;
     border-radius: 12px;
-    background: white;
+    background: var(--testimonials-bg);
     border: 1px solid #eee;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -239,16 +306,6 @@ footer ul li a:hover {
     transform: translateY(0);
 }
 
-/* 用户评价区 */
-.testimonials {
-    background: #f9fafb;
-}
-
-.testimonial-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-}
 
 .hero-content {
     text-align: center;

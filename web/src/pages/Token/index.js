@@ -1,18 +1,17 @@
 import React from 'react';
 import TokensTable from '../../components/TokensTable';
-import { Banner, Layout } from '@douyinfe/semi-ui';
+import { Banner, Layout, LocaleProvider } from '@douyinfe/semi-ui';
+
+import en_US from '@douyinfe/semi-ui/lib/es/locale/source/en_US';
+
 const Token = () => (
   <>
     <Layout>
-      {/* <Layout.Header>
-        <Banner
-          type='warning'
-          description='TokenNone法精确控制使用Quota，请勿直接将Token分发给User。'
-        />
-      </Layout.Header> */}
+      <LocaleProvider locale={en_US}>
       <Layout.Content>
         <TokensTable />
       </Layout.Content>
+      </LocaleProvider>
     </Layout>
   </>
 );

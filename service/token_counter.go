@@ -37,6 +37,7 @@ func getTokenEncoder(model string) *tokenizers.Tokenizer {
 
 func getTokenNum(tokenEncoder *tokenizers.Tokenizer, text string) int {
 	tokenIDs, _ := tokenEncoder.Encode(text,false)
+	common.SysLog(fmt.Sprintf(("Token ID Length: %d"), len(tokenIDs)))
 	return len(tokenIDs)
 }
 

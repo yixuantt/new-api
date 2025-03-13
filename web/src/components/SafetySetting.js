@@ -412,7 +412,7 @@ const SafetySetting = () => {
             />
             <Form.Input
               label='lowestRechargeDollarquantity（以美金为单位，如果使用Quota请自行换算！）'
-              placeholder='For example：2，就是lowestRecharge2$'
+              placeholder='For example：2，就是lowest Recharge 2$'
               value={inputs.MinTopUp}
               name='MinTopUp'
               min={1}
@@ -427,7 +427,7 @@ const SafetySetting = () => {
               style={{ minHeight: 250, fontFamily: 'JetBrains Mono, Consolas' }}
               autoComplete='new-password'
               value={inputs.TopupGroupRatio}
-              placeholder='Is a JSON text，键为组Name，Value is the rate'
+              placeholder='Is a JSON text, the key is the group name, the value is the rate'
             />
           </Form.Group>
           <Form.Button onClick={submitPayAddress}>更新支付Settings</Form.Button>

@@ -58,16 +58,16 @@ export default function SettingsLog(props) {
   async function onCleanHistoryLog() {
     try {
       setLoadingCleanHistoryLog(true);
-      if (!inputs.historyTimestamp) throw new Error('请选择Log记录Time');
+      if (!inputs.historyTimestamp) throw new Error('Please select Log Record Time');
       const res = await API.delete(
         `/api/log/?target_timestamp=${Date.parse(inputs.historyTimestamp) / 1000}`,
       );
       const { success, message, data } = res.data;
       if (success) {
-        showSuccess(`${data} 条Log已清理！`);
+        showSuccess(`${data} Logs have been cleaned!`);
         return;
       } else {
-        throw new Error('Log清理Failed：' + message);
+        throw new Error('Log cleaning failed:' + message);
       }
     } catch (error) {
       showError(error.message);
@@ -116,7 +116,7 @@ export default function SettingsLog(props) {
               <Col span={8}>
                 <Spin spinning={loadingCleanHistoryLog}>
                   <Form.DatePicker
-                    label='Log记录Time'
+                    label='Logging Time'
                     field={'historyTimestamp'}
                     type='dateTime'
                     inputReadOnly={true}
@@ -128,7 +128,7 @@ export default function SettingsLog(props) {
                     }}
                   />
                   <Button size='default' onClick={onCleanHistoryLog}>
-                    清除历史Log
+                  Clear History Log
                   </Button>
                 </Spin>
               </Col>

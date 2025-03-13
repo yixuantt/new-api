@@ -261,7 +261,7 @@ const TokensTable = () => {
               {/*</Dropdown>*/}
             </SplitButtonGroup>
             <Popconfirm
-              title='OK是否要Delete此Token？'
+              title='Do you want to delete this Token?'
               content='This modification will be irreversible'
               okType={'danger'}
               position={'left'}

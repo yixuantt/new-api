@@ -214,7 +214,7 @@ const LoginForm = () => {
                   }}
                 >
                   <Text>
-                    If you don't have an account, please <Link to='/register'>Register账号</Link>
+                    If you don't have an account, please <Link to='/register'>Register</Link>
                   </Text>
                   <Text>
                     forget the password <Link to='/reset'>Click to reset</Link>

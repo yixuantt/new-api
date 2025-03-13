@@ -277,7 +277,7 @@ const EditToken = (props) => {
             style={{ marginTop: 20 }}
             label='Name'
             name='name'
-            placeholder={'请EnterName'}
+            placeholder={'Please enter your name'}
             onChange={(value) => handleInputChange('name', value)}
             value={name}
             autoComplete='new-password'
@@ -287,7 +287,7 @@ const EditToken = (props) => {
           <DatePicker
             label='Expiration Time'
             name='expired_time'
-            placeholder={'请选择Expiration Time'}
+            placeholder={'Please select Expiration Time'}
             onChange={(value) => handleInputChange('expired_time', value)}
             value={expired_time}
             autoComplete='new-password'
@@ -334,7 +334,7 @@ const EditToken = (props) => {
           <Banner
             type={'warning'}
             description={
-              'Note，Token的Quota仅用于限制Token本身的最大Quota使用量，实际的使用受到Account的Available Balance限制。'
+              'Note, the Token Quota is only used to limit the maximum Quota usage of the Token itself, and the actual usage is limited by the Available Balance of the Account.'
             }
           ></Banner>
           <div style={{ marginTop: 20 }}>
@@ -343,7 +343,7 @@ const EditToken = (props) => {
           <AutoComplete
             style={{ marginTop: 8 }}
             name='remain_quota'
-            placeholder={'请EnterQuota'}
+            placeholder={'Please enter quota'}
             onChange={(value) => handleInputChange('remain_quota', value)}
             value={remain_quota}
             autoComplete='new-password'
@@ -393,7 +393,7 @@ const EditToken = (props) => {
                 setUnlimitedQuota();
               }}
             >
-              {unlimited_quota ? 'CancelNone限Quota' : '设为None限Quota'}
+              {unlimited_quota ? 'Cancel None Limited Quota' : 'Set to None to limit quota'}
             </Button>
           </div>
           <Divider />
@@ -401,9 +401,9 @@ const EditToken = (props) => {
             <Typography.Text>IP whitelist (do not overly trust this function)</Typography.Text>
           </div>
           <TextArea
-            label='IP白名单'
+            label='IP Whitelist'
             name='allow_ips'
-            placeholder={'允许的IP，一行一indivual'}
+            placeholder={'Allowed IP, one row per individual'}
             onChange={(value) => {
               handleInputChange('allow_ips', value);
             }}
@@ -441,12 +441,12 @@ const EditToken = (props) => {
             disabled={!model_limits_enabled}
           />
           <div style={{ marginTop: 10 }}>
-            <Typography.Text>TokenGroup，Default为User的Group</Typography.Text>
+            <Typography.Text>Token Group, Default is the User's Group</Typography.Text>
           </div>
           {groups.length > 0 ? (
             <Select
               style={{ marginTop: 8 }}
-              placeholder={'TokenGroup，Default为User的Group'}
+              placeholder={"Token Group, Default is the User's Group"}
               name='gruop'
               required
               selection
@@ -460,7 +460,7 @@ const EditToken = (props) => {
           ) : (
             <Select
               style={{ marginTop: 8 }}
-              placeholder={'Admin未SettingsUser可选Group'}
+              placeholder={'Admin Not Settings User Optional Group'}
               name='gruop'
               disabled={true}
             />

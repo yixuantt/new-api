@@ -102,14 +102,14 @@ const Home = () => {
         <div className="container_footer">
           <div className="feature-card">
             <div className="feature-icon compliance"></div>
-            <h3 style={{ marginBottom: '1rem', color: 'var(--openai-dark)' }}>State-of-the-Art Financial Embeddings</h3>
+            <h3 style={{ marginBottom: '1rem' }}>State-of-the-Art Financial Embeddings</h3>
             <p style={{ color: 'var(--text-gray)' }}>
               Powered by Cutting-Edge AI Research and Engineering
             </p>
           </div>
           <div className="feature-card">
             <div className="feature-icon financial-data"></div>
-            <h3 style={{ marginBottom: '1rem', color: 'var(--openai-dark)' }}>Financial Document Understanding</h3>
+            <h3 style={{ marginBottom: '1rem'}}>Financial Document Understanding</h3>
             <p style={{ color: 'var(--text-gray)' }}>
               Optimized for 10-K/Q filings, earnings transcripts, and IBES estimates 
               with financial semantic understanding
@@ -117,7 +117,7 @@ const Home = () => {
           </div>
           <div className="feature-card">
             <div className="feature-icon market-trend"></div>
-            <h3 style={{ marginBottom: '1rem', color: 'var(--openai-dark)' }}>Market Sentiment Analysis</h3>
+            <h3 style={{ marginBottom: '1rem' }}>Market Sentiment Analysis</h3>
             <p style={{ color: 'var(--text-gray)' }}>
               Encodes subtle sentiment shifts in analyst reports and 
               market commentaries
